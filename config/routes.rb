@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :registrations => 'users/registrations'
    }
+   root 'homes#top'
+   get  'about'
 end
