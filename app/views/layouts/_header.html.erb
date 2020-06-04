@@ -1,12 +1,12 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
-      <%= link_to "Trachil", root_path, class: "title" %>
+      <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_btn glyphicon glyphicon-log-out" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-out" %>
           </li>
           <li>
             <div class="header_btn glyphicon glyphicon-log-in login-btn" id="login-show">ログイン</div>
