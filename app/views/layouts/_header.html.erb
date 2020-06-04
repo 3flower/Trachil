@@ -1,7 +1,7 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
-      <%= link_to "Trachil", root_path %>
+      <%= link_to "Trachil", root_path, class: "title" %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
@@ -12,8 +12,7 @@
             <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-edit" %>
           </li>
           <li>
-            <div class="btn header_btn glyphicon glyphicon-log-in" id="login-show">ログイン</div>
-            <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-in", id: "login-show" %>
+            <div class="header_btn glyphicon glyphicon-log-in login-btn" id="login-show">ログイン</div>
           </li>
       </ul>
     </nav>
