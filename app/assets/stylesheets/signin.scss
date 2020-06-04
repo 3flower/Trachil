@@ -1,8 +1,10 @@
 .signin-box {
-  height: 750px;
-  margin-top: 30px;
-  padding-top: 30px;
+  height: 700px;
+  margin: 30px 0px 0 0px;
+  padding: 30px 20px 0 20px;
   background-color: #fff;
+
+
 
   .sigin-right {
     margin-top: 30px;
@@ -17,31 +19,64 @@
     input {
       padding-left: 5px;
     }
-    .modal {
-      position: none !important;
-      // display: block;
+    .is_child, .is_diaper, .is_baby_food {
+      padding-left: 5px;
+      padding-right: 8px;
+      display: inline-block;
+    }
+    .radio_button {
+      margin-left: 5px;
+    }
+    .child_people, .child_age {
+      width: 50px;
+      text-align: center;
+      padding-right: 5px;
+      margin-left: 10px;
+    }
+    .from-diaper {
+      margin-top: 5px;
+    }
+    .is_child_show {
+      display: none;
     }
   }
-  .is_child, .is_diaper, .is_baby_food {
-    padding-left: 5px;
-    padding-right: 8px;
-    display: inline-block;
-  }
-  .radio_button {
-    margin-left: 5px;
-  }
-  .child_people, .child_age {
-    width: 50px;
-    text-align: center;
-    padding-right: 5px;
-    margin-left: 10px;
-  }
-  .from-diaper {
-    margin-top: 5px;
+  .sigin-left {
+    margin-top: 30px;
+
+    label {
+      margin-left: 50px;
+    }
+
+    .form_icon {
+      width: 200px;
+      height: 200px;
+      border: 1px dashed #808080;
+      border-radius:200px;
+      margin-left: 100px;
+
+      .icon {
+        width: 198px;
+        height: 198px;
+        border-radius:200px;
+      }
+
+      p {
+        text-align: center;
+        // padding-top: 80px;
+      }
+      &:hover {
+        background-color: #808080;
+        cursor: pointer;
+      }
+    }
+    .user_image {
+      margin-top: 10px;
+      margin-left: 70px;
+    }
   }
   .submit-signin {
     padding:10px 40px;
-    margin: 20px 0;
+    margin: 40px 0;
   }
   .link-back {
     margin-left: 30px;

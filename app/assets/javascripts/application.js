@@ -31,7 +31,7 @@ $(function(){
   $('.is_child_true').click(function(){
     $('.is_child_show').fadeIn();
   });
-  $('.is_child_true').click(function(){
+  $('.is_child_false').click(function(){
     $('.is_child_show').fadeOut();
   })
 });
