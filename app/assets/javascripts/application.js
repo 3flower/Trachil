@@ -18,10 +18,20 @@
 //= require_tree .
 
 $(function(){
+
+  // ログインのモーダル表示
   $('#login-show').click(function(){
     $('#login-modal').fadeIn();
   });
   $('.close-modal').click(function(){
     $('#login-modal').fadeOut();
+  })
+
+  // 新規会員登録のラジオボタンのモーダル表示
+  $('.is_child_true').click(function(){
+    $('.is_child_show').fadeIn();
+  });
+  $('.is_child_true').click(function(){
+    $('.is_child_show').fadeOut();
   })
 });
