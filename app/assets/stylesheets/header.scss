@@ -1,0 +1,22 @@
+header {
+  width: 100%;
+  z-index:1000;
+  border-bottom: 1px solid #FF0066;
+  position: sticky;
+  top: 0;
+}
+.header_btn {
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  border-radius:20px;
+  margin-left: 10px;
+}
+.header_btn:hover {
+   background-color: #FFCCCC !important;
+   color: #FF0066;
+ }
+ .header_btn:active {
+   transform: translateY(4px);
+   border-bottom: none;
+ }

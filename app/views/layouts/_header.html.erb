@@ -12,7 +12,8 @@
             <%= link_to "新規登録", new_user_registration_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-edit" %>
           </li>
           <li>
-            <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-in" %>
+            <div class="btn header_btn glyphicon glyphicon-log-in" id="login-show">ログイン</div>
+            <%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-in", id: "login-show" %>
           </li>
       </ul>
     </nav>
