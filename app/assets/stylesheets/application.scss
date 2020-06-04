@@ -22,3 +22,18 @@
    box-sizing: border-box;
    // color: #6c6b6b;
  }
+
+body {
+  background-color: #CCCCCC;
+}
+
+input, textarea {
+  border-radius:5px;
+  border-width: 1px;
+}
+
+// @media screen and (max-width:425px){
+//   header {
+//     width: 100%;
+//   }
+// }

@@ -1,0 +1,77 @@
+#login-modal {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.login {
+  width: 600px;
+  height: 450px;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 1px solid #CCCCCC;
+  background-color: #ffffff;
+  position: absolute;
+  left: 27%;
+  top: 20%;
+
+  .login-box {
+    padding: 20px 26px;
+
+    .fa-times {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      color: rgba(128, 128, 128, 0.46);
+      cursor: pointer;
+    }
+
+    .login-h2 {
+      margin-bottom: 15px;
+      margin-left: 20px;
+    }
+    .mail {
+      margin-bottom: 50px;
+      margin-left: 30px;
+    }
+    .password {
+      margin-bottom: 50px;
+      margin-left: 30px;
+    }
+    .from-mail, .from-password {
+      height: 31px;
+      border-radius: 5px;
+      border-width: 1px;
+    }
+    .remember {
+      margin-bottom: 20px;
+      margin-left: 30px;
+    }
+    .submit-login {
+      margin-bottom: 80px;
+      margin-left: 30px;
+    }
+    .btn-login {
+      background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+      color: inherit;
+    }
+    .btn-login:hover {
+      background: #f0c14b;
+    }
+    .new-user {
+      p {
+        text-align: center;
+
+        span {
+          text-decoration: line-through;
+          text-decoration-color: #CCCCCC;
+        }
+      }
+      .signin_btn {
+        margin-top: 5px;
+        margin-left: 16px;
+        background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+      }
+      .signin_btn:hover {
+        background: #e7e9ec;
+      }
+    }
+  }
+}

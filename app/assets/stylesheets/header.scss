@@ -1,0 +1,38 @@
+header {
+  width: 100%;
+  z-index:1000;
+  padding: 20px 0 5px 0;
+  border-bottom: 1px solid #C0C0C0;
+  position: sticky;
+  top: 0;
+  background-color: #CCFFFF;
+}
+.header-title {
+  font-family: 'Savoye LET','Segoe Print';
+  font-size: 50px;
+
+}
+.title:hover {
+  text-decoration: none;
+}
+.header_btn {
+  background: linear-gradient(#6795fd 0%, #67ceff 60%);
+  border-bottom: solid 4px #627295;
+  border-radius:20px;
+  margin-left: 10px;
+  color: #fff;
+  margin-bottom: 5px;
+  padding: 10px !important;
+}
+.header_btn:hover {
+  background: linear-gradient(#6795fd 0%, #67ceff 100%);
+   color: #FF0066;
+ }
+ .header_btn:active {
+   transform: translateY(4px);
+   border-bottom: none;
+ }
+.login-btn {
+  margin-bottom: 5px;
+  padding: 13px!important;
+}

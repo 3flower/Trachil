@@ -17,3 +17,10 @@ module Trachil
     # the framework and any gems in your application.
   end
 end
+
+# NameError: uninitialized constant User::ImageUploaderの対処方法
+# module AwesomeEvents
+#   class Application < Rails::Application
+#     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+#   end
+# end

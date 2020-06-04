@@ -69,4 +69,6 @@ gem "bootstrap-sass", "~> 3.4.1"
 gem "ransack"
 gem "kaminari"
 gem "pry-byebug"
-gem 'dotenv-rails'
+gem "dotenv-rails"
+gem "carrierwave"
+gem "mini_magick"
