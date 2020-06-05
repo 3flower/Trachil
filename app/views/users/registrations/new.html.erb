@@ -69,6 +69,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <div class="signin-left col-xs-5">
         <%= f.label :アイコン %>
             <div class="form_icon" id="icon_preview">
@@ -78,6 +79,20 @@
                 <%= f.file_field :user_image, class: 'user_image'  %>
               </div>
             </div>
+=======
+      <div class="sigin-left col-xs-3">
+        <% f.label :アイコン %>
+        <div class="form_icon">
+          <label for="user_image1">
+            <%= image_tag 'no_image.jpg',class: "icon", id: "preview" %>
+          </label>
+          <%= f.file_field :user_image, type: 'file', class: 'user_image', id: "user_image1"  %>
+        </div>
+        <div class ="icon_remove">
+          削除する
+        </div>
+
+>>>>>>> develop
       </div>
 
       <div class="col-xs-12">
