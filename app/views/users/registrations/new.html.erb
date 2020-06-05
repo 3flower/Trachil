@@ -69,14 +69,18 @@
         </div>
       </div>
 
-      <div class="sigin-left col-xs-5">
-        <%= f.label :アイコン %>
+      <div class="sigin-left col-xs-3">
+        <% f.label :アイコン %>
         <div class="form_icon">
-          <%= image_tag 'no_image.jpg',class: "icon" %>
-          <!-- <p>ドラッグ&ドロップ<br>
-          またはクリックして下さい</p> -->
+          <label for="user_image1">
+            <%= image_tag 'no_image.jpg',class: "icon", id: "preview" %>
+          </label>
+          <%= f.file_field :user_image, type: 'file', class: 'user_image', id: "user_image1"  %>
         </div>
-        <%= f.file_field :user_image, class: 'user_image'  %>
+        <div class ="icon_remove">
+          削除する
+        </div>
+
       </div>
 
       <div class="col-xs-12">
