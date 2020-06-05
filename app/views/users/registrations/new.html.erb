@@ -69,14 +69,15 @@
         </div>
       </div>
 
-      <div class="sigin-left col-xs-5">
+      <div class="signin-left col-xs-5">
         <%= f.label :アイコン %>
-        <div class="form_icon">
-          <%= image_tag 'no_image.jpg',class: "icon" %>
-          <!-- <p>ドラッグ&ドロップ<br>
-          またはクリックして下さい</p> -->
-        </div>
-        <%= f.file_field :user_image, class: 'user_image'  %>
+            <div class="form_icon" id="icon_preview">
+              <!-- <p>ドラッグ&ドロップ<br>
+              またはクリックして下さい</p> -->
+              <div class="input_area">
+                <%= f.file_field :user_image, class: 'user_image'  %>
+              </div>
+            </div>
       </div>
 
       <div class="col-xs-12">
