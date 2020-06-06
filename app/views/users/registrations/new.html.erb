@@ -71,12 +71,14 @@
 
       <div class="sigin-left col-xs-3">
         <p>アイコン</p>
+        <label for="user_image">
         <div class="form_icon">
-          <label for="user_image">
-            <%= image_tag 'no_image.jpg',class: "icon", id: "preview" %>
-          </label>
+
+            <%= image_tag 'default.png',class: "icon", id: "preview" %>
+
           <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
         </div>
+        </label>
         <div class ="icon_remove">
           削除する
         </div>
