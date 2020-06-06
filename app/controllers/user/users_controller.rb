@@ -1,5 +1,7 @@
 class User::UsersController < ApplicationController
 
+  before_action :set_user, onry: [:show, :edit]
+
   def show
   end
 
@@ -14,5 +16,5 @@ class User::UsersController < ApplicationController
 
   def update
   end
-  
+
 end

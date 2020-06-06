@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 2020_06_03_073032) do
     t.string "residence"
     t.text "introduction"
     t.boolean "is_child", default: false, null: false
-    t.string "child_people", default: "1"
-    t.integer "child_age", default: 0
+    t.string "child_people"
+    t.integer "child_age"
     t.boolean "is_diaper", default: false, null: false
     t.boolean "is_baby_food", default: false, null: false
-    t.string "user_image_id", default: "no_image.jpg"
+    t.string "user_image_id"
     t.boolean "is_valid", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

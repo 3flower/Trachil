@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   protected
     # ログイン時のパス
     def after_sign_in_path_for(resource)
-      # if customer_signed_in?
+      if user_signed_in?
         user_path(resource)
       # else
       #   admin_top_path
-      # end
+      end
     end
 
     #ログアウト時のパス
@@ -19,11 +19,20 @@ class ApplicationController < ActionController::Base
 
     # 新規登録の保存機能
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up,
-  			 keys: [:email])
-
+      if is_child = true
+        devise_parameter_sanitizer.permit(:sign_up,
+  			    keys: [:name, :email, :residence, :is_child,
+            :child_people, :child_age, :is_diaper, :is_baby_food, :user_image_id])
+      elsif is_child = false
+        devise_parameter_sanitizer.permit(:sign_up,
+          keys: [:name, :email, :residence, :is_child, :user_image_id])
+      end
   		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
     end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 end
