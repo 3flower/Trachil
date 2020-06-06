@@ -34,6 +34,9 @@ $(function(){
   $('.is_child_false').click(function(){
     $('.is_child_show').fadeOut();
   })
+  $('.is_child_true').prop('is_child', 'true',function(){
+    $('.is_child_show').fadeIn();
+  });
 
    // 新規会員登録の画像プレビューと削除
   $('#user_image').change(function(){
@@ -46,7 +49,7 @@ $(function(){
     // $('#preview').fadeIn();
     $('.icon_remove').fadeIn();
     $('.icon_remove').click(function(){
-      // $('#preview').css('display', 'none');
+      // $('#preview').attr("src","images/default.png");
       $('.icon_remove').css('display', 'none');
       //inputタグに入ったファイルを削除
       $('#user_image').val("");

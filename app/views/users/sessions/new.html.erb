@@ -1,7 +1,8 @@
-<div class="modal" id="login-modal">
+<!-- <div class="modal" id="login-modal"> -->
   <div class="login">
     <div class="login-box">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "layouts/error_messages", resource: resource %>
         <div class="close-modal">
           <i class="fa fa-2x fa-times"></i>
         </div>
@@ -33,4 +34,4 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->

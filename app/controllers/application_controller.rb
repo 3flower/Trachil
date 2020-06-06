@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   protected
     # ログイン時のパス
     def after_sign_in_path_for(resource)
-      # if customer_signed_in?
+      if user_signed_in?
         user_path(resource)
       # else
       #   admin_top_path
-      # end
+      end
     end
 
     #ログアウト時のパス

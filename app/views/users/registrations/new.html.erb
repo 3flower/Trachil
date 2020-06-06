@@ -6,58 +6,7 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="sigin-right col-xs-7">
-        <%= render "layouts/error_messages", resource: resource %>
-        <div class="form-group col-xs-12">
-          <%= f.label :"名前", class: "control-label col-xs-4" %>
-          <%= f.text_field :name, autofocus: true, class: "form-control-static name" %>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <%= f.label :"メールアドレス", class: "control-label col-xs-4" %>
-          <%= f.text_field :email, class: "form-control-static col-xs-7"%>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <%= f.label :"場所", class: "control-label col-xs-4" %>
-          <%= f.text_field :residence, class: "form-control-static"%>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <%= f.label :"子供いる？", class: "control-label col-xs-4" %>
-          <%= f.radio_button :is_child, true, class: "radio_button is_child_true" %>
-          <%= f.label :is_child, "いる", value: :true, class: "is_child" %>
-          <%= f.radio_button :is_child, false, class: "radio_button is_child_false"  %>
-          <%= f.label :is_child, "いない", value: :false, class: "is_child" %>
-        </div>
-
-        <div class="is_child_show">
-          <div class="form-group col-xs-6">
-            <%= f.label :"子供の人数", class: "control-label col-xs-8" %>
-            <%= f.text_field :child_people, class: "form-control-static child_people"%><span>人</span>
-          </div>
-
-          <div class="form-group from-diaper col-xs-6">
-            <%= f.label :"オムツは必要？", class: "control-label" %>
-            <%= f.radio_button :is_diaper, true, class: "radio_button" %>
-            <%= f.label :is_diaper, "あり", value: :true, class: "is_diaper" %>
-            <%= f.radio_button :is_diaper, false, class: "radio_button" %>
-            <%= f.label :is_diaper, "なし", value: :false, class: "is_diaper" %>
-          </div>
-
-          <div class="form-group col-xs-6">
-            <%= f.label :"子供の最年少年齢", class: "control-label col-xs-8" %>
-            <%= f.text_field :child_age, class: "form-control-static child_age"%><span>才</span>
-          </div>
-
-          <div class="form-group from-baby_food  col-xs-6">
-            <%= f.label :"離乳食は必要？", class: "control-label" %>
-            <%= f.radio_button :is_baby_food, true, class: "radio_button" %>
-            <%= f.label :is_baby_food, "あり", value: :true, class: "is_baby_food" %>
-            <%= f.radio_button :is_baby_food, false, class: "radio_button" %>
-            <%= f.label :is_baby_food, "なし", value: :false, class: "is_baby_food" %>
-          </div>
-        </div>
-
+        <%= render "user_form", resource: resource, f: f %>
         <div class="field form-group col-xs-12">
           <%= f.label :"パスワード(6文字以上)", class: "control-label col-xs-4" %>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control-static" %>
@@ -72,18 +21,15 @@
       <div class="sigin-left col-xs-3">
         <p>アイコン</p>
         <label for="user_image">
-        <div class="form_icon">
-
+          <div class="form_icon">
             <%= image_tag 'default.png',class: "icon", id: "preview" %>
-
-          <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
-        </div>
+            <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
+          </div>
         </label>
         <div class ="icon_remove">
           削除する
         </div>
       </div>
-
       <div class="col-xs-12">
         <div class="actions text-center">
           <%= f.submit "新規登録",class: "btn btn-success submit-signin" %>
