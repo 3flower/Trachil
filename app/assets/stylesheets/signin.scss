@@ -40,8 +40,12 @@
       display: none;
     }
   }
-    label {
-      // margin-left: 50px;
+  .sigin-left {
+    margin-top: 50px;
+
+    p {
+      font-weight: bold;
+      padding-left: 30px;
     }
     .form_icon {
       width: 200px;
@@ -57,19 +61,12 @@
         height: 198px;
         border-radius:200px;
       }
-
-      p {
-        text-align: center;
-        // padding-top: 80px;
-      }
       &:hover {
         border: 1px solid #808080;
         cursor: pointer;
       }
     }
-    .user_image {
-      margin-top: 10px;
-      margin-left: 70px;
+    #user_image {
       display: none;
     }
     .icon_remove {
@@ -99,3 +96,4 @@
   .link-back {
     margin-left: 30px;
   }
+}

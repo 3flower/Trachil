@@ -70,12 +70,12 @@
       </div>
 
       <div class="sigin-left col-xs-3">
-        <% f.label :アイコン %>
+        <p>アイコン</p>
         <div class="form_icon">
-          <label for="user_image1">
+          <label for="user_image">
             <%= image_tag 'no_image.jpg',class: "icon", id: "preview" %>
           </label>
-          <%= f.file_field :user_image, type: 'file', class: 'user_image', id: "user_image1"  %>
+          <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
         </div>
         <div class ="icon_remove">
           削除する

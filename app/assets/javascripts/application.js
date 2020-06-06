@@ -37,7 +37,7 @@ $(function(){
 
    // 新規会員登録の画像プレビューと削除
    // var file_field = document.querySelector('input[type=file]')
-  $('.user_image').change(function(){
+  $('#user_image').change(function(){
     var file = $('input[type="file"]').prop('files')[0];
     var fileReader = new FileReader();
     fileReader.onload= function() {
@@ -46,10 +46,10 @@ $(function(){
     fileReader.readAsDataURL(file);
     $('.icon_remove').fadeIn();
     $('.icon_remove').click(function(){
-      $('#preview').remove();
+      // $('#preview').remove();
       $('.icon_remove').css('display', 'none');
       //inputタグに入ったファイルを削除
-      // file_field.val("");
+      $('#user_image').val("");
     });
   });
 });
