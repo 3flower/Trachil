@@ -11,8 +11,13 @@ class UserImageIdUploader < CarrierWave::Uploader::Base
   version :thumb do
   process resize_to_fit: [200, 200]
   end
-  version :thumb50 do
-  process resize_to_fit: [100, 100]
+  # ユーザー詳細
+  version :thumb150 do
+  process resize_to_fit: [150, 150]
+  end
+  # ヘッダーアイコン
+  version :thumb60 do
+  process resize_to_fit: [60, 60]
   end
 
 

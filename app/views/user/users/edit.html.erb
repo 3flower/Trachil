@@ -3,17 +3,20 @@
 <div class="row">
   <div class="signin-box">
     <h2 class="head-line text-center"><i class="fas fa-user-edit"></i>会員編集</h2>
-    <%= form_with(model:@user, url:user_path, local:true, method: :post) do |f| %>
+    <%= form_with(model:@user, url:user_path, local:true, method: :patch) do |f| %>
       <div class="sigin-right col-xs-7">
         <%= render "users/registrations/user_form", resource: @user, f: f %>
-        <%= f.label :"プロフィール" %>
-        <%= f.text_area :introduction %>
+        <div class="form-group col-xs-12">
+          <%= f.label :"プロフィール", class: "control-label col-xs-4" %>
+          <p>(※　250字まで)</p>
+          <%= f.text_area :introduction, class: "form-control-static col-xs-7 profile" %>
+        </div>
       </div>
       <div class="sigin-left col-xs-3">
         <p>アイコン</p>
         <label for="user_image">
           <div class="form_icon">
-            <%= image_tag 'default.png',class: "icon", id: "preview" %>
+            <%= image_tag current_user.user_image_id.url,class: "icon", id: "preview" %>
             <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
           </div>
         </label>
@@ -26,7 +29,7 @@
           <%= f.submit "更新",class: "btn btn-success submit-signin" %>
         </div>
         <div class="link-back">
-          <%= link_to "戻る", user_path(f), data: {"turbolinks" => false}, class: "btn-link" %>
+          <%= link_to "戻る", user_path(@user), data: {"turbolinks" => false}, class: "btn-link" %>
         </div>
       </div>
     <% end %>

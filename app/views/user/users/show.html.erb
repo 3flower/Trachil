@@ -1,1 +1,67 @@
-<%= image_tag current_user.user_image_id.url %>
+<% if @user == current_user %>
+  <% provide(:title, "マイページ") %>
+<% else %>
+  <% provide(:title, "#{@user.name}詳細") %>
+<% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="quit_btn col-xs-12">
+      <% if @user == current_user %>
+        <%= link_to '退会する', quit_users_path(current_user), class: "glyphicon glyphicon-tint btn btn-danger  pull-right" %>
+      <% end %>
+    </div>
+    <div class="user_show col-xs-12">
+      <div class="user_show_imege col-xs-2">
+        <%= image_tag current_user.user_image_id.thumb150.url,class: "user_show_icon" %>
+      </div>
+      <div class="user_show_child col-xs-3">
+        <ul>
+          <li>
+            <%= @user.name %>
+          </li>
+          <li>
+            <%= @user.residence %>
+          </li>
+          <% if @user.is_child == true %>
+            <li>
+              <span>子供　</span>
+              <%= @user.child_people %><span>人</span>
+            </li>
+            <li>
+              <span>最年少　</span>
+              <%= @user.child_age %><span>才</span>
+            </li>
+            <li　class="child_show">
+                <p>オムツ
+              <% if @user.is_diaper == true %>
+                <span>あり　</span>
+              <% elsif @user.is_diaper == false %>
+                <span>なし　</span>
+              <% end %>
+                 離乳食
+              <% if @user.is_baby_food == true %>
+                <span>あり</span>
+              <% elsif @user.is_baby_food == false %>
+                <span>なし</span>
+              <% end %>
+              </p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="introduction col-xs-5">
+        <p>自己紹介</p>
+        <%= @user.introduction %>
+      </div>
+      <% if @user == current_user %>
+      <div class="user_edit_ptn col-xs-1">
+        <%= link_to "編集", edit_user_path(@user), data: {"turbolinks" => false},class: "col-xs-12 btn btn-primary" %>
+      </div>
+      <% end %>
+      <div class="col-xs-1">
+        フォロー
+      </div>
+
+    </div>
+  </div>
+</div>
