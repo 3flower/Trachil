@@ -2,7 +2,7 @@
 lock "~> 3.14.0"
 
 set :application, "Trachil"#ここま小文字かも
-set :repo_url, "git@github.com:3flower/Trachil.git"
+set :repo_url, "https://github.com/3flower/Trachil"
 set :deploy_to, "/home/ec2-user/Trachil"
 set :rbenv_ruby, '2.6.5'
 set :linked_files, %w{config/master.key .env}

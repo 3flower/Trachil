@@ -32,6 +32,29 @@ input, textarea {
   border-width: 1px;
 }
 
+// フラッシュメッセージ
+.flash{
+  width: 30%;
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,.20);
+	padding: 7px;
+	font-weight:bold;
+	&.notice{
+		background-color:#dbffed;
+		color:#03622f;
+	}
+	&.success{
+		background-color:#dbedff;
+		color:#032f62;
+	}
+	&.danger{
+		background-color:#ffdbed;
+		color:#dd6262;
+	}
+}
+
 // @media screen and (max-width:425px){
 //   header {
 //     width: 100%;
