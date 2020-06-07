@@ -4,12 +4,14 @@ class RelationshipsController < ApplicationController
 
   def create
 		following = current_user.follow(@user)
-		redirect_back(fallback_location: root_path)
+    flash[:success] = "フォローしました"
+		# redirect_back(fallback_location: root_path)
 	end
 
 	def destroy
 		following = current_user.unfollow(@user)
-		redirect_back(fallback_location: root_path)
+    flash[:alert] = "フォローを解除しました"
+		# redirect_back(fallback_location: root_path)
 	end
 
 	private

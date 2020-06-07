@@ -15,16 +15,14 @@
 	        <th>写真</th>
 	        <th>いいね</th>
 	        <th>
-						<%= link_to user_path(user), data: {"turbolinks" => false} do %>
-							フォロー：<%= user.followings.count %>
-						<% end %>
+						フォロー：<%= user.followings.count %>
 					</th>
 	        <th>
-						<%= link_to user_path(user), data: {"turbolinks" => false} do %>
-							フォロワー：<%= user.followers.count %>
-						<% end %>
+						フォロワー：<%= user.followers.count %>
 					</th>
-					<th><%= render "relationships/follow_btn", user: user %></th>
+					<th>
+						<%= render "relationships/follow_btn", user: user %>
+					</th>
 	  		</tr>
 	    <% end %>
 		</thead>
