@@ -1,1 +1,5 @@
-<%= image_tag current_user.user_image_id.url %>
+<% if @user == current_user %>
+  <% provide(:title, "マイページ") %>
+<% else %>
+  <% provide(:title, "#{@user.name}詳細") %>
+<% end %>

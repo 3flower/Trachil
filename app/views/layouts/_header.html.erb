@@ -6,7 +6,13 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
           <li>
+            <%= link_to "マイページ", user_path(current_user), class: "header_btn glyphicon glyphicon-home" %>
+          </li>
+          <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-out" %>
+          </li>
+          <li class="header-icon">
+            <%= image_tag current_user.user_image_id.thumb60.url,class: "header_image" %>
           </li>
           <li>
             <div class="header_btn glyphicon glyphicon-log-in login-btn" id="login-show">ログイン</div>
