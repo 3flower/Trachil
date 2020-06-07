@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :residence
       t.text    :introduction
       t.boolean :is_child, default: false, null:false
-      t.string  :child_people
+      t.integer :child_people
       t.integer :child_age
       t.boolean :is_diaper, default: false, null:false
       t.boolean :is_baby_food, default: false, null:false

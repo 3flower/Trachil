@@ -12,7 +12,7 @@
     </div>
     <div class="user_show col-xs-12">
       <div class="user_show_imege col-xs-2">
-        <%= image_tag current_user.user_image_id.thumb150.url,class: "user_show_icon" %>
+        <%= image_tag current_user.user_image_id.url,class: "user_show_icon" %>
       </div>
       <div class="user_show_child col-xs-3">
         <ul>
@@ -32,24 +32,24 @@
               <%= @user.child_age %><span>才</span>
             </li>
             <li　class="child_show">
-                <p>オムツ
-              <% if @user.is_diaper == true %>
-                <span>あり　</span>
-              <% elsif @user.is_diaper == false %>
-                <span>なし　</span>
-              <% end %>
-                 離乳食
-              <% if @user.is_baby_food == true %>
-                <span>あり</span>
-              <% elsif @user.is_baby_food == false %>
-                <span>なし</span>
-              <% end %>
+              <p>オムツ
+                <% if @user.is_diaper == true %>
+                  <span>あり　</span>
+                <% elsif @user.is_diaper == false %>
+                  <span>なし　</span>
+                <% end %>
+                   離乳食
+                <% if @user.is_baby_food == true %>
+                  <span>あり</span>
+                <% elsif @user.is_baby_food == false %>
+                  <span>なし</span>
+                <% end %>
               </p>
             </li>
           <% end %>
         </ul>
       </div>
-      <div class="introduction col-xs-5">
+      <div class="introduction col-xs-4">
         <p>自己紹介</p>
         <%= @user.introduction %>
       </div>
@@ -58,10 +58,9 @@
         <%= link_to "編集", edit_user_path(@user), data: {"turbolinks" => false},class: "col-xs-12 btn btn-primary" %>
       </div>
       <% end %>
-      <div class="col-xs-1">
-        フォロー
+      <div class="col-xs-2">
+        <%= render "relationships/follow_btn", user: @user %>
       </div>
-
     </div>
   </div>
 </div>

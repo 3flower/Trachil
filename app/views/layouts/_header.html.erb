@@ -13,7 +13,7 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-out" %>
           </li>
           <li class="header-icon">
-            <%= image_tag current_user.user_image_id.thumb60.url,class: "header_image" %>
+            <%= image_tag current_user.user_image_id.url,class: "header_image" %>
           </li>
         <% else %>
           <li>
