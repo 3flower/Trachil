@@ -8,6 +8,7 @@
         <%= render "users/registrations/user_form", resource: @user, f: f %>
         <div class="form-group col-xs-12">
           <%= f.label :"プロフィール", class: "control-label col-xs-4" %>
+          <p>(※　250字まで)</p>
           <%= f.text_area :introduction, class: "form-control-static col-xs-7 profile" %>
         </div>
       </div>

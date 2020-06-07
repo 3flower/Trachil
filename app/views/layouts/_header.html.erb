@@ -5,6 +5,7 @@
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
           <li>
             <%= link_to "マイページ", user_path(current_user), class: "header_btn glyphicon glyphicon-home" %>
           </li>
@@ -14,9 +15,11 @@
           <li class="header-icon">
             <%= image_tag current_user.user_image_id.thumb60.url,class: "header_image" %>
           </li>
+        <% else %>
           <li>
             <div class="header_btn glyphicon glyphicon-log-in login-btn" id="login-show">ログイン</div>
           </li>
+        <% end %>
       </ul>
     </nav>
   </div>
