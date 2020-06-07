@@ -12,6 +12,7 @@
   height: 20%;
   background-color: #fff;
   padding: 20px 0;
+  border-bottom: 1px solid #000;
   .user_show_icon {
     border-radius: 200px;
     width: 150px;
@@ -43,4 +44,40 @@
 }
 .user_edit_ptn {
   margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+.follow-btn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.user_index_btn {
+  padding: 0 !important;
+  width: 100%;
+  max-width: 1300px;
+  height: 20%;
+  background-color: #fff;
+  li {
+    width: 20%;
+    float: left;
+    list-style-type: none;
+    a {
+      color: #000;
+      text-decoration: none;
+      display: block;
+      padding: 20px 40px;
+      text-align: center;
+      background-color: #CCCCCC;
+      border: 1px solid #000;
+      border-bottom: none;
+    }
+  }
+  .active {
+    background-color: #fff;
+    color: #000;
+  }
+}
+#tab-contents {
+  background-color: #fff;
 }

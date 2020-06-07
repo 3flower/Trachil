@@ -17,11 +17,16 @@
  @import "bootstrap";
 
  * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   // color: #6c6b6b;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // color: #6c6b6b;
  }
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
 
 body {
   background-color: #CCCCCC;

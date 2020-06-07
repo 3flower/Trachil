@@ -11,9 +11,11 @@
       <% end %>
     </div>
     <div class="user_show col-xs-12">
+
       <div class="user_show_imege col-xs-2">
         <%= image_tag current_user.user_image_id.url,class: "user_show_icon" %>
       </div>
+
       <div class="user_show_child col-xs-3">
         <ul>
           <li>
@@ -49,17 +51,64 @@
           <% end %>
         </ul>
       </div>
+
       <div class="introduction col-xs-4">
         <p>自己紹介</p>
         <%= @user.introduction %>
       </div>
+
       <% if @user == current_user %>
-      <div class="user_edit_ptn col-xs-1">
-        <%= link_to "編集", edit_user_path(@user), data: {"turbolinks" => false},class: "col-xs-12 btn btn-primary" %>
-      </div>
+        <div class="user_edit_ptn col-xs-3">
+          <%= link_to "編集", edit_user_path(@user), data: {"turbolinks" => false},class: "btn btn-primary" %>
+        </div>
+      <% else %>
+        <div class="follow-btn col-xs-3">
+          <%= render "relationships/follow_btn", user: @user %>
+        </div>
       <% end %>
-      <div class="col-xs-2">
-        <%= render "relationships/follow_btn", user: @user %>
+    </div>
+    <div class="user_index_btn col-xs-12">
+      <ul class="clearfix" id="tab-menu">
+        <li>
+          <%= link_to "#", class: "active" do %>
+            投稿:件
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: "" do %>
+            写真:件
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#", class: "" do %>
+            いいね:件
+          <% end %>
+        </li>
+        <li class="user_show_follow">
+          <%= link_to "#follow", class: "" do %>
+            フォロー：<%= @user.followings.count %>
+          <% end %>
+        </li>
+        <li class="user_show_follower">
+          <%= link_to "#follower", class: "" do %>
+            フォロワー：<%= @user.followers.count %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix col-xs-12" id="tab-contents" >
+      <div id="travel" class="tab">
+      </div>
+      <div id="picture" class="tab">
+      </div>
+      <div id="like" class="tab">
+
+      </div>
+      <div id="follow" class="tab">
+        <%= render "relationships/follows_user", users: @user_follows %>
+      </div>
+      <div id="follower" class="tab">
+        <%= render "relationships/follows_user", users: @user_followers %>
       </div>
     </div>
   </div>

@@ -1,3 +1,14 @@
 // Place all the styles related to the relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follow-box {
+  .user_show_follow_icon {
+    border-radius: 200px;
+    width: 100px;
+    height: 100px;
+  }
+  th{
+    line-height: 7 !important;
+  }
+}

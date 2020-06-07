@@ -4,6 +4,8 @@ class User::UsersController < ApplicationController
   before_action :my_authenticate_user!
 
   def show
+    @user_follows = @user.followings
+    @user_followers = @user.followers
   end
 
   def quit

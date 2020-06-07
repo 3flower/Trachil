@@ -1,0 +1,32 @@
+<div class="follow-box">
+	<table class="table">
+		<thead>
+	    <% users.each do |user| %>
+	  		<tr>
+	  			<th>
+	          <%= image_tag user.user_image_id.url,class: "user_show_follow_icon" %>
+	        </th>
+	  			<th>
+						<%= link_to user_path(user), data: {"turbolinks" => false} do %>
+							<%= user.name %>
+						<% end %>
+					</th>
+	  			<th>投稿</th>
+	        <th>写真</th>
+	        <th>いいね</th>
+	        <th>
+						<%= link_to user_path(user), data: {"turbolinks" => false} do %>
+							フォロー：<%= user.followings.count %>
+						<% end %>
+					</th>
+	        <th>
+						<%= link_to user_path(user), data: {"turbolinks" => false} do %>
+							フォロワー：<%= user.followers.count %>
+						<% end %>
+					</th>
+					<th><%= render "relationships/follow_btn", user: user %></th>
+	  		</tr>
+	    <% end %>
+		</thead>
+	</table>
+</div>
