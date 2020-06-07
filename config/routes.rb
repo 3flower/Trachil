@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   scope module: :user do
     resources :users,only: [:show,:edit,:update] do
   		collection do
-  	     get 'quit'
-  	     patch 'out'
+  	    get 'quit'
+  	    patch 'out'
   	  end
     end
   end
+
+  resources :relationships, only: [:create, :destroy]
 end

@@ -62,4 +62,32 @@ $(function(){
      $('#user_image').val("");
    });
  });
+
+ // ユーザー詳細のタブメニュー
+ $('#tab-contents .tab[id != "travel"]').hide();
+  $('#tab-menu a').click(function() {
+    $("#tab-contents .tab").hide();
+    $("#tab-menu .active").removeClass("active");
+    $(this).addClass("active");
+    $($(this).attr("href")).show();
+    return false;
+  });
+
+  // フォロー中のボタンの変更
+  $('.follow-btn-chenge-#{user.id}').mouseover(function(){
+    $('.follow-btn-chenge-#{user.id}').val('フォローを解除');
+    $('.follow-btn-chenge-#{user.id}').addClass('add_css_follow');
+    $('.follow-btn-chenge-#{user.id}').mouseout(function(){
+      $('.follow-btn-chenge-#{user.id}').val('フォロー中');
+      $('.follow-btn-chenge-#{user.id}').removeClass('add_css_follow');
+    });
+  });
+  // $('.1').mouseover(function(){
+  //   $(this).val('フォローを解除');
+  //   $(this).addClass('');
+  //   $(this).mouseout(function(){
+  //     $(this).val('フォロー中');
+  //     $(this).removeClass('');
+  //   });
+  // });
 });

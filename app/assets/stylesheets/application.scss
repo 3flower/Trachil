@@ -17,11 +17,16 @@
  @import "bootstrap";
 
  * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   // color: #6c6b6b;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // color: #6c6b6b;
  }
+.clearfix:after{
+  content: "";
+  clear: both;
+  display: block;
+}
 
 body {
   background-color: #CCCCCC;
@@ -53,6 +58,9 @@ input, textarea {
 		background-color:#ffdbed;
 		color:#dd6262;
 	}
+}
+.add_css_follow {
+  background-color: #dd6262 !important;
 }
 
 // @media screen and (max-width:425px){

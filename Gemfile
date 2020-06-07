@@ -81,5 +81,6 @@ gem "pry-byebug"
 gem "dotenv-rails"
 gem "carrierwave"
 gem "mini_magick"
-gem 'ed25519'
-gem 'bcrypt_pbkdf'
+gem "ed25519"
+gem "bcrypt_pbkdf"
+gem "rails-i18n"

@@ -1,0 +1,3 @@
+$('#follow-<%= @user.id %>').html("<%= render 'user/users/show' , user: @user, user_follows: @user_follows, user_followers: @user_followers %>");
+$('#flash').html("<%= j(render 'layouts/flash') %>");
+$('#flash').show();
