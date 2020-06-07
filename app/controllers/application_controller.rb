@@ -17,6 +17,11 @@ class ApplicationController < ActionController::Base
       root_path
     end
 
+    def my_authenticate_user!
+      auth_options = { scope: :user, recall: "homes#top" }
+      warden.authenticate!(auth_options)
+    end
+
     # 新規登録の保存機能
     def configure_permitted_parameters
       if is_child = true
