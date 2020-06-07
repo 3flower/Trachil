@@ -25,6 +25,7 @@
         <% end %>
 
         <div class="actions submit-login">
+          <%= f.hidden_field :url, value: request.fullpath %>
           <%= f.submit "ログイン", class: "btn btn-warning col-sm-11 btn-login" %>
         </div>
       <% end %>

@@ -33,26 +33,33 @@ $(function(){
   });
   $('.is_child_false').click(function(){
     $('.is_child_show').fadeOut();
-  })
-  $('.is_child_true').prop('is_child', 'true',function(){
+  });
+  // 子供にいるのチェックが入っていたら表示する
+  if($('#user_is_child_true').prop('checked')){
     $('.is_child_show').fadeIn();
-  });
+  }
+  // フラッシュメッセージを時間でフェイドアウトする
+  setTimeout("$('#flash').fadeOut('slow')", 2000);
 
-   // 新規会員登録の画像プレビューと削除
-  $('#user_image').change(function(){
-    var file = $('input[type="file"]').prop('files')[0];
-    var fileReader = new FileReader();
-    fileReader.onload= function() {
-      document.getElementById('preview').src = fileReader.result;
-    }
-    fileReader.readAsDataURL(file);
-    // $('#preview').fadeIn();
-    $('.icon_remove').fadeIn();
-    $('.icon_remove').click(function(){
-      // $('#preview').attr("src","images/default.png");
-      $('.icon_remove').css('display', 'none');
-      //inputタグに入ったファイルを削除
-      $('#user_image').val("");
-    });
-  });
+  // 新規会員登録の画像プレビューと削除
+ $('#user_image').change(function(){
+   var file = $('input[type="file"]').prop('files')[0];
+   var fileReader = new FileReader();
+   fileReader.onload= function() {
+     document.getElementById('preview').src = fileReader.result;
+   }
+   fileReader.readAsDataURL(file);
+   // $('#preview').fadeIn();
+   // 画像が投稿されると削除ボタンが出てくる
+   $('.icon_remove').fadeIn();
+   $('.icon_remove').click(function(){
+     // 画像を削除する
+     $('#preview').removeAttr('src');
+     // 削除ボタンを押すとデフォルトの画像に変わる
+     $('#preview').attr({src: "/images/default.png"});
+     $('.icon_remove').css('display', 'none');
+     //inputタグに入ったファイルを削除
+     $('#user_image').val("");
+   });
+ });
 });

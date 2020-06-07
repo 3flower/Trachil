@@ -1,37 +1,33 @@
-<!-- <div class="modal" id="login-modal"> -->
-  <div class="login">
-    <div class="login-box">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "layouts/error_messages", resource: resource %>
-        <div class="close-modal">
-          <i class="fa fa-2x fa-times"></i>
-        </div>
-        <h2 class="login-h2">ログイン</h2>
-        <div class="field mail">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-11 from-mail" %>
-        </div>
+<div class="login col-sm-5">
+  <div class="login-box">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "layouts/error_messages", resource: resource %>
+      <h2 class="login-h2">ログイン</h2>
+      <div class="field mail">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-11 from-mail" %>
+      </div>
 
-        <div class="field password">
-          <%= f.label :パスワード %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-11 from-password" %>
-        </div>
+      <div class="field password">
+        <%= f.label :パスワード %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-11 from-password" %>
+      </div>
 
-        <% if devise_mapping.rememberable? %>
-          <div class="field remember">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me, "ログインしたままにする" %>
-          </div>
-        <% end %>
-
-        <div class="actions submit-login">
-          <%= f.submit "ログイン", class: "btn btn-warning col-sm-11 btn-login" %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field remember">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "ログインしたままにする" %>
         </div>
       <% end %>
-      <div class="new-user col-sm-12">
-        <p><span>　　　　</span> アカウントをお持ちではないお客様 <span>　　　　</span></p>
-        <%= link_to "アカウント作成", new_user_registration_path, data: {"turbolinks" => false}, class: "btn btn-default col-sm-11 signin_btn glyphicon glyphicon-edit" %>
+
+      <div class="actions submit-login">
+        <%= f.hidden_field :url, value: request.fullpath %>
+        <%= f.submit "ログイン", class: "btn btn-warning col-sm-11 btn-login" %>
       </div>
+    <% end %>
+    <div class="new-user col-sm-12">
+      <p><span>　　　　</span> アカウントをお持ちではないお客様 <span>　　　　</span></p>
+      <%= link_to "アカウント作成", new_user_registration_path, data: {"turbolinks" => false}, class: "btn btn-default col-sm-11 signin_btn glyphicon glyphicon-edit" %>
     </div>
   </div>
-<!-- </div> -->
+</div>
