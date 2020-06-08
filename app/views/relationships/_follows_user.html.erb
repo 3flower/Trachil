@@ -20,7 +20,7 @@
 	        <th>
 						フォロワー：<%= user.followers.count %>
 					</th>
-					<th>
+					<th id="follow-<%= user.id %>">
 						<%= render "relationships/follow_btn", user: user %>
 					</th>
 	  		</tr>

@@ -1,3 +1,13 @@
-$('#follow-<%= @user.id %>').html("<%= render 'user/users/show' , user: @user, user_follows: @user_follows, user_followers: @user_followers %>");
+$('#follow-btn-js').html("<%= j(render 'follow_btn', user: @user) %>");
+$('#follow-<%= @user.id %>').html("<%= j(render 'follow_btn', user: @user) %>");
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show();
+setTimeout("$('#flash').fadeOut('slow')", 3000);
+$('.follow-btn-chenge').mouseover(function(){
+  $(this).val('フォローを解除');
+  $(this).addClass('add_css_follow');
+  $(this).mouseout(function(){
+    $(this).val('フォロー中');
+    $(this).removeClass('add_css_follow');
+  });
+});

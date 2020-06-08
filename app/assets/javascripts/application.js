@@ -74,20 +74,12 @@ $(function(){
   });
 
   // フォロー中のボタンの変更
-  $('.follow-btn-chenge-#{user.id}').mouseover(function(){
-    $('.follow-btn-chenge-#{user.id}').val('フォローを解除');
-    $('.follow-btn-chenge-#{user.id}').addClass('add_css_follow');
-    $('.follow-btn-chenge-#{user.id}').mouseout(function(){
-      $('.follow-btn-chenge-#{user.id}').val('フォロー中');
-      $('.follow-btn-chenge-#{user.id}').removeClass('add_css_follow');
+  $('.follow-btn-chenge').mouseover(function(){
+    $(this).val('フォローを解除');
+    $(this).addClass('add_css_follow');
+    $(this).mouseout(function(){
+      $(this).val('フォロー中');
+      $(this).removeClass('add_css_follow');
     });
   });
-  // $('.1').mouseover(function(){
-  //   $(this).val('フォローを解除');
-  //   $(this).addClass('');
-  //   $(this).mouseout(function(){
-  //     $(this).val('フォロー中');
-  //     $(this).removeClass('');
-  //   });
-  // });
 });
