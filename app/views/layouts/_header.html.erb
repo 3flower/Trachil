@@ -1,11 +1,18 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
-      <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
+      <% if user_signed_in? %>
+        <%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %>
+      <% else %>
+        <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
+      <% end %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li>
+            <%= link_to "投稿", new_travel_path, data: {"turbolinks" => false}, class: "header_btn" %>
+          </li>
           <li class="dropdown">
             <%= link_to "#", class: "header-icon",'data-toggle': :dropdown do %>
               <%= image_tag current_user.user_image_id.url,class: "header_image" %>

@@ -20,10 +20,10 @@ header {
   background: linear-gradient(#6795fd 0%, #67ceff 60%);
   border-bottom: solid 4px #627295;
   border-radius:20px;
-  margin-left: 10px;
+  margin-right: 15px;
   color: #fff;
-  margin-bottom: 5px;
-  padding: 10px !important;
+  margin-top: 15px;
+  padding: 10px 15px !important;
   cursor: pointer;
   &:hover {
     background: linear-gradient(#6795fd 0%, #67ceff 100%);
@@ -36,7 +36,7 @@ header {
 }
 
 .login-btn {
-  margin-bottom: 5px;
+  margin-top: 10px;
   padding: 13px!important;
 }
 
