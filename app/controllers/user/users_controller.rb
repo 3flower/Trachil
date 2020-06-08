@@ -2,6 +2,11 @@ class User::UsersController < ApplicationController
 
   before_action :set_user, onry: [:show, :edit, :update]
   before_action :my_authenticate_user!
+  # before_action :to_log, only: [:top]
+
+  # def top
+  #   flash[:notice] = "もう一度やり直してください"
+  # end
 
   def show
     if @user.is_valid == true
@@ -54,5 +59,9 @@ class User::UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :introduction)
     end
   end
+
+  # def to_log
+  #   redirect_to root_path if params[:id] == []
+  # end
 
 end
