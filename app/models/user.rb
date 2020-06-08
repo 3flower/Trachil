@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # フォロー機能
-  has_many :relationships
+  has_many :relationships, :dependent => :destroy
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follow_id"
   has_many :followers, through: :reverse_of_relationships, source: :user
@@ -25,7 +25,7 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
-
+  #
   mount_uploader :user_image_id, UserImageIdUploader
 
   validates :name, presence: true
@@ -34,6 +34,11 @@ class User < ApplicationRecord
 
   def is_child?
     self.is_child == true
+  end
+
+  # 退会機能
+  def active_for_authentication?
+    super && (self.is_valid == false)
   end
 
 end

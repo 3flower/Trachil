@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   scope module: :user do
     resources :users,only: [:show,:edit,:update] do
-  		collection do
+  		member do
   	    get 'quit'
   	    patch 'out'
   	  end

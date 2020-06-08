@@ -4,14 +4,32 @@ class User::UsersController < ApplicationController
   before_action :my_authenticate_user!
 
   def show
-    @user_follows = @user.followings
-    @user_followers = @user.followers
+    if @user.is_valid == true
+      flash[:notice] = "退会済みのユーザーです"
+      redirect_back(fallback_location: root_path)
+    else
+      @user_follows = @user.followings
+      @user_followers = @user.followers
+    end
   end
 
   def quit
   end
 
   def out
+    current_user.update(is_valid: true)
+
+    @users = User.all
+    # フォローを全て解除する
+    @users.each do |user|
+      following = current_user.unfollow(user)
+      following = user.unfollow(current_user)
+    end
+
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
   def edit
