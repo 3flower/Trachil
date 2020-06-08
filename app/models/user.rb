@@ -36,10 +36,6 @@ class User < ApplicationRecord
     self.is_child == true
   end
 
-  # def is_valid?
-  #   self.is_valid? == true
-  # end
-
   # 退会機能
   def active_for_authentication?
     super && (self.is_valid == false)
