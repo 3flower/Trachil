@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :books, dependent: :destroy
   # フォロー機能
   has_many :relationships, :dependent => :destroy
   has_many :followings, through: :relationships, source: :follow

@@ -35,13 +35,13 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :name
       t.string  :residence
       t.text    :introduction
-      t.boolean :is_child, default: false, null:false
+      t.boolean :is_child,        default: false, null:false
       t.integer :child_people
       t.integer :child_age
-      t.boolean :is_diaper, default: false, null:false
-      t.boolean :is_baby_food, default: false, null:false
+      t.boolean :is_diaper,       default: false, null:false
+      t.boolean :is_baby_food,    default: false, null:false
       t.string  :user_image_id
-      t.boolean :is_valid, default: false, null: false
+      t.boolean :is_valid,        default: false, null: false
 
       t.timestamps null: false
     end

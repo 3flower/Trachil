@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   	    patch 'out'
   	  end
     end
+    resources :travels
   end
 
   resources :relationships, only: [:create, :destroy]
+
 end

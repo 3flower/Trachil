@@ -13,13 +13,15 @@
 ActiveRecord::Schema.define(version: 2020_06_08_194456) do
 
   create_table "categories", force: :cascade do |t|
-    t.integer "name", default: 0
+    t.boolean "is_play", default: false
+    t.boolean "is_hotel", default: false
+    t.boolean "is_meal", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "hotels", force: :cascade do |t|
-    t.string "name"
+    t.string "hotel_name"
     t.string "address"
     t.integer "adult_price", default: 0
     t.integer "cild_price", default: 0
