@@ -1,2 +1,17 @@
-<h1>User::Travels#new</h1>
-<p>Find me in app/views/user/travels/new.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="travel-new">
+      <%= form_with(model:@travel, url:travels_path, local:true, method: :patch) do |f| %>
+      <div class="play-new">
+        <%= render "plays/play_form", f: f %>
+      </div>
+      <div class="hotel-new">
+        <%= render "hotels/hotel_form", f: f %>
+      </div>
+      <div class="meal-new">
+        <%= render "meals/meal_form", f: f %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,9 +3,6 @@ class User::TravelsController < ApplicationController
 
   def new
     @travel = Travel.new
-    @play = Play.new
-    @hotel = Hotel.new
-    @meal = Meal.new
   end
 
   def create

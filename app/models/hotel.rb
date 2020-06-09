@@ -1,8 +1,11 @@
 class Hotel < ApplicationRecord
 
-  has_many :travel, dependent: :destroy
+  has_one :travel, dependent: :destroy
 
-  validates :hotel_name, :address, :adult_price, :cild_price, :impression, presence: true
+  validates :hotel_name, :address, :adult_price, :child_price, :impression, presence: true, if: :is_hotel?
+  def is_hotel?
+    self.travel.category.is_hotel == true
+  end
   validates :impression, length: {maximum: 1000}
   validates :parking, presence: true, if: :traffic_way?
   def traffic_way?

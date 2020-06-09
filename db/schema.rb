@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
     t.string "hotel_name"
     t.string "address"
     t.integer "adult_price", default: 0
-    t.integer "cild_price", default: 0
+    t.integer "child_price", default: 0
     t.text "impression"
     t.integer "parking", default: 0
     t.string "official_site"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
     t.string "shop_name"
     t.string "address"
     t.integer "adult_price", default: 0
-    t.integer "cild_price", default: 0
+    t.integer "child_price", default: 0
     t.text "impression"
     t.boolean "is_baby_food_place", default: true
     t.integer "parking", default: 0
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
     t.string "name"
     t.string "address"
     t.integer "adult_price", default: 0
-    t.integer "cild_price", default: 0
+    t.integer "child_price", default: 0
     t.text "impression"
     t.boolean "is_diaper_place", default: true
     t.integer "parking", default: 0
