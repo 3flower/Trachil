@@ -1,19 +1,33 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
-      <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
+      <% if user_signed_in? %>
+        <%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %>
+      <% else %>
+        <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
+      <% end %>
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
-            <%= link_to "マイページ", user_path(current_user), class: "header_btn glyphicon glyphicon-home" %>
+            <%= link_to "投稿", new_travel_path, data: {"turbolinks" => false}, class: "header_btn" %>
           </li>
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "header_btn glyphicon glyphicon-log-out" %>
-          </li>
-          <li class="header-icon">
-            <%= image_tag current_user.user_image_id.url,class: "header_image" %>
+          <li class="dropdown">
+            <%= link_to "#", class: "header-icon",'data-toggle': :dropdown do %>
+              <%= image_tag current_user.user_image_id.url,class: "header_image" %>
+            <% end %>
+            <ul class="dropdown-menu dropdown-link">
+              <li class="user_dropdown">
+                <%= link_to "マイページ", user_path(current_user), data: {"turbolinks" => false}, class: "dropdown_btn" %>
+              </li>
+              <li class="user_dropdown">
+                <%= link_to "編集", edit_user_path(current_user), data: {"turbolinks" => false},class: "dropdown_btn" %>
+              </li>
+              <li class="user_dropdown">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "dropdown_btn" %>
+              </li>
+            </ul>
           </li>
         <% else %>
           <li>
