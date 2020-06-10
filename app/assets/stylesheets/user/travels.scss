@@ -1,3 +1,81 @@
 // Place all the styles related to the user::Travels controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.travel-new {
+  width: 100%;
+  height: 5000px;
+  margin: 30px 0;
+  padding: 0 40px;
+  background-color: #fff;
+  .travel-new-header {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .play-new,.hotel-new,.meal-new {
+    width: 90%;
+    margin: 0 auto;
+    .name-box{
+      margin: 10px 0 ;
+      .new-name {
+        padding: 5px 0;
+      }
+    }
+    .impression-box {
+      margin: 10px 0 ;
+      .impression {
+        padding: 50px 0;
+      }
+      p {
+        font-size: 5px;
+        margin-left: 9px;
+        display: inline-block;
+      }
+    }
+    .price-box {
+      margin: 10px 0 ;
+      label {
+        margin: 0 8px;
+      }
+      p {
+        font-size: 5px;
+        margin-left: 9px;
+      }
+      span {
+        margin-left: 3px;
+      }
+    }
+    .address-box {
+      margin: 10px 0;
+      .address {
+        padding: 5px 0;
+      }
+    }
+    .diaper_place-box {
+      margin: 10px 0 ;
+      .radio_button {
+        margin: 0 10px;
+      }
+    }
+    .parking-box {
+      margin: 10px 0;
+      label {
+        margin-right: 10px;
+      }
+    }
+    .official_site-box {
+      margin: 10px 0;
+      p {
+        margin-left: 10px;
+        display: inline-block;
+        font-size:  5px;
+      }
+      .official_site {
+        padding: 5px 0;
+      }
+    }
+  }
+}
+// .hotel-new,.meal-new, .play-new {
+//   display: none!important;
+// }
