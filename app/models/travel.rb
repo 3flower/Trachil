@@ -7,5 +7,7 @@ class Travel < ApplicationRecord
   belongs_to :hotel
   belongs_to :meal
 
+  validates :title, :travel_day, :traffic_way, :recommend_age, :evaluation, presence: true
+
   enum traffic_way: {"車": 0,"電車": 1,"飛行機": 2,"バス": 3, "その他": 4}
 end

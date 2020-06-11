@@ -12,6 +12,34 @@
     text-align: center;
     padding: 20px 0;
   }
+  .image-new {
+    width: 90%;
+    margin: 0 auto;
+    label {
+      margin-left: 18px;
+    }
+    p {
+      margin-left: 10px;
+      display: inline-block;
+      font-size:  5px;
+    }
+    .images-box-1 {
+      width: 97%;
+      height: 150px;
+      margin-top: 10px;
+      background-color: #CCCCFF;
+      border: 1px dashed #808080;
+      margin-left: 15px;
+      .image-url {
+        display: none;
+      }
+      .input-area {
+        text-align: center;
+        // line-height:10;
+      }
+    }
+  }
+
   .form-new {
     width: 90%;
     margin: 0 auto;
@@ -121,6 +149,15 @@
 .hotel-new, .meal-new, .play-new {
   display: none;
 }
+// .play-new {
+//   display: none;
+// }
+// .hotel-new {
+//   display: none;
+// }
+// .meal-new  {
+//   display: none;
+// }
 .check-box {
   width: 90%;
   padding-bottom: 10px;
