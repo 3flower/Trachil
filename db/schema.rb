@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
   end
 
   create_table "travel_images", force: :cascade do |t|
+    t.integer "travel_id"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,11 +80,10 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
     t.integer "play_id"
     t.integer "hotel_id"
     t.integer "meal_id"
-    t.integer "travel_image_id"
     t.integer "category_id"
     t.string "title"
     t.date "travel_day"
-    t.integer "traffic_way", default: 0
+    t.integer "traffic_way"
     t.string "recommend_age"
     t.integer "evaluation"
     t.boolean "is_display", default: true

@@ -12,19 +12,57 @@
     text-align: center;
     padding: 20px 0;
   }
+  .form-new {
+    width: 90%;
+    margin: 0 auto;
+    .title-box {
+      margin: 10px 0 ;
+      .title {
+        padding: 5px 5px;
+      }
+    }
+    .traffic-way-box {
+      margin: 10px 0 ;
+    }
+    .recommend-age-box {
+      margin: 10px 0 ;
+      .recommend-age {
+        padding: 5px 5px;
+      }
+    }
+    .travel-day-box {
+      margin: 10px 0 ;
+      .travel_day {
+        padding: 5px 5px;
+      }
+    }
+    .evaluation-box {
+      margin: 10px 0 ;
+      .evaluation {
+        padding: 5px 5px;
+      }
+    }
+    .is-display-box {
+      margin: 20px 0 ;
+      .radio_button {
+        margin: 0 10px;
+      }
+    }
+  }
+
   .play-new,.hotel-new,.meal-new {
     width: 90%;
     margin: 0 auto;
     .name-box{
       margin: 10px 0 ;
       .new-name {
-        padding: 5px 0;
+        padding: 5px 5px;
       }
     }
     .impression-box {
       margin: 10px 0 ;
       .impression {
-        padding: 50px 0;
+        padding: 5px 5px 100px 5px;
       }
       p {
         font-size: 5px;
@@ -34,6 +72,9 @@
     }
     .price-box {
       margin: 10px 0 ;
+      .price {
+        padding: 5px 5px;
+      }
       label {
         margin: 0 8px;
       }
@@ -48,7 +89,7 @@
     .address-box {
       margin: 10px 0;
       .address {
-        padding: 5px 0;
+        padding: 5px 5px;
       }
     }
     .diaper_place-box {
@@ -59,6 +100,7 @@
     }
     .parking-box {
       margin: 10px 0;
+      display: none;
       label {
         margin-right: 10px;
       }
@@ -71,11 +113,19 @@
         font-size:  5px;
       }
       .official_site {
-        padding: 5px 0;
+        padding: 5px 5px;
       }
     }
   }
 }
-// .hotel-new,.meal-new, .play-new {
-//   display: none!important;
-// }
+.hotel-new, .meal-new, .play-new {
+  display: none;
+}
+.check-box {
+  width: 90%;
+  padding-bottom: 10px;
+  padding-left: 0 !important;
+  margin: 20px 0 20px 70px;
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+}

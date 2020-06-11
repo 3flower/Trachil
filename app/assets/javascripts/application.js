@@ -82,4 +82,28 @@ $(function(){
       $(this).removeClass('add_css_follow');
     });
   });
+
+  // 新規投稿の駐車場ありの表示
+  $('#travel_traffic_way option[value="車"]').prop('selected', true, function(){
+    $('.parking-box').fadeIn();
+  });
+  $('#travel_traffic_way option[value="車"]').prop('selected', false, function(){
+    $('.parking-box').fadeOut();
+  })
+  // var a = $('#travel_is_play"]').prop('selected')
+  //   console.log( a );
+
+  // 新規投稿のチェックの表示
+  $('#travel_is_play').click(function(){
+    if($('#travel_is_play').prop('selected', true)){
+      $('.play-new').fadeIn();
+    };
+    if($('#travel_is_play').prop('selected', false)){
+      $('.play-new').fadeOut();
+    };
+  });
+
+  // $('.meal-new').fadeIn();
+  // $('.hotel-new,').fadeIn();
+
 });
