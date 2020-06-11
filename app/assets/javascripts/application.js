@@ -82,4 +82,56 @@ $(function(){
       $(this).removeClass('add_css_follow');
     });
   });
+
+  // 新規投稿の駐車場ありの表示
+  $('#travel_traffic_way').change(function() {
+    if($('#travel_traffic_way').val() == '車'){
+      $('.parking-box').fadeIn();
+    } else {
+      $('.parking-box').fadeOut();
+    };
+  });
+
+  // 新規投稿のチェックの表示
+  $('#travel_is_play').click(function(){
+    if($('#travel_is_play').prop('checked')){
+      $('.play-new').fadeIn();
+    } else {
+      $('.play-new').fadeOut();
+    };
+  });
+
+  $('#travel_is_hotel').click(function(){
+    if($('#travel_is_hotel').prop('checked')){
+      $('.hotel-new').fadeIn();
+    } else {
+      $('.hotel-new').fadeOut();
+    };
+  });
+
+  $('#travel_is_meal').click(function(){
+    if($('#travel_is_meal').prop('checked')){
+      $('.meal-new').fadeIn();
+    } else {
+      $('.meal-new').fadeOut();
+    };
+  });
+
+  // 新規投稿の複数の画像表示
+  var file_field = document.querySelector('input[type=file]')
+  //fileが選択された時に発火するイベント
+  $('#image-file').change(function(){
+    //選択したfileのオブジェクトをpropで取得
+    var file = $('input[type="file"]').prop('files')[0];
+    //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
+    var fileReader = new FileReader();
+    //読み込みが完了すると、srcにfileのURLを格納
+    fileReader.onloadend = function() {
+      var src = fileReader.result
+      var html= `<img src="${src}" width="170" height="120">`
+      //image_box__container要素の前にhtmlを差し込む
+      $('#image-box__container').before(html);
+    }
+    fileReader.readAsDataURL(file);
+  });
 });

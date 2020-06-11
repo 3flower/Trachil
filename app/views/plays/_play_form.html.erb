@@ -13,9 +13,9 @@
 
   <div class="col-xs-12 price-box">
     <%= f.label :"大人料金" %>
-    <%= f.text_field :play_adult_price %><span>円</span>
+    <%= f.text_field :play_adult_price, class: "price" %><span>円</span>
     <%= f.label :"子供料金" %>
-    <%= f.text_field :play_child %><span>円</span>
+    <%= f.text_field :play_child, class: "price" %><span>円</span>
     <p>※0円の場合が無料と表示されます</p>
   </div>
 
@@ -24,7 +24,7 @@
     <%= f.text_field :play_address, class: "col-xs-12 address" %>
   </div>
 
-  <% if current_user.is_diaper == true %>
+  <% if current_user.is_diaper == true && current_user.is_child == true %>
     <div class="col-xs-12 diaper_place-box">
       <%= f.label :"オムツ変える場所" %>
       <%= f.radio_button :is_diaper_place, true, class: "radio_button"  %>
@@ -34,12 +34,10 @@
     </div>
   <% end %>
 
-  <% if Travel.traffic_ways == 0 %>
-    <div class="col-xs-12 parking-box">
-      <%= f.label :"駐車場" %>
-      <%= f.select :play_parking, Play.parkings.keys, prompt: "-- 選択してください --" %>
-    </div>
-  <% end %>
+  <div class="col-xs-12 parking-box">
+    <%= f.label :"駐車場" %>
+    <%= f.select :play_parking, Play.parkings.keys, prompt: "-- 選択してください --" %>
+  </div>
 
   <div class="col-xs-12 official_site-box">
     <%= f.label :"公式サイトのURL" %>
