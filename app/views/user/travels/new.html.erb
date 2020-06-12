@@ -2,25 +2,45 @@
   <div class="col-xs-12">
     <div class="travel-new">
       <h2 class="travel-new-header">新規投稿</h2>
-      <%= form_with(model:@travel, url:travels_path, local:true, method: :patch) do |f| %>
+      <%= form_with(model:@travel, url:travels_path, local:true, method: :post) do |f| %>
+      <%= render "layouts/error_messages", resource: @travel %>
+
+      <% unless @play == nil %>
+        <%= render "layouts/error_messages", resource: @play %>
+      <% end %>
+
+      <% unless @hotel == nil %>
+        <%= render "layouts/error_messages", resource: @hotel %>
+      <% end %>
+
+      <% unless @meal == nil %>
+        <%= render "layouts/error_messages", resource: @meal %>
+      <% end %>
+
+      <%#= render "layouts/error_messages", resource: @image %>
       <div class="image-new">
         <div class="">
           <%= f.label :"画像" %>
-          <p>※最大10枚までアップロードできます</p>
+          <p>※最大5枚までアップロードできます</p>
         </div>
 
-        <div class="images-box-1">
-          <div class="item-num-0" id="image-box__container">
+        <div class="travel__drop__box__container">
+          <div class="preview-content">
+          </div>
+          <div class="label-content">
+            <label for="travel_images_attributes_0_image" class="label-box" id="label-box--0">
+              <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
+            </label>
+          </div>
+          <div class="hidden-content">
             <%= f.fields_for :images do |i| %>
-             <div class="input-area">
-               <%= i.file_field :image_url, type: 'file', class: "image-url", id:"image-file" %>
-               <label for="image-file">
-                 <i class="fas fa-camera"></i>
-               </label>
-             </div>
+              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_0_image" %>
+              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_1_image" %>
+              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_2_image" %>
+              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_3_image" %>
+              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_4_image" %>
             <% end %>
           </div>
-          <!-- <p class="image-remove">削除する</p> -->
         </div>
       </div>
 
@@ -73,7 +93,9 @@
         <div class="meal-new">
           <%= render "meals/meal_form", f: f %>
         </div>
-
+        <div class="submit-btn col-xs-12">
+          <%= f.submit "投稿", class: "btn btn-primary pull-right" %>
+        </div>
       <% end %>
     </div>
   </div>

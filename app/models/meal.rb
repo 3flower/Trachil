@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
 
-  has_one :travel, dependent: :destroy
+  belongs_to :travel, dependent: :destroy
 
   validates :shop_name, :address, :adult_price, :cihld_price, :impression, presence: true, if: :is_meal?
   def is_meal?

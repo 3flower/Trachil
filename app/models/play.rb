@@ -1,6 +1,6 @@
 class Play < ApplicationRecord
 
-  has_one :travel, dependent: :destroy
+  belongs_to :travel, dependent: :destroy
 
   validates :name, :address, :adult_price, :child_price, :impression, presence: true, if: :is_paly?
   def is_paly?

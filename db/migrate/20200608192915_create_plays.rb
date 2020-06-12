@@ -2,6 +2,7 @@ class CreatePlays < ActiveRecord::Migration[5.2]
   def change
     create_table :plays do |t|
 
+      t.integer :travel_id
       t.string  :name
       t.string  :address
       t.integer :adult_price,     default: 0

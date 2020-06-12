@@ -2,6 +2,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
   def change
     create_table :hotels do |t|
 
+      t.integer :travel_id
       t.string  :hotel_name
       t.string  :address
       t.integer :adult_price,   default: 0

@@ -1,6 +1,6 @@
 class Hotel < ApplicationRecord
 
-  has_one :travel, dependent: :destroy
+  belongs_to :travel, dependent: :destroy
 
   validates :hotel_name, :address, :adult_price, :child_price, :impression, presence: true, if: :is_hotel?
   def is_hotel?

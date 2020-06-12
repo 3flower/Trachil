@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
 
-  has_many :travel, dependent: :destroy
+  belongs_to  :travel, dependent: :destroy
 end

@@ -2,10 +2,10 @@ class Travel < ApplicationRecord
 
   has_many   :travel_images, dependent: :destroy
   belongs_to :user
-  belongs_to :category
-  belongs_to :play
-  belongs_to :hotel
-  belongs_to :meal
+  has_one    :category
+  has_one    :play
+  has_one    :hotel
+  has_one    :meal
 
   validates :title, :travel_day, :traffic_way, :recommend_age, :evaluation, presence: true
 
