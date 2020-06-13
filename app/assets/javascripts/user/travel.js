@@ -28,9 +28,18 @@ $(function(){
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      //labelボックスのidとforを更新
-      $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+      $(".hidden-field").each(function(i, o){
+      if ($(o).val() == ""){
+        var id1 = $(o).attr('id').replace(/[^0-9]/g, '');
+        //labelボックスのidとforを更新
+        $('.label-box').attr({id: `label-box--${id1}`,for: `travel_images_attributes_${id1}_image`});
+        console.log(id1)
+        // $(`#preview-box__${id} img`).attr('src', `${image}`);
+        return false;
+      }
+      });
       //選択したfileのオブジェクトを取得
+      console.log($(this).attr('id'))
       var file = this.files[0];
       var reader = new FileReader();
       //readAsDataURLで指定したFileオブジェクトを読み込む
@@ -56,11 +65,6 @@ $(function(){
 
         //ラベルのwidth操作
         setLabel();
-        //ラベルのidとforの値を変更
-        if(count < 5){
-          //プレビューの数でラベルのオプションを更新する
-          $('.label-box').attr({id: `label-box--${count}`,for: `travel_images_attributes_${count}_image`});
-        }
       }
     });
 
@@ -86,6 +90,9 @@ $(function(){
       if(id < 5){
         //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
         $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+      }
+      if(count == 0) {
+        $('.label-box').attr({id: `label-box--0`,for: `travel_images_attributes_0_image`});
       }
     });
   });

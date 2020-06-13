@@ -3,12 +3,23 @@ class User::TravelsController < ApplicationController
 
   def new
     @travel = Travel.new
+    # @category = Category.new
+    # @play = Play.new
+    # @hotel = Hotel.new
+    # @meal = Meal.new
+    # @image = TravelImage.new
   end
 
   def create
-    # binding.pry
     @travel = current_user.travels.new(travel_params)
+    unless @travel.valid?
+      render :new and return
+    else
+      @travel.save
+    end
+
     @play = Play.new(
+             travel_id:   @travel.id,
                   name:   params[:travel][:play_name],
             impression:   params[:travel][:play_impression],
            adult_price:   params[:travel][:play_adult_price],
@@ -19,6 +30,7 @@ class User::TravelsController < ApplicationController
          official_site:   params[:travel][:play_official_site]
     )
     @hotel = Hotel.new(
+             travel_id:   @travel.id,
             hotel_name:   params[:travel][:hotel_name],
             impression:   params[:travel][:hotel_impression],
            adult_price:   params[:travel][:hotel_adult_price],
@@ -28,6 +40,7 @@ class User::TravelsController < ApplicationController
          official_site:   params[:travel][:hotel_official_site]
     )
     @meal = Meal.new(
+             travel_id:   @travel.id,
              shop_name:   params[:travel][:meal_name],
             impression:   params[:travel][:meal_impression],
            adult_price:   params[:travel][:meal_adult_price],
@@ -38,21 +51,49 @@ class User::TravelsController < ApplicationController
          official_site:   params[:travel][:meal_official_site]
     )
     @category = Category.new(
+             travel_id:   @travel.id,
                is_play:   params[:travel][:is_play],
               is_hotel:   params[:travel][:is_hotel],
                is_meal:   params[:travel][:is_meal]
     )
-    # binding.pry
-    unless @travel.valid? && @play.valid? && @hotel.valid? && @meal.valid? #&& @image.valid?
-        render :new
+    @image = TravelImage.new
+    unless params.has_value?('travel_images')
+      unless @image.valid?
+        render :new and return
+        @travel.destroy
+      end
     end
-    # @travel.save
-    # @play.save
-    # @hotel.save
-    # @meal.save
-    # @image.save
 
-    # @image.save
+    unless @category.is_play || @category.is_hotel || @category.is_meal
+      flash[:alert] = "遊びまたはホテルまたは食事にチェック入れてください"
+      render :new
+      @travel.destroy
+      return
+    else
+      if @category.is_play
+        play_valid = @play.valid?
+      end
+      if @category.is_hotel
+        hotel_valid = @hotel.valid?
+      end
+      if @category.is_meal
+         meal_valid = @meal.valid?
+      end
+      if play_valid == false || hotel_valid == false || meal_valid == false
+        render :new
+        @travel.destroy
+      end
+    end
+　　
+    params["travel_images"]["image_url_attributes"].each do |image_url|
+      TravelImage.create(
+      travel_id:    @travel.id,
+      image_url:    image_url[1]["image_url"]
+      )
+    end
+    @play.save
+    @hotel.save
+    @meal.save
 
   end
 
@@ -88,9 +129,12 @@ class User::TravelsController < ApplicationController
   # def meal_params
   #   params.require(:travel).permit(:meal_name, :meal_impression, :meal_adult_price, :meal_child_price, :meal_address, :is_baby_food_place, :meal_parking, :meal_official_site)
   # end
-
+  # def category_params
+  #   params.require(:travel).permit(:is_play, :is_hotel, :is_meal)
+  # end
+  #
   def image_params
-    params.require(:travel).permit(:image_url)
+    params.require(:travel).permit([image_url_attributes:[:image_url]])
   end
 
 end

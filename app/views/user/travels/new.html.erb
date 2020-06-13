@@ -3,6 +3,7 @@
     <div class="travel-new">
       <h2 class="travel-new-header">新規投稿</h2>
       <%= form_with(model:@travel, url:travels_path, local:true, method: :post) do |f| %>
+
       <%= render "layouts/error_messages", resource: @travel %>
 
       <% unless @play == nil %>
@@ -17,7 +18,10 @@
         <%= render "layouts/error_messages", resource: @meal %>
       <% end %>
 
-      <%#= render "layouts/error_messages", resource: @image %>
+      <% unless @image == nil %>
+        <%= render "layouts/error_messages", resource: @image %>
+      <% end %>
+
       <div class="image-new">
         <div class="">
           <%= f.label :"画像" %>
@@ -34,11 +38,11 @@
           </div>
           <div class="hidden-content">
             <%= f.fields_for :images do |i| %>
-              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_0_image" %>
-              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_1_image" %>
-              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_2_image" %>
-              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_3_image" %>
-              <%= i.file_field :image_url, type: 'file', class: "hidden-field", id:"travel_images_attributes_4_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][0][image_url]", class: "hidden-field", id:"travel_images_attributes_0_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][1][image_url]", class: "hidden-field", id:"travel_images_attributes_1_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][2][image_url]", class: "hidden-field", id:"travel_images_attributes_2_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][3][image_url]", class: "hidden-field", id:"travel_images_attributes_3_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][4][image_url]", class: "hidden-field", id:"travel_images_attributes_4_image" %>
             <% end %>
           </div>
         </div>
@@ -80,10 +84,12 @@
           </div>
         </div>
       </div>
-
-        <p class="col-xs-10 check-box">遊び：<%= f.check_box :is_play ,{}, "true", "false" %></p>
+        <p class="col-xs-10 check-box">遊び：
+          <%#= f.check_box :is_play ,{checked: @category.is_play}, "true", "false" %>
+          <%= f.check_box :is_play ,{}, "true", "false" %>
+        </p>
         <div class="play-new">
-          <%= render "plays/play_form", f: f %>
+          <%= render "plays/play_form", f: f, play: @play %>
         </div>
         <p class="col-xs-10 check-box">ホテル：<%= f.check_box :is_hotel ,{}, "true", "false" %></p>
         <div class="hotel-new">

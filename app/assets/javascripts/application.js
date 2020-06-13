@@ -90,6 +90,10 @@ $(function(){
       $('.parking-box').fadeOut();
     };
   });
+  // エラーが出て車をセレクトしているとき表示
+  if($('#travel_traffic_way').val() == '車'){
+    $('.parking-box').fadeIn();
+  }
 
   // 新規投稿のチェックの表示
   $('#travel_is_play').click(function(){
@@ -99,6 +103,9 @@ $(function(){
       $('.play-new').fadeOut();
     };
   });
+  if($('#travel_is_play').prop('checked')){
+    $('.play-new').fadeIn();
+  }
 
   $('#travel_is_hotel').click(function(){
     if($('#travel_is_hotel').prop('checked')){
@@ -107,6 +114,9 @@ $(function(){
       $('.hotel-new').fadeOut();
     };
   });
+  if($('#travel_is_hotel').prop('checked')){
+    $('.hotel-new').fadeIn();
+  }
 
   $('#travel_is_meal').click(function(){
     if($('#travel_is_meal').prop('checked')){
@@ -115,5 +125,8 @@ $(function(){
       $('.meal-new').fadeOut();
     };
   });
+  if($('#travel_is_meal').prop('checked')){
+    $('.meal-new').fadeIn();
+  }
 
 });
