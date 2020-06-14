@@ -56,13 +56,18 @@ class User::TravelsController < ApplicationController
               is_hotel:   params[:travel][:is_hotel],
                is_meal:   params[:travel][:is_meal]
     )
-    @image = TravelImage.new
-    unless params.has_value?('travel_images')
-      unless @image.valid?
-        render :new and return
-        @travel.destroy
-      end
-    end
+    # @image = TravelImage.new
+    # unless params.has_value?('travel_images')
+    #   unless @image.valid?
+    #     render :new and return
+    #     @travel.destroy
+    #   end
+    # end
+    # unless params["travel_images"]["image_url_attributes"] == nil
+    #   flash[:alert] = "画像を一枚でもアップロードしてください"
+    #   render :new
+    #   @travel.destroy
+    # end
 
     unless @category.is_play || @category.is_hotel || @category.is_meal
       flash[:alert] = "遊びまたはホテルまたは食事にチェック入れてください"
@@ -80,11 +85,12 @@ class User::TravelsController < ApplicationController
          meal_valid = @meal.valid?
       end
       if play_valid == false || hotel_valid == false || meal_valid == false
-        render :new
+        render :new 
         @travel.destroy
+        return
       end
     end
-　　
+
     params["travel_images"]["image_url_attributes"].each do |image_url|
       TravelImage.create(
       travel_id:    @travel.id,
@@ -94,6 +100,9 @@ class User::TravelsController < ApplicationController
     @play.save
     @hotel.save
     @meal.save
+    @category.save
+    flash[:notice] = "投稿しました。"
+    redirect_to travels_path
 
   end
 
@@ -107,6 +116,7 @@ class User::TravelsController < ApplicationController
   end
 
   def index
+    @travels = Travel.all
   end
 
   def destroy

@@ -15,10 +15,19 @@ class User::UsersController < ApplicationController
     else
       @user_follows = @user.followings
       @user_followers = @user.followers
+      @user_travels = @user.travels
+      # @user_travel = @user.travels.find(params[:id])
     end
   end
 
   def quit
+    if @user.is_valid == true
+      flash[:notice] = "退会済みのユーザーです"
+      redirect_back(fallback_location: root_path)
+    end
+    if @user != current_user
+      redirect_to root_path
+    end
   end
 
   def out
@@ -38,6 +47,13 @@ class User::UsersController < ApplicationController
   end
 
   def edit
+    if @user.is_valid == true
+      flash[:notice] = "退会済みのユーザーです"
+      redirect_back(fallback_location: root_path)
+    end
+    if @user != current_user
+      redirect_to root_path
+    end
   end
 
   def update

@@ -1,2 +1,17 @@
-<h1>User::Travels#index</h1>
-<p>Find me in app/views/user/travels/index.html.erb</p>
+<% provide(:title, "投稿一覧") %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="category-btn col-xs-12">
+      <ul class="travel-ul category-bex">
+        <li class="play-box">遊び</li>
+        <li class="hotel-box">ホテル</li>
+        <li class="meal-box">食事</li>
+      </ul>
+    </div>
+    <% @travels.each do |travel| %>
+      <% if travel.is_display == true %>
+        <%= render "travel_index", travel: travel %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

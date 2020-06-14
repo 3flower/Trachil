@@ -71,8 +71,9 @@
     <div class="user_index_btn col-xs-12">
       <ul class="clearfix" id="tab-menu">
         <li>
-          <%= link_to "#", class: "active" do %>
-            投稿:件
+          <%= link_to "#travel", class: "active" do %>
+            <!-- 他のユーザーから見た時is_displayがfalseのカウントをする -->
+            投稿:<%= @user_travels.count %>件
           <% end %>
         </li>
         <li>
@@ -100,6 +101,16 @@
 
     <div class="clearfix col-xs-12" id="tab-contents" >
       <div id="travel" class="tab">
+        <% @user_travels.each do |travel| %>
+          <% if travel.user == current_user %>
+            <%= render "user/travels/travel_index", travel: travel %>
+          <% else %>
+            <% if travel.is_display == true %>
+              <%= render "user/travels/travel_index", travel: travel %>
+            <% end %>
+          <% end %>
+        <% end %>
+
       </div>
       <div id="picture" class="tab">
       </div>
