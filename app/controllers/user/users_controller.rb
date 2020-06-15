@@ -16,6 +16,7 @@ class User::UsersController < ApplicationController
       @user_follows = @user.followings
       @user_followers = @user.followers
       @user_travels = @user.travels
+      @user_travel_images = TravelImage.all
       # @user_travel = @user.travels.find(params[:id])
     end
   end

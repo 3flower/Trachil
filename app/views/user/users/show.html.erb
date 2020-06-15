@@ -77,8 +77,9 @@
           <% end %>
         </li>
         <li>
-          <%= link_to "#", class: "" do %>
-            写真:件
+          <%= link_to "#picture", class: "" do %>
+          <!-- 全てのユーザーの写真のカウントになっている -->
+            写真:<%= @user_travel_images.count %>件
           <% end %>
         </li>
         <li>
@@ -110,9 +111,13 @@
             <% end %>
           <% end %>
         <% end %>
-
       </div>
       <div id="picture" class="tab">
+        <% @user_travel_images.each do |image| %>
+          <% if image.travel.user == current_user %>
+            <%= render "user/travels/image_index", image: image %>
+          <% end %>
+        <% end %>
       </div>
       <div id="like" class="tab">
       </div>

@@ -146,3 +146,12 @@
   font-weight: bold;
   border-bottom: 1px solid #000;
 }
+
+.image-box {
+  display: inline-block;
+  padding: 20px 10px;
+  .user-travel-image {
+    width: 180px;
+    height: 180px;
+  }
+}
