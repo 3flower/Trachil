@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_06_08_205444) do
 
   create_table "categories", force: :cascade do |t|
+    t.integer "travel_id"
     t.boolean "is_play", default: false
     t.boolean "is_hotel", default: false
     t.boolean "is_meal", default: false
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
   end
 
   create_table "hotels", force: :cascade do |t|
+    t.integer "travel_id"
     t.string "hotel_name"
     t.string "address"
     t.integer "adult_price", default: 0
@@ -33,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
   end
 
   create_table "meals", force: :cascade do |t|
+    t.integer "travel_id"
     t.string "shop_name"
     t.string "address"
     t.integer "adult_price", default: 0
@@ -46,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
   end
 
   create_table "plays", force: :cascade do |t|
+    t.integer "travel_id"
     t.string "name"
     t.string "address"
     t.integer "adult_price", default: 0
@@ -77,10 +81,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_205444) do
 
   create_table "travels", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "play_id"
-    t.integer "hotel_id"
-    t.integer "meal_id"
-    t.integer "category_id"
     t.string "title"
     t.date "travel_day"
     t.integer "traffic_way"

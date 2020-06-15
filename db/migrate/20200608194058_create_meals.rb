@@ -2,6 +2,7 @@ class CreateMeals < ActiveRecord::Migration[5.2]
   def change
     create_table :meals do |t|
 
+      t.integer :travel_id
       t.string  :shop_name
       t.string  :address
       t.integer :adult_price,        default: 0

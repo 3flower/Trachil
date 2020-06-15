@@ -1,0 +1,75 @@
+<div class="travel-index col-xs-12">
+  <div class="index-box col-xs-12">
+    <div class="category col-xs-12">
+      <ul class="travel-ul category-bex">
+        <% if travel.category.is_play == true %>
+          <li class="play-box">遊び</li>
+        <% end %>
+        <% if travel.category.is_hotel == true %>
+          <li class="hotel-box">ホテル</li>
+        <% end %>
+        <% if travel.category.is_meal == true %>
+          <li class="meal-box">食事</li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="travel-images col-xs-3">
+      <%= image_tag travel.travel_images.first.image_url.url,class: "travel-image" %>
+    </div>
+
+    <div class="travel-title col-xs-6">
+      <%= link_to travel_path(travel) do %>
+        <h4><%= travel.title %></h4>
+      <% end %>
+
+      <div class="travel-name">
+        <% if travel.category.is_play == true %>
+          <p>訪れた場所：　<%= truncate(travel.play.name, length: 40) %></p>
+        <% end %>
+        <% if travel.category.is_hotel == true %>
+          <p>ホテル名：　　<%= truncate(travel.hotel.hotel_name, length: 40) %></p>
+        <% end %>
+        <% if travel.category.is_meal == true %>
+          <p>店名：　　　　<%= truncate(travel.meal.shop_name, length: 40) %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class= "travel-time col-xs-2">
+      <p><%= travel.created_at.to_s(:datetime_jp) %></p>
+      <p class="travel-evaluation">評価：<%= travel.evaluation %></p>
+    </div>
+
+    <div class="travel-destroy col-xs-1">
+      <% if travel.user == current_user %>
+        <%= link_to "削除", travel_path(travel),method: :derete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger travel-destroy" %>
+      <% end %>
+    </div>
+
+    <div class="travel-option col-xs-12 pull-right">
+      <ul class="travel-ul">
+        <li>
+          おすすめ年齢：<%= travel.recommend_age %>才
+        </li>
+        <li>
+          コメント件数
+        </li>
+        <li>
+          いいね件数
+        </li>
+        <%= link_to user_path(travel.user) do %>
+          <li>
+            <%= image_tag travel.user.user_image_id.url,class: "travel_user_icon" %>
+          </li>
+          <li>
+            <%= travel.user.name %>
+          </li>
+        <% end %>
+        <li>
+          <%= render "relationships/follow_btn", user: travel.user %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
