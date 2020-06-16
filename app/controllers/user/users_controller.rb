@@ -16,8 +16,21 @@ class User::UsersController < ApplicationController
       @user_follows = @user.followings
       @user_followers = @user.followers
       @user_travels = @user.travels
-      @user_travel_images = TravelImage.all
-      # @user_travel = @user.travels.find(params[:id])
+
+      @user_travel_images = []
+      if @user == current_user
+        @user_travels.each do |travel|
+          travel.travel_images.each do |image|
+            @user_travel_images.push(image)
+          end
+        end
+      else
+        @user_travels.where(is_display: true).each do |travel|
+          travel.travel_images.each do |image|
+            @user_travel_images.push(image)
+          end
+        end
+      end
     end
   end
 

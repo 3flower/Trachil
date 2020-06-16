@@ -72,13 +72,15 @@
       <ul class="clearfix" id="tab-menu">
         <li>
           <%= link_to "#travel", class: "active" do %>
-            <!-- 他のユーザーから見た時is_displayがfalseのカウントをする -->
-            投稿:<%= @user_travels.count %>件
+            <% if @user == current_user %>
+              投稿:<%= @user_travels.count %>件
+            <% else %>
+              投稿:<%= @user_travels.where(is_display: true).count %>件
+            <% end %>
           <% end %>
         </li>
         <li>
           <%= link_to "#picture", class: "" do %>
-          <!-- 全てのユーザーの写真のカウントになっている -->
             写真:<%= @user_travel_images.count %>件
           <% end %>
         </li>
@@ -113,11 +115,7 @@
         <% end %>
       </div>
       <div id="picture" class="tab">
-        <% @user_travel_images.each do |image| %>
-          <% if image.travel.user == current_user %>
-            <%= render "user/travels/image_index", image: image %>
-          <% end %>
-        <% end %>
+          <%= render "user/travels/image_index", user_travel_images: @user_travel_images %>
       </div>
       <div id="like" class="tab">
       </div>
