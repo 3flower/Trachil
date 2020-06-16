@@ -1,5 +1,7 @@
 class User::TravelsController < ApplicationController
 
+  before_action :set_user, only: [:show]
+  before_action :set_travel, only: [:show]
 
   def new
     @travel = Travel.new
@@ -107,6 +109,12 @@ class User::TravelsController < ApplicationController
   end
 
   def show
+    if @travel.is_display == true
+      @travel_images = @travel.travel_images
+      # binding.pry
+    else
+      redirect_back(fallback_location: travels_path)
+    end
   end
 
   def edit

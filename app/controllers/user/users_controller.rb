@@ -1,6 +1,6 @@
 class User::UsersController < ApplicationController
 
-  before_action :set_user, onry: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :my_authenticate_user!
   # before_action :to_log, only: [:top]
 

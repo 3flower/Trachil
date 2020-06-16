@@ -1,1 +1,65 @@
 <% provide(:title, "詳細") %>
+<div class="show">
+  <%= render "user/users/user_show", user: @user %>
+  <%# <div class="col-xs-12"> %>
+    <div class="travel-show-image col-xs-3">
+      <% @travel_images.each do |image| %>
+        <%= image_tag image.image_url.url,class: "travel-image" %>
+      <% end %>
+    </div>
+    <div class="travel-show col-xs-9">
+      <div class="travel-show-category col-xs-10">
+        <ul class="travel-ul category-bex">
+          <% if @travel.category.is_play == true %>
+            <li class="play-box">遊び</li>
+          <% end %>
+          <% if @travel.category.is_hotel == true %>
+            <li class="hotel-box">ホテル</li>
+          <% end %>
+          <% if @travel.category.is_meal == true %>
+            <li class="meal-box">食事</li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="travel-show-like col-xs-2">
+        いいね
+      </div>
+
+      <div class="travel-show-title col-xs-12">
+        <h4><%= @travel.title %></h4>
+      </div>
+      <div class="travel-show-option col-xs-12">
+        <ul>
+          <li>
+            訪れた日:　<%= @travel.travel_day %>
+          </li>
+          <li>
+            交通手段：<%= @travel.traffic_way %>
+          </li>
+          <li>
+            おすすめ年齢：<%= @travel.recommend_age %>才
+          </li>
+          <li class="li-right">
+            評価：<%= @travel.evaluation %>
+          </li>
+        </ul>
+      </div>
+      <% if @travel.category.is_play == true %>
+        <div class="travel-show-play col-xs-12">
+          <%= render "plays/play_show" %>
+        </div>
+      <% end %>
+
+      <% if @travel.category.is_hotel == true %>
+        <div class="travel-show-hotel col-xs-12">
+          <%= render "hotels/hotel_show" %>
+        </div>
+      <% end %>
+      <% if @travel.category.is_meal == true %>
+        <div class="travel-show-meal col-xs-12">
+          <%= render "meals/meal_show" %>
+        </div>
+      <% end %>
+    </div>
+  <%# </div> %>
+</div>
