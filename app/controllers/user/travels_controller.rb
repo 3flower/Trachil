@@ -85,7 +85,7 @@ class User::TravelsController < ApplicationController
          meal_valid = @meal.valid?
       end
       if play_valid == false || hotel_valid == false || meal_valid == false
-        render :new 
+        render :new
         @travel.destroy
         return
       end
@@ -116,7 +116,10 @@ class User::TravelsController < ApplicationController
   end
 
   def index
-    @travels = Travel.all
+    @travels = []
+    Travel.where(is_display: true).each do |travel|
+      @travels.push(travel)
+    end
   end
 
   def destroy

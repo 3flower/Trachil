@@ -72,11 +72,7 @@
       <ul class="clearfix" id="tab-menu">
         <li>
           <%= link_to "#travel", class: "active" do %>
-            <% if @user == current_user %>
-              投稿:<%= @user_travels.count %>件
-            <% else %>
-              投稿:<%= @user_travels.where(is_display: true).count %>件
-            <% end %>
+            投稿:<%= @user_travels.count %>件
           <% end %>
         </li>
         <li>
@@ -104,15 +100,7 @@
 
     <div class="clearfix col-xs-12" id="tab-contents" >
       <div id="travel" class="tab">
-        <% @user_travels.each do |travel| %>
-          <% if travel.user == current_user %>
-            <%= render "user/travels/travel_index", travel: travel %>
-          <% else %>
-            <% if travel.is_display == true %>
-              <%= render "user/travels/travel_index", travel: travel %>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render "user/travels/travel_index", travels: @user_travels %>
       </div>
       <div id="picture" class="tab">
           <%= render "user/travels/image_index", user_travel_images: @user_travel_images %>

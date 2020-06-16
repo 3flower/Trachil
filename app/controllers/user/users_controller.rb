@@ -15,20 +15,15 @@ class User::UsersController < ApplicationController
     else
       @user_follows = @user.followings
       @user_followers = @user.followers
-      @user_travels = @user.travels
-
-      @user_travel_images = []
       if @user == current_user
-        @user_travels.each do |travel|
-          travel.travel_images.each do |image|
-            @user_travel_images.push(image)
-          end
-        end
+        @user_travels = @user.travels
       else
-        @user_travels.where(is_display: true).each do |travel|
-          travel.travel_images.each do |image|
-            @user_travel_images.push(image)
-          end
+        @user_travels = @user.travels.where(is_display: true)
+      end
+      @user_travel_images = []
+      @user_travels.each do |travel|
+        travel.travel_images.each do |image|
+          @user_travel_images.push(image)
         end
       end
     end
