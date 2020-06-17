@@ -25,18 +25,18 @@
           <% end %>
         </li>
         <li>
-          <%= link_to "#", class: "" do %>
-            いいね:件
+          <%= link_to "#like", class: "", id: "like_btn" do %>
+            <p id="like-count"><%= render "like_count", user: @user %></p>
           <% end %>
         </li>
         <li class="user_show_follow">
           <%= link_to "#follow", class: "" do %>
-            フォロー：<%= @user.followings.count %>
+            <p class="folow-count"><%= render "followings_count", user: @user %></p>
           <% end %>
         </li>
         <li class="user_show_follower">
           <%= link_to "#follower", class: "" do %>
-            フォロワー：<%= @user.followers.count %>
+            フォロワー:<%= @user.followers.count %>
           <% end %>
         </li>
       </ul>
@@ -50,6 +50,7 @@
           <%= render "user/travels/image_index", user_travel_images: @user_travel_images %>
       </div>
       <div id="like" class="tab">
+        <%= render "user/travels/travel_index", travels: @like_travels %>
       </div>
       <div id="follow" class="tab">
         <%= render "relationships/follows_user", users: @user_follows %>

@@ -56,8 +56,8 @@
           <li>
             コメント件数
           </li>
-          <li>
-            いいね件数
+          <li class="like_<%= travel.id %>">
+            <%= render "user/likes/like", travel: travel %>
           </li>
           <%= link_to user_path(travel.user), data: {"turbolinks" => false} do %>
             <li>
@@ -67,7 +67,7 @@
               <%= travel.user.name %>
             </li>
           <% end %>
-          <li>
+          <li class="follow-<%= travel.user.id %>">
             <%= render "relationships/follow_btn", user: travel.user %>
           </li>
         </ul>

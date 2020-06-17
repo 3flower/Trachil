@@ -1,5 +1,6 @@
-$('#follow-btn-js').html("<%= j(render 'follow_btn', user: @user) %>");
-$('#follow-<%= @user.id %>').html("<%= j(render 'follow_btn', user: @user) %>");
+$('.follow-btn-js').html("<%= j(render 'follow_btn', user: @user) %>");
+$('.follow-<%= @user.id %>').html("<%= j(render 'follow_btn', user: @user) %>");
+// $('.folow-count').html("<%= j(render 'user/users/followings_count', user: @user) %>")
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show("normal", function() {
   setTimeout("$('#flash').fadeOut()", 5000);

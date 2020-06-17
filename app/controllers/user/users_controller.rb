@@ -16,10 +16,13 @@ class User::UsersController < ApplicationController
     else
       @user_follows = @user.followings
       @user_followers = @user.followers
+
       if @user == current_user
         @user_travels = @user.travels
+        @like_travels = current_user.liked_travels
       else
         @user_travels = @user.travels.where(is_display: true)
+        @like_travels = current_user.liked_travels.where(is_display: true)
       end
       @user_travel_images = []
       @user_travels.each do |travel|

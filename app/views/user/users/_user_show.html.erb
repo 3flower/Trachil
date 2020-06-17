@@ -57,7 +57,7 @@
         <%= link_to "編集", edit_user_path(current_user), data: {"turbolinks" => false},class: "btn btn-primary" %>
       </div>
     <% else %>
-      <div class="follow-btn col-xs-3" id="follow-btn-js">
+      <div class="follow-btn col-xs-3 follow-btn-js">
         <%= render "relationships/follow_btn", user: user %>
       </div>
     <% end %>

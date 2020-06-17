@@ -1,0 +1,3 @@
+$(".like_<%= @travel.id %>").html("<%= j(render 'like', travel: @travel ) %>")
+$("#like-count").html("<%= j(render 'user/users/like_count', user: @like.user) %>")
+$('#like_btn').addClass("active");

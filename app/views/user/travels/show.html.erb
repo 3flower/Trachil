@@ -21,8 +21,8 @@
           <% end %>
         </ul>
       </div>
-      <div class="travel-show-like col-xs-2">
-        いいね
+      <div class="travel-show-like col-xs-2 like_<%= @travel.id %>">
+        <%= render "user/likes/like", travel: @travel %>
       </div>
 
       <div class="travel-show-title col-xs-12">
