@@ -56,4 +56,8 @@ class ApplicationController < ActionController::Base
   def set_travel
     @travel = Travel.find(params[:id])
   end
+
+  def travel_params
+    @travel = Travel.find(params[:travel_id])
+  end
 end

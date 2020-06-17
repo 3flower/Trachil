@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   	    patch 'out'
   	  end
     end
-    resources :travels
+    resources :travels do
+      resources :comments, only: [:create, :destroy]
+  	   resource :likes, only: [:create, :destroy]
+    end
   end
 
   resources :relationships, only: [:create, :destroy]

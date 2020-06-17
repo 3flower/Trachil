@@ -1,0 +1,5 @@
+<%= form_with(model: [travel, comment]) do |f| %>
+  <%= f.text_area :travel_comment, class: "" %><br>
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>
+<%# , remote: true %>

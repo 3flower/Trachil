@@ -1,0 +1,14 @@
+<% if travel.liked_by?(current_user) %>
+  <%= link_to travel_likes_path(travel), method: :delete do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+    <%= travel.likes.count %>
+  <% end %>
+
+<% else %>
+
+  <%= link_to travel_likes_path(travel), method: :post do %>
+    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+    <%= travel.likes.count %>
+  <% end %>
+<% end %>
+<%# , remote: true %>

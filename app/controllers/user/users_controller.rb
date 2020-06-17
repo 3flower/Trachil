@@ -1,6 +1,7 @@
 class User::UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :baria_user, only: [:update, :edit, :destroy]
   before_action :my_authenticate_user!
   # before_action :to_log, only: [:top]
 
@@ -83,6 +84,13 @@ class User::UsersController < ApplicationController
     elsif is_child = false
       params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :introduction)
     end
+  end
+
+  #url直接防止　メソッドを自己定義してbefore_actionで発動。
+  def baria_user
+  	unless params[:id].to_i == current_user.id
+  		redirect_to user_path(current_user)
+  	end
   end
 
   # def to_log
