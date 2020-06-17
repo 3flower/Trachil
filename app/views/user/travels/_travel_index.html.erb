@@ -20,7 +20,7 @@
       </div>
 
       <div class="travel-title col-xs-6">
-        <%= link_to travel_path(travel) do %>
+        <%= link_to travel_path(travel), data: {"turbolinks" => false} do %>
           <h4><%= travel.title %></h4>
         <% end %>
 
@@ -59,7 +59,7 @@
           <li>
             いいね件数
           </li>
-          <%= link_to user_path(travel.user) do %>
+          <%= link_to user_path(travel.user), data: {"turbolinks" => false} do %>
             <li>
               <%= image_tag travel.user.user_image_id.url,class: "travel_user_icon" %>
             </li>

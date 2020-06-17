@@ -1,6 +1,6 @@
 <% provide(:title, "詳細") %>
 <div class="show">
-  <%= render "user/users/user_show", user: @user %>
+  <%= render "user/users/user_show", user: @travel.user %>
   <%# <div class="col-xs-12"> %>
     <div class="travel-show-image col-xs-3">
       <% @travel_images.each do |image| %>
@@ -11,13 +11,13 @@
       <div class="travel-show-category col-xs-10">
         <ul class="travel-ul category-bex">
           <% if @travel.category.is_play == true %>
-            <li class="play-box">遊び</li>
+            <li class="play-box" id="show-play-btn">遊び</li>
           <% end %>
           <% if @travel.category.is_hotel == true %>
-            <li class="hotel-box">ホテル</li>
+            <li class="hotel-box" id="show-hotel-btn">ホテル</li>
           <% end %>
           <% if @travel.category.is_meal == true %>
-            <li class="meal-box">食事</li>
+            <li class="meal-box" id="show-meal-btn">食事</li>
           <% end %>
         </ul>
       </div>
@@ -45,21 +45,22 @@
         </ul>
       </div>
       <% if @travel.category.is_play == true %>
-        <div class="travel-show-play col-xs-12">
-          <%= render "plays/play_show" %>
+        <div class="travel-show-play col-xs-12" id="play-show">
+          <%= render "plays/play_show", travel: @travel %>
         </div>
       <% end %>
 
       <% if @travel.category.is_hotel == true %>
-        <div class="travel-show-hotel col-xs-12">
-          <%= render "hotels/hotel_show" %>
+        <div class="travel-show-hotel col-xs-12" id="hotel-show">
+          <%= render "hotels/hotel_show", travel: @travel %>
         </div>
       <% end %>
       <% if @travel.category.is_meal == true %>
-        <div class="travel-show-meal col-xs-12">
-          <%= render "meals/meal_show" %>
+        <div class="travel-show-meal col-xs-12" id="meal-show">
+          <%= render "meals/meal_show", travel: @travel %>
         </div>
       <% end %>
     </div>
   <%# </div> %>
 </div>
+<script src="https:/maps.google.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap" async defer></script>

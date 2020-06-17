@@ -29,6 +29,7 @@ margin-top: 30px;
       }
     }
     .travel-show-option {
+      margin: 20px 10px;
       li {
         list-style: none;
         display: inline-block;
@@ -36,7 +37,7 @@ margin-top: 30px;
       }
       .li-right {
         float: right;
-        margin-right: 20px;
+        margin-right: 60px;
         font-weight: bold;
         font-size: 18px;
       }
@@ -72,4 +73,72 @@ margin-top: 30px;
       }
     }
   }
+}
+.show-box {
+  .show-title {
+    margin: 5px 0;
+    p {
+      display: inline-block;
+    }
+    .title-text {
+      width: 85%;
+      float: right;
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+  .show-option {
+    margin: 5px 0;
+    ul {
+      float: right;
+    }
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  .show-impression {
+    margin-bottom: 10px;
+    p {
+      display: inline-block;
+    }
+    .impression-text {
+      margin-left: 30px;
+      display: inline-block;
+      font-size: 18px;
+    }
+  }
+
+  .show-price {
+    ul {
+      float: right;
+    }
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+  .show-address {
+    margin-bottom: 20px;
+  }
+  #play-map, #hotel-map, #meal-map {
+    width: 100%;
+    margin: 0 auto;
+    height: 300px;
+  }
+  .show-official_site {
+    margin: 30px;
+  }
+}
+.show-created_at {
+  p {
+    float: right;
+    font-size: 8px;
+  }
+}
+#play-show, #hotel-show, #meal-show {
+  display: none;
 }
