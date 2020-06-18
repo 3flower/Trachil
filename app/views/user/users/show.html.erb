@@ -24,19 +24,22 @@
             写真:<%= @user_travel_images.count %>件
           <% end %>
         </li>
+        <div id="user_id">
+          <%= @user.id %>
+        </div>
         <li>
           <%= link_to "#like", class: "", id: "like_btn" do %>
-            <p>いいね:<span id="like-count"><%= @user.likes.count %></span>件</p>
+            <p id="like-count">いいね:<%= @user.likes.count %>件</p>
           <% end %>
         </li>
         <li class="user_show_follow">
           <%= link_to "#follow", class: "" do %>
-            <p class="folow-count"><%= render "followings_count", user: @user %></p>
+            <p class="folow-count">フォロー:<%= @user.followings.count %></p>
           <% end %>
         </li>
         <li class="user_show_follower">
           <%= link_to "#follower", class: "" do %>
-            <p class="folow-count">フォロワー:<%= @user.followers.count %></p>
+            <p class="folow-count2">フォロワー:<%= @user.followers.count %></p>
           <% end %>
         </li>
       </ul>

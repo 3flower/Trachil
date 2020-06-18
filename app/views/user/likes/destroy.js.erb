@@ -1,4 +1,6 @@
 $(".like_<%= @travel.id %>").html("<%= j(render 'like', travel: @travel ) %>")
-// $("#like-count").text.to_s() -= 1
-$('#like_btn').addClass("active");
-// $("#like-count").html("<%= j(render 'user/users/like_count', user: @like.travel.user) %>")
+var user_id = $('#user_id').text();
+console.log(Number(user_id))
+if (Number(user_id) == Number("<%= current_user.id %>")) {
+  $("#like-count").html('いいね:<%= @like.user.likes.count %>件')
+}

@@ -22,7 +22,7 @@ class User::UsersController < ApplicationController
         @like_travels = current_user.liked_travels
       else
         @user_travels = @user.travels.where(is_display: true)
-        @like_travels = current_user.liked_travels.where(is_display: true)
+        @like_travels = @user.liked_travels.where(is_display: true)
       end
       @user_travel_images = []
       @user_travels.each do |travel|

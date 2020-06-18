@@ -1,6 +1,15 @@
 $('.follow-btn-js').html("<%= j(render 'follow_btn', user: @user) %>");
 $('.follow-<%= @user.id %>').html("<%= j(render 'follow_btn', user: @user) %>");
-// $('.folow-count').html("<%= j(render 'user/users/followings_count', user: @user_folow) %>")
+
+var user_id = $('#user_id').text();
+console.log(Number(user_id))
+console.log(Number("<%= current_user.id %>"))
+if (Number(user_id) == Number("<%= current_user.id %>")) {
+  $('.folow-count').html("フォロー:<%= @following.user.followings.count %>")
+} else {
+  $('.folow-count2').html("フォロワー:<%= @user.followers.count %>")
+}
+
 $('#flash').html("<%= j(render 'layouts/flash') %>");
 $('#flash').show("normal", function() {
   setTimeout("$('#flash').fadeOut()", 5000);
