@@ -25,7 +25,7 @@
   <% end %>
 </div>
 <div class="comment-form">
-  <%= form_with(model: [travel, comment], remote: true) do |f| %>
+  <%= form_with(model: [travel, comment],url: travel_comments_path(travel),method: :post, remote: true) do |f| %>
     <%= f.text_area :travel_comment, class: "comment-text col-xs-12" %><br>
     <%= f.submit "コメントする", class: "btn btn-primary pull-right" %>
   <% end %>

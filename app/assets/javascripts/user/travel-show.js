@@ -23,33 +23,50 @@ $(function(){
     } else {
       $('#meal-show').fadeIn();
     }
+
 });
 
 let map;
-let geocoder;
+let play_map;
+let hotel_map;
+let meal_map;
+let play_geocoder;
+let hotel_geocoder;
+let meal_geocoder;
 // playのマップ
 function initMap(){
-  geocoder = new google.maps.Geocoder()
+  play_geocoder = new google.maps.Geocoder()
+  hotel_geocoder = new google.maps.Geocoder()
+  meal_geocoder = new google.maps.Geocoder()
 
   // Mapを表示する
-  play_map = new google.maps.Map(document.getElementById('play-map'), {
-    // latが緯度、lngが経度
-    center: {lat: 34.702299, lng: 135.497450},
-    // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
-    zoom: 16,
-  });
-  meal_map = new google.maps.Map(document.getElementById('meal-map'), {
-    // latが緯度、lngが経度
-    center: {lat: 34.702299, lng: 135.497450},
-    // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
-    zoom: 16,
-  });
-  hotel_map = new google.maps.Map(document.getElementById('hotel-map'), {
-     // latが緯度、lngが経度
-     center: {lat: 34.702299, lng: 135.497450},
-     // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
-     zoom: 16,
-  });
+  if($('#play-show').length) {
+    play_map = new google.maps.Map(document.getElementById('play-map'), {
+      // latが緯度、lngが経度
+      center: {lat: 34.702299, lng: 135.497450},
+      // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
+      zoom: 16,
+    });
+  }
+  if ($('#hotel-show').length) {
+    hotel_map = new google.maps.Map(document.getElementById('hotel-map'), {
+       // latが緯度、lngが経度
+       center: {lat: 34.702299, lng: 135.497450},
+       // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
+       zoom: 16,
+    });
+  }
+  if ($('#meal-show').length)  {
+    meal_map = new google.maps.Map(document.getElementById('meal-map'), {
+      // latが緯度、lngが経度
+      center: {lat: 34.702299, lng: 135.497450},
+      // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
+      zoom: 16,
+    });
+
+  }
+
+
 
   codeAddress()
   function codeAddress(){
@@ -60,7 +77,7 @@ function initMap(){
     var hotel_address = $('#hotel-address').text()
     console.log(hotel_address)
 
-    geocoder.geocode( { 'address': play_address}, function(results, status) {
+    play_geocoder.geocode( { 'address': play_address}, function(results, status) {
       if (status == 'OK') {
       play_map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
@@ -69,7 +86,7 @@ function initMap(){
         });
       }
     });
-    geocoder.geocode( { 'address': hotel_address}, function(results, status) {
+    hotel_geocoder.geocode( { 'address': hotel_address}, function(results, status) {
       if (status == 'OK') {
       hotel_map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
@@ -78,7 +95,7 @@ function initMap(){
         });
       }
     });
-    geocoder.geocode( { 'address': meal_address}, function(results, status) {
+    meal_geocoder.geocode( { 'address': meal_address}, function(results, status) {
       if (status == 'OK') {
       meal_map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
