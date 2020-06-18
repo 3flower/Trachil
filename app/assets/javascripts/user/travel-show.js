@@ -34,19 +34,19 @@ function initMap(){
   // Mapを表示する
   play_map = new google.maps.Map(document.getElementById('play-map'), {
     // latが緯度、lngが経度
-    center: {lat: 40.7828, lng: 73.9653},
+    center: {lat: 34.702299, lng: 135.497450},
     // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
     zoom: 16,
   });
   meal_map = new google.maps.Map(document.getElementById('meal-map'), {
     // latが緯度、lngが経度
-    center: {lat: 40.7828, lng: 73.9653},
+    center: {lat: 34.702299, lng: 135.497450},
     // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
     zoom: 16,
   });
   hotel_map = new google.maps.Map(document.getElementById('hotel-map'), {
      // latが緯度、lngが経度
-     center: {lat: 40.7828, lng: 73.9653},
+     center: {lat: 34.702299, lng: 135.497450},
      // zoomは0〜21まで指定できる。数値が大きいほど拡大できる
      zoom: 16,
   });

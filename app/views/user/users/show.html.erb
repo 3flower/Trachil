@@ -26,7 +26,7 @@
         </li>
         <li>
           <%= link_to "#like", class: "", id: "like_btn" do %>
-            <p id="like-count"><%= render "like_count", user: @user %></p>
+            <p>いいね:<span id="like-count"><%= @user.likes.count %></span>件</p>
           <% end %>
         </li>
         <li class="user_show_follow">
@@ -36,7 +36,7 @@
         </li>
         <li class="user_show_follower">
           <%= link_to "#follower", class: "" do %>
-            フォロワー:<%= @user.followers.count %>
+            <p class="folow-count">フォロワー:<%= @user.followers.count %></p>
           <% end %>
         </li>
       </ul>

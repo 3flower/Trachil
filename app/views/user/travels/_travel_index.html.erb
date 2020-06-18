@@ -54,9 +54,9 @@
             おすすめ年齢：<%= travel.recommend_age %>才
           </li>
           <li>
-            コメント件数
+            コメント:<%= travel.comments.count %>件
           </li>
-          <li class="like_<%= travel.id %>">
+          <li class="like-btn like_<%= travel.id %>">
             <%= render "user/likes/like", travel: travel %>
           </li>
           <%= link_to user_path(travel.user), data: {"turbolinks" => false} do %>

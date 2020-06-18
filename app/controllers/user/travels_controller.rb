@@ -109,6 +109,7 @@ class User::TravelsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     if @travel.user == current_user
       @travel_images = @travel.travel_images
     else

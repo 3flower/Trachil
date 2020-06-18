@@ -155,3 +155,14 @@
     height: 180px;
   }
 }
+
+.like-btn:hover {
+  a {
+    border-radius: 200px;
+    background-color: rgba(255,0,0,0.4);
+    line-height: 10px;
+    span {
+      color: #FF3333 !important;
+    }
+  }
+}
