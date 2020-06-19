@@ -1,0 +1,32 @@
+<h3 class="commrnt-header">コメント</h3>
+<div class="comment-index">
+  <% travel.comments.each do |comment| %>
+    <div class="comment-user">
+      <ul>
+        <li>
+          <%= image_tag comment.user.user_image_id.url,class: "comment_user_icon" %>
+        </li>
+        <li>
+          <%= link_to user_path(comment.user) do %>
+            <%= comment.user.name %>
+          <% end %>
+        </li>
+        <li class="created_at_right">
+          <%= comment.created_at.to_s(:datetime_jp) %>
+        </li>
+      </ul>
+    </div>
+    <div class="travel-comment-box clearfix">
+      <p><%= comment.travel_comment %></p>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", travel_comment_path(travel.id, comment.id), method: :delete, remote: true, class: "comment-destroy-btn btn-sm btn-danger pull-right" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="comment-form">
+  <%= form_with(model: [travel, comment],url: travel_comments_path(travel),method: :post, remote: true) do |f| %>
+    <%= f.text_area :travel_comment, class: "comment-text col-xs-12" %><br>
+    <%= f.submit "コメントする", class: "btn btn-primary pull-right" %>
+  <% end %>
+</div>

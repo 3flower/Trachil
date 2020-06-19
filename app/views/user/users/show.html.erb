@@ -10,91 +10,36 @@
         <%= link_to '退会する', quit_user_path(@user), class: "glyphicon glyphicon-tint btn btn-danger  pull-right" %>
       <% end %>
     </div>
-    <div class="user_show col-xs-12">
-
-      <div class="user_show_imege col-xs-2">
-        <%= image_tag @user.user_image_id.url,class: "user_show_icon" %>
-      </div>
-
-      <div class="user_show_child col-xs-3">
-        <ul>
-          <li>
-            <%= @user.name %>
-          </li>
-          <li>
-            <%= @user.residence %>
-          </li>
-          <% if @user.is_child == true %>
-            <li>
-              <span>子供　</span>
-              <%= @user.child_people %><span>人</span>
-            </li>
-            <li>
-              <span>最年少　</span>
-              <%= @user.child_age %><span>才</span>
-            </li>
-            <li　class="child_show">
-              <p>オムツ
-                <% if @user.is_diaper == true %>
-                  <span>あり　</span>
-                <% elsif @user.is_diaper == false %>
-                  <span>なし　</span>
-                <% end %>
-                   離乳食
-                <% if @user.is_baby_food == true %>
-                  <span>あり</span>
-                <% elsif @user.is_baby_food == false %>
-                  <span>なし</span>
-                <% end %>
-              </p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="introduction col-xs-4">
-        <p>自己紹介</p>
-        <%= @user.introduction %>
-      </div>
-
-      <% if @user == current_user %>
-        <div class="user_edit_ptn col-xs-3">
-          <%= link_to "編集", edit_user_path(current_user), data: {"turbolinks" => false},class: "btn btn-primary" %>
-        </div>
-      <% else %>
-        <div class="follow-btn col-xs-3" id="follow-btn-js">
-          <%= render "relationships/follow_btn", user: @user %>
-        </div>
-      <% end %>
-    </div>
+    <%= render "user_show", user: @user %>
 
     <div class="user_index_btn col-xs-12">
       <ul class="clearfix" id="tab-menu">
         <li>
           <%= link_to "#travel", class: "active" do %>
-            <!-- 他のユーザーから見た時is_displayがfalseのカウントをする -->
             投稿:<%= @user_travels.count %>件
           <% end %>
         </li>
         <li>
           <%= link_to "#picture", class: "" do %>
-          <!-- 全てのユーザーの写真のカウントになっている -->
             写真:<%= @user_travel_images.count %>件
           <% end %>
         </li>
+        <div id="user_id">
+          <%= @user.id %>
+        </div>
         <li>
-          <%= link_to "#", class: "" do %>
-            いいね:件
+          <%= link_to "#like", class: "", id: "like_btn" do %>
+            <p id="like-count">いいね:<%= @user.likes.count %>件</p>
           <% end %>
         </li>
         <li class="user_show_follow">
           <%= link_to "#follow", class: "" do %>
-            フォロー：<%= @user.followings.count %>
+            <p class="folow-count">フォロー:<%= @user.followings.count %></p>
           <% end %>
         </li>
         <li class="user_show_follower">
           <%= link_to "#follower", class: "" do %>
-            フォロワー：<%= @user.followers.count %>
+            <p class="folow-count2">フォロワー:<%= @user.followers.count %></p>
           <% end %>
         </li>
       </ul>
@@ -102,24 +47,13 @@
 
     <div class="clearfix col-xs-12" id="tab-contents" >
       <div id="travel" class="tab">
-        <% @user_travels.each do |travel| %>
-          <% if travel.user == current_user %>
-            <%= render "user/travels/travel_index", travel: travel %>
-          <% else %>
-            <% if travel.is_display == true %>
-              <%= render "user/travels/travel_index", travel: travel %>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render "user/travels/travel_index", travels: @user_travels %>
       </div>
       <div id="picture" class="tab">
-        <% @user_travel_images.each do |image| %>
-          <% if image.travel.user == current_user %>
-            <%= render "user/travels/image_index", image: image %>
-          <% end %>
-        <% end %>
+          <%= render "user/travels/image_index", user_travel_images: @user_travel_images %>
       </div>
       <div id="like" class="tab">
+        <%= render "user/travels/travel_index", travels: @like_travels %>
       </div>
       <div id="follow" class="tab">
         <%= render "relationships/follows_user", users: @user_follows %>

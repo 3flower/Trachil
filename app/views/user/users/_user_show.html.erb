@@ -1,0 +1,65 @@
+<div class="user_show col-xs-12">
+  <% if user.is_valid == true %>
+    <div class="user_show_imege col-xs-2">
+      <%= image_tag 'default.png',class: "user_show_icon" %>
+    </div>
+    <div class="is_valid-true col-xs-10">
+      <h2>このユーザーは退会済みです</h2>
+    </div>
+  <% else %>
+    <div class="user_show_imege col-xs-2">
+      <%= image_tag user.user_image_id.url,class: "user_show_icon" %>
+    </div>
+
+    <div class="user_show_child col-xs-3">
+      <ul>
+        <li>
+          <%= user.name %>
+        </li>
+        <li>
+          <%= user.residence %>
+        </li>
+        <% if user.is_child == true %>
+          <li>
+            <span>子供　</span>
+            <%= user.child_people %><span>人</span>
+          </li>
+          <li>
+            <span>最年少　</span>
+            <%= user.child_age %><span>才</span>
+          </li>
+          <li　class="child_show">
+            <p>オムツ
+              <% if user.is_diaper == true %>
+                <span>あり　</span>
+              <% elsif user.is_diaper == false %>
+                <span>なし　</span>
+              <% end %>
+                 離乳食
+              <% if user.is_baby_food == true %>
+                <span>あり</span>
+              <% elsif user.is_baby_food == false %>
+                <span>なし</span>
+              <% end %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="introduction col-xs-4">
+      <p>自己紹介</p>
+      <%= user.introduction %>
+    </div>
+
+    <% if user == current_user %>
+      <div class="user_edit_ptn col-xs-3">
+        <%= link_to "編集", edit_user_path(current_user), data: {"turbolinks" => false},class: "btn btn-primary" %>
+      </div>
+    <% else %>
+      <div class="follow-btn col-xs-3 follow-btn-js">
+        <%= render "relationships/follow_btn", user: user %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

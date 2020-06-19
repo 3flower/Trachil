@@ -1,1 +1,76 @@
 <% provide(:title, "詳細") %>
+<div class="show">
+  <%= render "user/users/user_show", user: @travel.user %>
+  <div class="travel-show-image col-xs-3">
+    <% @travel_images.each do |image| %>
+      <%= image_tag image.image_url.url,class: "travel-image" %>
+    <% end %>
+  </div>
+  <div class="travel-show col-xs-9">
+    <div class="travel-show-category col-xs-10">
+      <ul class="travel-ul category-box">
+        <% if @travel.category.is_play == true %>
+          <li class="play-box" id="show-play-btn">遊び</li>
+        <% end %>
+        <% if @travel.category.is_hotel == true %>
+          <li class="hotel-box" id="show-hotel-btn">ホテル</li>
+        <% end %>
+        <% if @travel.category.is_meal == true %>
+          <li class="meal-box" id="show-meal-btn">食事</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="travel-show-like like-btn col-xs-2 like_<%= @travel.id %>">
+      <%= render "user/likes/like", travel: @travel %>
+    </div>
+
+    <div class="travel-show-title col-xs-12">
+      <h4><%= @travel.title %></h4>
+    </div>
+    <div class="travel-show-option col-xs-12">
+      <ul>
+        <li>
+          訪れた日:　<%= @travel.travel_day %>
+        </li>
+        <li>
+          交通手段：<%= @travel.traffic_way %>
+        </li>
+        <li>
+          おすすめ年齢：<%= @travel.recommend_age %>才
+        </li>
+        <li class="li-right">
+          評価：<%= @travel.evaluation %>
+        </li>
+      </ul>
+    </div>
+    <% if @travel.category.is_play == true %>
+      <div class="travel-show-play col-xs-12" id="play-show">
+        <%= render "plays/play_show", travel: @travel %>
+      </div>
+    <% end %>
+
+    <% if @travel.category.is_hotel == true %>
+      <div class="travel-show-hotel col-xs-12" id="hotel-show">
+        <%= render "hotels/hotel_show", travel: @travel %>
+      </div>
+    <% end %>
+    <% if @travel.category.is_meal == true %>
+      <div class="travel-show-meal col-xs-12" id="meal-show">
+        <%= render "meals/meal_show", travel: @travel %>
+      </div>
+    <% end %>
+      <div class="travel-edit-destroy col-xs-12">
+        <% if @travel.user == current_user %>
+          <%= link_to "削除", travel_path(@travel), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger btn-sm travel-destroy-btn pull-right" %>
+          <%= link_to "編集", edit_travel_path(@travel), data: {"turbolinks" => false},class: "btn btn-primary btn-sm pull-right travel-edit-btn" %>
+        <% end %>
+      </div>
+  </div>
+  <div class="travel-comment col-xs-9 pull-right" id="comments-<%= @travel.id %>">
+    <%= render "user/comments/comment", travel: @travel, comment: @comment %>
+  </div>
+</div>
+
+
+
+<script src="https:/maps.google.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap" async defer></script>

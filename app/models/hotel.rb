@@ -1,6 +1,6 @@
 class Hotel < ApplicationRecord
 
-  belongs_to :travel, dependent: :destroy
+  belongs_to :travel
 
   validates :hotel_name, :address, :adult_price, :child_price, :impression, presence: true
   validates :impression, length: {maximum: 1000}
@@ -9,5 +9,5 @@ class Hotel < ApplicationRecord
     self.travel.traffic_way == "車"
   end
 
-  enum parking: {"駐車場あり": 0,"駐車場なし": 1,"駐車場近くにあり": 2,"わからない": 3}
+  enum parking: {"あり": 0,"なし": 1,"近くにあり": 2,"わからない": 3}
 end

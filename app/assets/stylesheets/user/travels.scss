@@ -155,3 +155,39 @@
     height: 180px;
   }
 }
+
+.like-btn:hover {
+  a {
+    border-radius: 200px;
+    background-color: rgba(255,0,0,0.4);
+    line-height: 10px;
+    span {
+      color: #FF3333 !important;
+    }
+  }
+}
+
+.category-box {
+  .play-box,.hotel-box,.meal-box {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+.category-box-index, .category-box {
+  li {
+    padding: 0 5px;
+    border: 1px solid #000;
+    border-radius: 100px;
+  }
+  .play-box {
+    background-color: #99FFFF;
+  }
+  .hotel-box {
+    background-color: #FFFF66;
+  }
+  .meal-box {
+    background-color: #99FF66;
+  }
+}

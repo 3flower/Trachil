@@ -1,0 +1,58 @@
+<div class="show-category">
+  <p class="hotel-box">ホテル</p>
+</div>
+<div class="show-box col-xs-12">
+  <div class="show-title">
+    <p>訪れた場所:　</p>
+    <div class=title-text>
+      <p><%= travel.hotel.hotel_name %></p>
+    </div>
+  </div>
+  <div class="show-option clearfix">
+    <ul>
+      <% if travel.traffic_way == "車" %>
+        <li>駐車場:</li>
+        <li><%= travel.hotel.parking %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="show-impression">
+    <p>感想</p>
+    <div class="impression-text">
+      <p class="text"><%= travel.hotel.impression %></p>
+    </div>
+  </div>
+
+  <div class="show-price clearfix">
+    <ul>
+      <li>大人料金</li>
+      <li>
+        <% if travel.hotel.adult_price == 0 %>
+          <p>無料</p>
+        <% else %>
+          <p><%= travel.hotel.adult_price %>円　</p>
+        <% end %>
+      </li>
+      <li>子供料金</li>
+      <li>
+        <% if travel.hotel.child_price == 0 %>
+          <p>無料</p>
+        <% else %>
+          <p><%= travel.hotel.child_price %>円</p>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="show-address">
+    <p>住所:　<span id="hotel-address"><%= travel.hotel.address %></span></p>
+  </div>
+  <div id="hotel-map"></div>
+  <div class="show-official_site">
+    <% if travel.hotel.official_site %>
+      <%= link_to "公式サイト", travel.hotel.official_site %>
+    <% end %>
+  </div>
+  <div class="show-created_at">
+    <p>投稿日:　<%= travel.created_at.to_s(:datetime_jp) %></p>
+  </div>
+</div>

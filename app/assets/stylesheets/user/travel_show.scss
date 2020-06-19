@@ -1,90 +1,195 @@
-.travel-ul {
-  margin-bottom: 0 !important;
-  padding-bottom: 3px;
-  li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 5px;
-  }
-}
-.category-btn {
-  text-align: center;
-  li {
-    margin: 30px 10px;
-  }
-}
-.category {
-  padding-bottom: 10px;
-}
-.category-bex {
-  li {
-    padding: 0 5px;
-    border: 1px solid #000;
-    border-radius: 100px;
-  }
-  .play-box {
-    background-color: #99FFFF;
-  }
-  .hotel-box {
-    background-color: #FFFF66;
-  }
-  .meal-box {
-    background-color: #99FF66;
-  }
-}
-.travel-index {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #CCCCCC;
-}
-.index-box {
-  width: 100%;
-  background-color: #fff;
-  padding-top: 10px;
-  padding-bottom: 3px;
-  .travel-images {
-    padding-left: 0 !important;
-  }
-  .travel-image {
-    width: 180px;
-    height: 180px;
-  }
-  .travel-title {
-    padding-left: 0 !important;
-    h4{
-      font-weight: bold;
+.show {
+margin-top: 30px;
+  .travel-show-image{
+    // width: 100%;
+    background-color: #fff;
+    margin: 30px 0;
+    padding: 20px 0;
+    .travel-image {
+      width: 220px;
+      height: 220px;
+      margin: 15px 0;
+      margin-left: 30px;
     }
-    .travel-name {
-      margin-top: 20px;
-      p {
-        font-size: 11px;
+  }
+
+  .travel-show {
+    width: 70% !important;
+    background-color: #fff;
+    margin: 30px 25px;
+    padding: 10px 0;
+    .travel-show-category {
+      margin: 15px 0;
+    }
+    .travel-show-like {
+      margin: 15px 0;
+    }
+    .travel-show-title {
+      h4 {
+      font-size: 20px;
+      }
+    }
+    .travel-show-option {
+      margin: 20px 10px;
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .li-right {
+        float: right;
+        margin-right: 60px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+    .travel-show-play {
+      .play-box {
+        width: 6%;
+        text-align: center;
+        padding: 0 5px;
+        border: 1px solid #000;
+        border-radius: 100px;
+        background-color: #99FFFF;
+      }
+    }
+    .travel-show-hotel {
+      .hotel-box {
+        width: 8%;
+        text-align: center;
+        padding: 0 5px;
+        border: 1px solid #000;
+        border-radius: 100px;
+        background-color: #FFFF66;
+      }
+    }
+    .travel-show-meal {
+      .meal-box {
+        width: 6%;
+        text-align: center;
+        background-color: #99FF66;
+        padding: 0 5px;
+        border: 1px solid #000;
+        border-radius: 100px;
       }
     }
   }
-  .travel-time {
-      padding: 0 !important;
-      font-size: 12px;
-
-    .travel-evaluation {
-      margin-top: 55px;
+}
+.show-box {
+  .show-title {
+    margin: 5px 0;
+    p {
+      display: inline-block;
+    }
+    .title-text {
+      width: 85%;
+      float: right;
+      p {
         font-size: 18px;
-        font-weight: bold;
-        text-align: center;
+      }
     }
   }
-  .travel-destroy {
-    .travel-destroy {
-      margin-top: 75px;
-      text-align: center;
+  .show-option {
+    margin: 5px 0;
+    ul {
+      float: right;
+    }
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 10px;
     }
   }
-  .travel-option {
-    width: 47%;
-    margin-top: 30px;
+  .show-impression {
+    margin-bottom: 10px;
+    p {
+      display: inline-block;
+    }
+    .impression-text {
+      margin-left: 30px;
+      display: inline-block;
+      font-size: 18px;
+    }
+  }
 
-    .travel_user_icon {
-      border-radius: 200px;
-        width: 40px;
-        height: 40px;
+  .show-price {
+    ul {
+      float: right;
+    }
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 10px;
     }
   }
+  .show-address {
+    margin-bottom: 20px;
+  }
+  #play-map, #hotel-map, #meal-map {
+    width: 100%;
+    margin: 0 auto;
+    height: 300px;
+  }
+  .show-official_site {
+    margin: 30px;
+  }
+}
+.show-created_at {
+  p {
+    float: right;
+    font-size: 8px;
+  }
+}
+#play-show, #hotel-show, #meal-show {
+  display: none;
+}
+
+// コメント
+.travel-comment {
+  width: 70% !important;
+  margin:30px 0;
+  padding: 20px 0;
+  // margin-left: 310px !important;
+  margin-right: 30px;
+  background-color: #fff;
+  .commrnt-header{
+    margin-bottom: 40px;
+  }
+  .comment-index {
+    margin: 30px 0;
+    .comment-user {
+      margin: 20px 0;
+      padding-top: 20px;
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px;
+        .comment_user_icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 200px;
+        }
+      }
+      .created_at_right {
+        float: right;
+        font-size: 8px;
+      }
+    }
+    .travel-comment-box {
+      padding: 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #000;
+    }
+    .comment-destroy-btn {
+      display: block;
+    }
+  }
+  .comment-text {
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin-bottom: 10px;
+  }
+}
+.travel-destroy-btn {
+  margin-left: 10px;
 }

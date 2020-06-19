@@ -1,5 +1,7 @@
 class User::TravelsController < ApplicationController
 
+  # before_action :set_user, only: [:show]
+  before_action :set_travel, only: [:show, :destroy, :edit]
 
   def new
     @travel = Travel.new
@@ -85,7 +87,7 @@ class User::TravelsController < ApplicationController
          meal_valid = @meal.valid?
       end
       if play_valid == false || hotel_valid == false || meal_valid == false
-        render :new 
+        render :new
         @travel.destroy
         return
       end
@@ -107,6 +109,16 @@ class User::TravelsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    if @travel.user == current_user
+      @travel_images = @travel.travel_images
+    else
+      if @travel.is_display == true
+        @travel_images = @travel.travel_images
+      else
+        redirect_back(fallback_location: root_path)
+      end
+    end
   end
 
   def edit
@@ -116,10 +128,22 @@ class User::TravelsController < ApplicationController
   end
 
   def index
-    @travels = Travel.all
+    @travels = []
+    @travels_play = []
+    @travels_hotel = []
+    @travels_meal = []
+    Travel.where(is_display: true).each do |travel|
+      @travels.push(travel)
+      @travels_play.push(travel) if travel.category.is_play
+      @travels_hotel.push(travel) if travel.category.is_hotel
+      @travels_meal.push(travel) if travel.category.is_meal
+    end
   end
 
   def destroy
+    @travel.destroy
+    flash.now[:alert] = "投稿を削除しました"
+    redirect_back(fallback_location: root_path)
   end
 
   private

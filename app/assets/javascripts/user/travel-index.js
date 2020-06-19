@@ -1,0 +1,20 @@
+$(function(){
+  $('#show-play-btn').click(function(){
+    $('#travel-play-index').fadeIn();
+    $('#travel-hotel-index').fadeOut();
+    $('#travel-meal-index').fadeOut();
+    $('#travel-all-index').fadeOut();
+  });
+  $('#show-hotel-btn').click(function(){
+    $('#travel-play-index').fadeOut();
+    $('#travel-hotel-index').fadeIn();
+    $('#travel-meal-index').fadeOut();
+    $('#travel-all-index').fadeOut();
+  });
+  $('#show-meal-btn').click(function(){
+    $('#travel-play-index').fadeOut();
+    $('#travel-hotel-index').fadeOut();
+    $('#travel-meal-index').fadeIn();
+    $('#travel-all-index').fadeOut();
+  });
+});

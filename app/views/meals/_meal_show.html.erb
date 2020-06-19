@@ -1,0 +1,68 @@
+<div class="show-category">
+  <p class="meal-box">食事</p>
+</div>
+<div class="show-box col-xs-12">
+  <div class="show-title">
+    <p>訪れた場所:　</p>
+    <div class=title-text>
+      <p><%= travel.meal.shop_name %></p>
+    </div>
+  </div>
+  <div class="show-option clearfix">
+    <ul>
+      <% if travel.user.is_baby_food == true %>
+        <li>離乳食持ち込み:</li>
+        <li>
+          <% if travel.meal.is_baby_food_place == true %>
+            <p>あり</p>
+          <% else %>
+            <p>なし</p>
+          <% end %>
+        </li>
+      <% end %>
+      <% if travel.traffic_way == "車" %>
+        <li>駐車場:</li>
+        <li><%= travel.meal.parking %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="show-impression">
+    <p>感想</p>
+    <div class="impression-text">
+      <p class="text"><%= travel.meal.impression %></p>
+    </div>
+  </div>
+
+  <div class="show-price clearfix">
+    <ul>
+      <li>大人料金</li>
+      <li>
+        <% if travel.meal.adult_price == 0 %>
+          <p>無料</p>
+        <% else %>
+          <p><%= travel.meal.adult_price %>円　</p>
+        <% end %>
+      </li>
+      <li>子供料金</li>
+      <li>
+        <% if travel.meal.child_price == 0 %>
+          <p>無料</p>
+        <% else %>
+          <p><%= travel.meal.child_price %>円</p>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="show-address">
+    <p>住所:　<span id="meal-address"><%= travel.meal.address %></span></p>
+  </div>
+  <div id="meal-map"></div>
+  <div class="show-official_site">
+    <% if travel.meal.official_site %>
+      <%= link_to "公式サイト", travel.meal.official_site %>
+    <% end %>
+  </div>
+  <div class="show-created_at">
+    <p>投稿日:　<%= travel.created_at.to_s(:datetime_jp) %></p>
+  </div>
+</div>
