@@ -1,6 +1,6 @@
 class Play < ApplicationRecord
 
-  belongs_to :travel, dependent: :destroy
+  belongs_to :travel
 
   validates :name, :address, :adult_price, :child_price, :impression, presence: true
   validates :impression, length: {maximum: 1000}

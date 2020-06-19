@@ -48,7 +48,9 @@
   </div>
   <div id="hotel-map"></div>
   <div class="show-official_site">
-    <%= link_to "公式サイト", travel.hotel.official_site %>
+    <% if travel.hotel.official_site %>
+      <%= link_to "公式サイト", travel.hotel.official_site %>
+    <% end %>
   </div>
   <div class="show-created_at">
     <p>投稿日:　<%= travel.created_at.to_s(:datetime_jp) %></p>

@@ -2,7 +2,7 @@
   <div class="travel-index col-xs-12">
     <div class="index-box col-xs-12">
       <div class="category col-xs-12">
-        <ul class="travel-ul category-bex">
+        <ul class="travel-ul category-box-index">
           <% if travel.category.is_play == true %>
             <li class="play-box">遊び</li>
           <% end %>
@@ -42,9 +42,23 @@
         <p class="travel-evaluation">評価：<%= travel.evaluation %></p>
       </div>
 
-      <div class="travel-destroy col-xs-1">
+      <div class="travel-destroy-edit col-xs-1">
         <% if travel.user == current_user %>
-          <%= link_to "削除", travel_path(travel),method: :derete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger travel-destroy" %>
+          <li class="dropdown">
+            <%= link_to "#", class: "header-icon",'data-toggle': :dropdown do %>
+              <svg class="bi bi-chevron-compact-down" width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+              </svg>
+            <% end %>
+            <ul class="dropdown-menu dropdown-link">
+              <li class="index_dropdown">
+                <%= link_to "編集", edit_travel_path(travel), data: {"turbolinks" => false},class: "travel-edit" %>
+              </li>
+              <li class="index_dropdown">
+              <%= link_to "削除", travel_path(travel), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "travel-destroy" %>
+              </li>
+            </ul>
+          </li>
         <% end %>
       </div>
 

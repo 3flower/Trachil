@@ -1,6 +1,6 @@
 class Meal < ApplicationRecord
 
-  belongs_to :travel, dependent: :destroy
+  belongs_to :travel
 
   validates :shop_name, :address, :adult_price, :child_price, :impression, presence: true
   validates :impression, length: {maximum: 1000}

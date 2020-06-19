@@ -8,7 +8,7 @@
   </div>
   <div class="travel-show col-xs-9">
     <div class="travel-show-category col-xs-10">
-      <ul class="travel-ul category-bex">
+      <ul class="travel-ul category-box">
         <% if @travel.category.is_play == true %>
           <li class="play-box" id="show-play-btn">遊び</li>
         <% end %>
@@ -59,10 +59,15 @@
         <%= render "meals/meal_show", travel: @travel %>
       </div>
     <% end %>
-
-    <div class="travel-comment col-xs-12" id="comments-<%= @travel.id %>">
-      <%= render "user/comments/comment", travel: @travel, comment: @comment %>
-    </div>
+      <div class="travel-edit-destroy col-xs-12">
+        <% if @travel.user == current_user %>
+          <%= link_to "削除", travel_path(@travel), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger btn-sm travel-destroy-btn pull-right" %>
+          <%= link_to "編集", edit_travel_path(@travel), data: {"turbolinks" => false},class: "btn btn-primary btn-sm pull-right travel-edit-btn" %>
+        <% end %>
+      </div>
+  </div>
+  <div class="travel-comment col-xs-9 pull-right" id="comments-<%= @travel.id %>">
+    <%= render "user/comments/comment", travel: @travel, comment: @comment %>
   </div>
 </div>
 

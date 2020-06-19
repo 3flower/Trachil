@@ -58,7 +58,9 @@
   </div>
   <div id="meal-map"></div>
   <div class="show-official_site">
-    <%= link_to "公式サイト", travel.meal.official_site %>
+    <% if travel.meal.official_site %>
+      <%= link_to "公式サイト", travel.meal.official_site %>
+    <% end %>
   </div>
   <div class="show-created_at">
     <p>投稿日:　<%= travel.created_at.to_s(:datetime_jp) %></p>
