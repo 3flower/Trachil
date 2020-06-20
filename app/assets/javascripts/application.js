@@ -81,6 +81,18 @@ $(function(){
       $(this).removeClass('add_css_follow');
     });
   });
+  // チェックを入れないとサブミットが押せない
+  $('#travel-submit').attr('disabled', 'disabled');
+  $('.check-box').click(function(){
+    if ($('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+      $('#travel-submit').removeAttr('disabled');
+    } else {
+      $('#travel-submit').attr('disabled', 'disabled');
+    }
+  });
+  if ($('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+    $('#travel-submit').removeAttr('disabled');
+  }
 
   // 新規投稿の駐車場ありの表示
   $('#travel_traffic_way').change(function() {

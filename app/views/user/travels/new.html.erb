@@ -7,22 +7,6 @@
 
       <%= render "layouts/error_messages", resource: @travel %>
 
-      <% unless @play == nil %>
-        <%= render "layouts/error_messages", resource: @play %>
-      <% end %>
-
-      <% unless @hotel == nil %>
-        <%= render "layouts/error_messages", resource: @hotel %>
-      <% end %>
-
-      <% unless @meal == nil %>
-        <%= render "layouts/error_messages", resource: @meal %>
-      <% end %>
-
-      <% unless @image == nil %>
-        <%= render "layouts/error_messages", resource: @image %>
-      <% end %>
-
       <div class="image-new">
         <div class="">
           <%= f.label :"画像" %>
@@ -106,7 +90,7 @@
         </div>
       <% end %>
         <div class="submit-btn col-xs-12">
-          <%= f.submit "投稿", class: "btn btn-primary pull-right" %>
+          <%= f.submit "投稿", class: "btn btn-primary pull-right", id:"travel-submit" %>
         </div>
       <% end %>
     </div>

@@ -1,7 +1,7 @@
 class User::TravelsController < ApplicationController
 
   # before_action :set_user, only: [:show]
-  before_action :set_travel, only: [:show, :destroy, :edit]
+  before_action :set_travel, only: [:show, :destroy, :edit, :update]
 
   def new
     @travel = Travel.new
@@ -10,22 +10,15 @@ class User::TravelsController < ApplicationController
     @travel.build_meal
     @travel.build_category
     @travel.travel_images.build
-    # @category = Category.new
-    # @play = Play.new
-    # @hotel = Hotel.new
-    # @meal = Meal.new
-    # @image = TravelImage.new
   end
 
   def create
     @travel = current_user.travels.new(travels_params)
-    binding.pry
     if @travel.save
       redirect_to travels_path
     else
       render :new
     end
-    binding.pry
   end
 
   def show
@@ -45,6 +38,22 @@ class User::TravelsController < ApplicationController
   end
 
   def update
+    if @travel.update(travels_update_params)
+      travels_update_params[:travel_images_attributes].each do |i|
+        # binding.pry
+        if i[1]["_destroy"] == "1"
+          @image = TravelImage.find(i[1]["id"])
+          if @image.destroy
+            if @travel.travel_images.empty?
+              render :edit and return
+            end
+          end
+        end
+      end
+      redirect_to travels_path
+    else
+      render :edit
+    end
   end
 
   def index
@@ -75,6 +84,16 @@ class User::TravelsController < ApplicationController
        meal_attributes: [:id, :shop_name, :address, :adult_price, :child_price, :impression, :is_baby_food_place, :parking, :official_site],
        category_attributes: [:id, :is_play, :is_hotel, :is_meal],
        travel_images_attributes:[:id, :image_url]
+    )
+  end
+
+  def travels_update_params
+    params.require(:travel).permit(:title, :travel_day, :traffic_way, :recommend_age, :evaluation, :is_display,
+       play_attributes: [:id, :name, :address, :adult_price, :child_price, :impression, :is_diaper_place, :parking, :official_site],
+       hotel_attributes: [:id, :hotel_name, :address, :adult_price, :child_price, :impression, :parking, :official_site],
+       meal_attributes: [:id, :shop_name, :address, :adult_price, :child_price, :impression, :is_baby_food_place, :parking, :official_site],
+       category_attributes: [:id, :is_play, :is_hotel, :is_meal],
+       travel_images_attributes:[:id, :image_url, :_destroy]
     )
   end
 end
