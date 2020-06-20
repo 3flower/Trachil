@@ -96,36 +96,36 @@ $(function(){
   }
 
   // 新規投稿のチェックの表示
-  $('#travel_is_play').click(function(){
-    if($('#travel_is_play').prop('checked')){
+  $('#travel_category_attributes_is_play').click(function(){
+    if($('#travel_category_attributes_is_play').prop('checked')){
       $('.play-new').fadeIn();
     } else {
       $('.play-new').fadeOut();
     };
   });
-  if($('#travel_is_play').prop('checked')){
+  if($('#travel_category_attributes_is_play').prop('checked')){
     $('.play-new').fadeIn();
   }
 
-  $('#travel_is_hotel').click(function(){
-    if($('#travel_is_hotel').prop('checked')){
+  $('#travel_category_attributes_is_hotel').click(function(){
+    if($('#travel_category_attributes_is_hotel').prop('checked')){
       $('.hotel-new').fadeIn();
     } else {
       $('.hotel-new').fadeOut();
     };
   });
-  if($('#travel_is_hotel').prop('checked')){
+  if($('#travel_category_attributes_is_hotel').prop('checked')){
     $('.hotel-new').fadeIn();
   }
 
-  $('#travel_is_meal').click(function(){
-    if($('#travel_is_meal').prop('checked')){
+  $('#travel_category_attributes_is_meal').click(function(){
+    if($('#travel_category_attributes_is_meal').prop('checked')){
       $('.meal-new').fadeIn();
     } else {
       $('.meal-new').fadeOut();
     };
   });
-  if($('#travel_is_meal').prop('checked')){
+  if($('#travel_category_attributes_is_meal').prop('checked')){
     $('.meal-new').fadeIn();
   }
 

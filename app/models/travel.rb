@@ -9,6 +9,11 @@ class Travel < ApplicationRecord
   has_one    :play, dependent: :destroy
   has_one    :hotel, dependent: :destroy
   has_one    :meal, dependent: :destroy
+  accepts_nested_attributes_for :category
+  accepts_nested_attributes_for :play
+  accepts_nested_attributes_for :hotel
+  accepts_nested_attributes_for :meal
+  accepts_nested_attributes_for :travel_images
 
   validates :title, :travel_day, :traffic_way, :recommend_age, :evaluation, presence: true
   validates :title, length: {maximum: 87}
