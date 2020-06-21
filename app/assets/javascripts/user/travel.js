@@ -3,12 +3,16 @@ $(document).on('turbolinks:load', function(){
 
     //プレビューのhtmlを定義
     function buildHTML(count) {
-      var html = '<div class="preview-box" id="preview-box__${count}">\
-                    <div class="upper-box"><img src="" alt="preview"></div>\
-                      <div class="lower-box">\
-                        <div class="delete-box" id="delete_btn_${count}"><span>削除</span></div>\
+      var html = `<div class="preview-box" id="preview-box__${count}">\
+                    <div class="upper-box">\
+                      <img src="" alt="preview">\
                     </div>\
-                  </div>'
+                    <div class="lower-box">\
+                      <div class="delete-box" id="delete_btn_${count}">\
+                        <span>削除</span>\
+                      </div>\
+                    </div>\
+                  </div>`
       return html;
     }
 
@@ -21,11 +25,11 @@ $(document).on('turbolinks:load', function(){
       $('.label-content').css('width', labelWidth);
       //プレビューにidを追加
       $('.preview-box').each(function(index, box){
-        $(box).attr('id', 'preview-box__${index}');
+        $(box).attr('id', `preview-box__${index}`);
       })
       //削除ボタンにidを追加
       $('.delete-box').each(function(index, box){
-        $(box).attr('id', 'delete_btn_${index}');
+        $(box).attr('id', `delete_btn_${index}`);
       })
       var count = $('.preview-box').length;
       //プレビューが5あるときは、投稿ボックスを消しておく
@@ -51,7 +55,7 @@ $(document).on('turbolinks:load', function(){
       $(".hidden-field").each(function(i, o){
       if ($(o).hasClass("added") == false && $(o).val() == ""){
         var id = $(o).attr('id').replace(/[^0-9]/g, '');
-        $('.label-box').attr({id: 'label-box--${id}',for: 'travel_images_attributes_${id}_image'});
+        $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
         return false;
       }
       });
@@ -65,7 +69,7 @@ $(document).on('turbolinks:load', function(){
       reader.onload = function() {
         var image = this.result;
         //プレビューが元々なかった場合はhtmlを追加
-        if ($('#preview-box__${id}').length == 0) {
+        if ($(`#preview-box__${id}`).length == 0) {
           var count = $('.preview-box').length;
           var html = buildHTML(id);
           //ラベルの直前のプレビュー群にプレビューを追加
@@ -73,7 +77,7 @@ $(document).on('turbolinks:load', function(){
           $(prevContent).append(html);
         }
         //イメージを追加
-        $('#preview-box__${id} img').attr('src', '${image}');
+        $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
         //プレビューが5個あったらラベルを隠す
         if (count == 5) {
@@ -81,8 +85,8 @@ $(document).on('turbolinks:load', function(){
         }
 
         //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す=============
-        if ($('#travel_travel_images_attributes_${id}__destroy')){
-          $('#travel_travel_images_attributes_${id}__destroy').prop('checked',false);
+        if ($(`#travel_travel_images_attributes_${id}__destroy`)){
+          $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',false);
         }
         //=============================================================================
 
@@ -102,9 +106,9 @@ $(document).on('turbolinks:load', function(){
       var count = $('.preview-box').length;
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      $('#preview-box__${id}').remove();
+      $(`#preview-box__${id}`).remove();
       // 元々画像があるのにクラスを削除する
-      $('#travel_images_attributes_${id}_image').removeClass("added");
+      $(`#travel_images_attributes_${id}_image`).removeClass("added");
       // サブミットボタンを押せなくする
       if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
         $('#travel-submit').removeAttr('disabled');
@@ -116,9 +120,9 @@ $(document).on('turbolinks:load', function(){
 
       //新規投稿時
       //削除用チェックボックスの有無で判定
-      if ($('#travel_travel_images_attributes_${id}__destroy').length == 0) {
+      if ($(`#travel_travel_images_attributes_${id}__destroy`).length == 0) {
         //フォームの中身を削除
-        $('#travel_images_attributes_${id}_image').val("");
+        $(`#travel_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
@@ -126,12 +130,12 @@ $(document).on('turbolinks:load', function(){
         }
         setLabel(count);
         if(id < 5){
-          $('.label-box').attr({id: 'label-box--${id}',for: 'travel_images_attributes_${id}_image'});
+          $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
         }
       } else {
 
         //投稿編集時
-        $('#travel_travel_images_attributes_${id}__destroy').prop('checked',true);
+        $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
         if (count == 4) {
           $('.label-content').show();
@@ -142,7 +146,7 @@ $(document).on('turbolinks:load', function(){
         //ラベルのidとforの値を変更
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 5){
-          $('.label-box').attr({id: 'label-box--${id}',for: 'travel_images_attributes_${id}_image'});
+          $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
         }
       }
       //=============================================================================
