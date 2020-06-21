@@ -37,6 +37,13 @@ $(document).on('turbolinks:load', function(){
         $('.label-content').hide();
       }
     }
+    // renderで戻ってきた時の処理
+    var prevContent = $('.label-content').prev();
+    labelWidth = (900 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+    $('.label-content').css('width', labelWidth);
+    if ($('.preview-box').length == 5) {
+      $('.label-content').hide();
+    }
     //=============================================================================
 
     // ラベルのwidth操作
@@ -107,8 +114,7 @@ $(document).on('turbolinks:load', function(){
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
       $(`#preview-box__${id}`).remove();
-      // 元々画像があるのにクラスを削除する
-      $(`#travel_images_attributes_${id}_image`).removeClass("added");
+
       // サブミットボタンを押せなくする
       if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
         $('#travel-submit').removeAttr('disabled');
@@ -123,6 +129,8 @@ $(document).on('turbolinks:load', function(){
       if ($(`#travel_travel_images_attributes_${id}__destroy`).length == 0) {
         //フォームの中身を削除
         $(`#travel_images_attributes_${id}_image`).val("");
+        // 元々画像があるのにクラスを削除する
+        $(`#travel_images_attributes_${id}_image`).removeClass("added");
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
@@ -137,7 +145,7 @@ $(document).on('turbolinks:load', function(){
         //投稿編集時
         $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
-        if (count == 4) {
+        if (count == 5) {
           $('.label-content').show();
         }
 
