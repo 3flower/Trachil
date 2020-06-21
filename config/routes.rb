@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  # エラー404
-  # get '*path', controller: 'application', action: 'render_404'
+
 
   # デバイス
   devise_for :users, :controllers => {
@@ -28,5 +27,9 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+
+  # エラー４０４
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 
 end
