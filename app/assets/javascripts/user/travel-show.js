@@ -29,13 +29,13 @@ $(function(){
 
 
 function initMap(){
-  let play_map;
-  let hotel_map;
-  let meal_map;
-  let play_geocoder;
-  let hotel_geocoder;
-  let meal_geocoder;
-  
+  // let play_map;
+  // let hotel_map;
+  // let meal_map;
+  // let play_geocoder;
+  // let hotel_geocoder;
+  // let meal_geocoder;
+
   play_geocoder = new google.maps.Geocoder()
   hotel_geocoder = new google.maps.Geocoder()
   meal_geocoder = new google.maps.Geocoder()
