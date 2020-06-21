@@ -26,7 +26,6 @@ $(function(){
 
 });
 
-let map;
 let play_map;
 let hotel_map;
 let meal_map;
