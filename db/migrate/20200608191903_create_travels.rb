@@ -7,7 +7,7 @@ class CreateTravels < ActiveRecord::Migration[5.2]
       t.date    :travel_day
       t.integer :traffic_way
       t.string  :recommend_age
-      t.integer :evaluation
+      t.float   :evaluation
       t.boolean :is_display,    default: true
 
       t.timestamps

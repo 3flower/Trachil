@@ -148,7 +148,4 @@ $(function(){
   if($('#travel_category_attributes_is_meal').prop('checked')){
     $('.meal-new').fadeIn();
   }
-
-  // 編集、新規投稿、画像がない場合投稿ボタンが押せない
-
 });

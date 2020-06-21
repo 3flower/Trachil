@@ -68,10 +68,20 @@
           </div>
 
           <div class="col-xs-3">
-            <div class="evaluation-box">
-              <%= f.label :"評価" %>
-              <%= f.text_field :evaluation, class: "evaluation" %>
+            <div class="evaluation-box star">
+              <%= f.label :evaluation,'評価 ' %>
+              <%= f.hidden_field :evaluation, id: :review_star %>
             </div>
+            <script>
+              $('.star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'travel[evaluation]',
+                half: true,
+              });
+            </script>
             <div class="is-display-box">
               <%= f.label :"表示形式" %>
               <%= f.radio_button :is_display, true, class: "radio_button"  %>
