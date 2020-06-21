@@ -1,8 +1,8 @@
-<% provide(:title, "新規投稿") %>
+<% provide(:title, "投稿編集") %>
 <div class="row">
   <div class="col-xs-12">
     <div class="travel-new">
-      <h2 class="travel-new-header"></h2>
+      <h2 class="travel-new-header">投稿編集</h2>
       <%= form_with(model:@travel, url:travel_path, local:true, method: :patch) do |f| %>
 
         <%= render "layouts/error_messages", resource: @travel %>
@@ -69,7 +69,7 @@
 
           <div class="col-xs-3">
             <div class="evaluation-box star">
-              <%= f.label :evaluation,'評価 ' %>
+              <%= f.label :evaluation,'評価　' %>
               <%= f.hidden_field :evaluation, id: :review_star %>
             </div>
             <script>
@@ -79,6 +79,7 @@
                 starOn : '<%= asset_path('star-on.png') %>',
                 starHalf: '<%= asset_path('star-half.png') %>',
                 scoreName: 'travel[evaluation]',
+                score: <%= @travel.evaluation %>,
                 half: true,
               });
             </script>
