@@ -52,9 +52,7 @@ $(document).on('turbolinks:load', function(){
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      console.log($(this))
       $(".hidden-field").each(function(i, o){
-        console.log($(o).val())
       if ($(o).hasClass("added") == false && $(o).val() == ""){
         var id = $(o).attr('id').replace(/[^0-9]/g, '');
         $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
@@ -108,7 +106,6 @@ $(document).on('turbolinks:load', function(){
       var count = $('.preview-box').length;
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      console.log(id)
       $(`#preview-box__${id}`).remove();
       // 元々画像があるのにクラスを削除する
       $(`#travel_images_attributes_${id}_image`).removeClass("added");
@@ -118,8 +115,6 @@ $(document).on('turbolinks:load', function(){
       } else {
         $('#travel-submit').attr('disabled', 'disabled');
       }
-      // a = $('.preview-content').find('.preview-box').length
-      // console.log(a);
 
       //新規登録時と編集時の場合分け==========================================================
 

@@ -71,11 +71,8 @@ function initMap(){
   codeAddress()
   function codeAddress(){
     var play_address = $('#play-address').text()
-    console.log(play_address)
     var meal_address = $('#meal-address').text()
-    console.log(meal_address)
     var hotel_address = $('#hotel-address').text()
-    console.log(hotel_address)
 
     play_geocoder.geocode( { 'address': play_address}, function(results, status) {
       if (status == 'OK') {

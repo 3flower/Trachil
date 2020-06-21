@@ -19,6 +19,7 @@
           <div class="form_icon">
             <%= image_tag current_user.user_image_id.url,class: "icon", id: "preview" %>
             <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
+            <%= f.check_box :remove_user_image_id, class: "hidden-checkbox" %>
           </div>
         </label>
         <div class ="icon_remove">

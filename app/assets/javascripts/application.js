@@ -43,24 +43,32 @@ $(function(){
 
   // 新規会員登録の画像プレビューと削除
  $('#user_image').change(function(){
-   var file = $('input[type="file"]').prop('files')[0];
-   var fileReader = new FileReader();
-   fileReader.onload= function() {
-     document.getElementById('preview').src = fileReader.result;
-   }
-   fileReader.readAsDataURL(file);
-   // 画像が投稿されると削除ボタンが出てくる
-   $('.icon_remove').fadeIn();
-   $('.icon_remove').click(function(){
-     // 画像を削除する
-     $('#preview').removeAttr('src');
-     // 削除ボタンを押すとデフォルトの画像に変わる
-     $('#preview').attr({src: "/images/default.png"});
-     $('.icon_remove').css('display', 'none');
-     //inputタグに入ったファイルを削除
-     $('#user_image').val("");
-   });
+    var file = $('input[type="file"]').prop('files')[0];
+    var fileReader = new FileReader();
+    fileReader.onload= function() {
+      document.getElementById('preview').src = fileReader.result;
+    }
+    fileReader.readAsDataURL(file);
+    // 画像が投稿されると削除ボタンが出てくる
+    $('.icon_remove').fadeIn();
+    if ($(`#user_remove_user_image_id`)){
+      $(`#user_remove_user_image_id`).prop('checked',false);
+    }
  });
+ $('.icon_remove').click(function(){
+   // 画像を削除する
+   $('#preview').removeAttr('src');
+   // 削除ボタンを押すとデフォルトの画像に変わる
+   $('#preview').attr({src: "/images/default.png"});
+   $('.icon_remove').css('display', 'none');
+   //inputタグに入ったファイルを削除
+   $('#user_image').val("");
+   $(`#user_remove_user_image_id`).prop('checked',true);
+ });
+ // 画像がある場合削除ボタンを表示させる
+ if ($('#preview').attr('src') != '/images/default.png') {
+   $('.icon_remove').fadeIn();
+ }
 
  // ユーザー詳細のタブメニュー
  $('#tab-contents .tab[id != "travel"]').hide();

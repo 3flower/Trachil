@@ -1,7 +1,8 @@
 class User::TravelsController < ApplicationController
 
-  # before_action :set_user, only: [:show]
-  before_action :set_travel, only: [:show, :destroy, :edit, :update]
+  before_action :set_travel, only: [:show, :destroy, :edit, :update, :baria_user]
+  before_action :baria_user,only: [:edit, :update, :destroy]
+  before_action :my_authenticate_user!
 
   def new
     @travel = Travel.new
@@ -91,5 +92,11 @@ class User::TravelsController < ApplicationController
        category_attributes: [:id, :is_play, :is_hotel, :is_meal],
        travel_images_attributes:[:id, :image_url, :_destroy]
     )
+  end
+
+  def baria_user
+  	if @travel.user != current_user
+      redirect_back(fallback_location: root_path)
+    end
   end
 end
