@@ -43,11 +43,7 @@ class User::TravelsController < ApplicationController
         # binding.pry
         if i[1]["_destroy"] == "1"
           @image = TravelImage.find(i[1]["id"])
-          if @image.destroy
-            if @travel.travel_images.empty?
-              render :edit and return
-            end
-          end
+          @image.destroy
         end
       end
       redirect_to travels_path

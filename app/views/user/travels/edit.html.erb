@@ -35,7 +35,7 @@
             </div>
             <div class="hidden-content">
               <%= f.fields_for :travel_images do |image| %>
-                <%= image.file_field :image_url, type: 'file', name: "travel[travel_images_attributes][#{image.index}][image_url]", value: "a", id: "travel_images_attributes_#{image.index}_image", class:"hidden-field" %>
+                <%= image.file_field :image_url, type: 'file', name: "travel[travel_images_attributes][#{image.index}][image_url]", value: "a", id: "travel_images_attributes_#{image.index}_image", class:"hidden-field added" %>
                 <%= image.check_box :_destroy, class: "hidden-checkbox" %>
               <% end %>
               <% @travel.travel_images.length.upto(4) do |i| %>

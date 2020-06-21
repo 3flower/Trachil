@@ -84,7 +84,7 @@ $(function(){
   // チェックを入れないとサブミットが押せない
   $('#travel-submit').attr('disabled', 'disabled');
   $('.check-box').click(function(){
-    if ($('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+    if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
       $('#travel-submit').removeAttr('disabled');
     } else {
       $('#travel-submit').attr('disabled', 'disabled');
@@ -140,5 +140,7 @@ $(function(){
   if($('#travel_category_attributes_is_meal').prop('checked')){
     $('.meal-new').fadeIn();
   }
+
+  // 編集、新規投稿、画像がない場合投稿ボタンが押せない
 
 });

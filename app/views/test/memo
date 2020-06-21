@@ -244,3 +244,11 @@ $(function(){
               <% @travel.travel_images.length.upto(4) do |a| %>
                 <%= i.file_field :image_url, name: "item[images_attributes][#{a}][image]", id: "travel_images_attributes_#{a}_image", class:"hidden-field" %>
               <% end %>
+
+
+if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+              if ($('.preview-content').find('.preview-box').length) {
+                $('#travel-submit').removeAttr('disabled');
+              } else {
+                $('#travel-submit').attr('disabled', 'disabled');
+              }
