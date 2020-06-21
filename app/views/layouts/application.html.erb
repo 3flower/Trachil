@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body id="wrapper">
     <%= render "layouts/header" %>
     <div class="container">
       <div id="flash">
@@ -21,5 +21,6 @@
     <div id="user-modal">
       <%= render "users/sessions/signup", resource: resource %>
     </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
