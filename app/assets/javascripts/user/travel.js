@@ -1,4 +1,5 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
+  $(function(){
 
     //プレビューのhtmlを定義
     function buildHTML(count) {
@@ -15,6 +16,29 @@ $(function(){
       return html;
     }
 
+    // 投稿編集時
+    //travels/:i/editページへリンクした際のアクション=======================================
+    if (window.location.href.match(/\/travels\/\d+\/edit/)){
+      //登録済み画像のプレビュー表示欄の要素を取得する
+      var prevContent = $('.label-content').prev();
+      labelWidth = (900 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      $('.label-content').css('width', labelWidth);
+      //プレビューにidを追加
+      $('.preview-box').each(function(index, box){
+        $(box).attr('id', `preview-box__${index}`);
+      })
+      //削除ボタンにidを追加
+      $('.delete-box').each(function(index, box){
+        $(box).attr('id', `delete_btn_${index}`);
+      })
+      var count = $('.preview-box').length;
+      //プレビューが5あるときは、投稿ボックスを消しておく
+      if (count == 5) {
+        $('.label-content').hide();
+      }
+    }
+    //=============================================================================
+
     // ラベルのwidth操作
     function setLabel() {
       //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
@@ -28,18 +52,16 @@ $(function(){
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      console.log($(this))
       $(".hidden-field").each(function(i, o){
+        console.log($(o).val())
       if ($(o).val() == ""){
-        var id1 = $(o).attr('id').replace(/[^0-9]/g, '');
-        //labelボックスのidとforを更新
-        $('.label-box').attr({id: `label-box--${id1}`,for: `travel_images_attributes_${id1}_image`});
-        console.log(id1)
-        // $(`#preview-box__${id} img`).attr('src', `${image}`);
+        var id = $(o).attr('id').replace(/[^0-9]/g, '');
+        $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
         return false;
       }
       });
       //選択したfileのオブジェクトを取得
-      console.log($(this).attr('id'))
       var file = this.files[0];
       var reader = new FileReader();
       //readAsDataURLで指定したFileオブジェクトを読み込む
@@ -63,6 +85,12 @@ $(function(){
           $('.label-content').hide();
         }
 
+        //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す=============
+        if ($(`#travel_travel_images_attributes_${id}__destroy`)){
+          $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',false);
+        }
+        //=============================================================================
+
         //ラベルのwidth操作
         setLabel();
       }
@@ -72,27 +100,44 @@ $(function(){
     $(document).on('click', '.delete-box', function() {
       var count = $('.preview-box').length;
       setLabel(count);
-      //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      //取得したidに該当するプレビューを削除
+      console.log(id)
       $(`#preview-box__${id}`).remove();
-      //フォームの中身を削除
-      $(`#travel_images_attributes_${id}_image`).val("");
 
-      //削除時のラベル操作
-      var count = $('.preview-box').length;
-      //5個めが消されたらラベルを表示
-      if (count == 4) {
-        $('.label-content').show();
-      }
-      setLabel(count);
+      //新規登録時と編集時の場合分け==========================================================
 
-      if(id < 5){
-        //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
-        $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+      //新規投稿時
+      //削除用チェックボックスの有無で判定
+      if ($(`#travel_travel_images_attributes_${id}__destroy`).length == 0) {
+        //フォームの中身を削除
+        $(`#travel_images_attributes_${id}_image`).val("");
+        var count = $('.preview-box').length;
+        //5個めが消されたらラベルを表示
+        if (count == 4) {
+          $('.label-content').show();
+        }
+        setLabel(count);
+        if(id < 5){
+          $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+        }
+      } else {
+
+        //投稿編集時
+        $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',true);
+        //5個めが消されたらラベルを表示
+        if (count == 4) {
+          $('.label-content').show();
+        }
+
+        //ラベルのwidth操作
+        setLabel();
+        //ラベルのidとforの値を変更
+        //削除したプレビューのidによって、ラベルのidを変更する
+        if(id < 5){
+          $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+        }
       }
-      if(count == 0) {
-        $('.label-box').attr({id: `label-box--0`,for: `travel_images_attributes_0_image`});
-      }
+      //=============================================================================
     });
   });
+});

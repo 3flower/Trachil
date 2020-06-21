@@ -1,0 +1,246 @@
+# def play_params
+#   params.require(:travel).permit(:play_name, :play_impression, :play_adult_price, :play_child_price, :play_address, :is_diaper_place, :play_parking, :play_official_site)
+# end
+#
+# def hotel_params
+#   params.require(:travel).permit(:hotel_name, :hotel_impression, :hotel_adult_price, :hotel_child_price, :hotel_address, :hotel_parking, :hotel_official_site)
+# end
+#
+# def meal_params
+#   params.require(:travel).permit(:meal_name, :meal_impression, :meal_adult_price, :meal_child_price, :meal_address, :is_baby_food_place, :meal_parking, :meal_official_site)
+# end
+# def category_params
+#   params.require(:travel).permit(:is_play, :is_hotel, :is_meal)
+# end
+# def image_params
+#   params.require(:travel).permit([image_url_attributes:[:image_url]])
+# end
+
+
+
+@travel = current_user.travels.new(travel_params)
+unless @travel.valid?
+  render :new and return
+else
+  @travel.save
+end
+
+@play = Play.new(
+         travel_id:   @travel.id,
+              name:   params[:travel][:play_name],
+        impression:   params[:travel][:play_impression],
+       adult_price:   params[:travel][:play_adult_price],
+       child_price:   params[:travel][:play_child_price],
+           address:   params[:travel][:play_address],
+   is_diaper_place:   params[:travel][:is_diaper_place],
+           parking:   params[:travel][:play_parking],
+     official_site:   params[:travel][:play_official_site]
+)
+@hotel = Hotel.new(
+         travel_id:   @travel.id,
+        hotel_name:   params[:travel][:hotel_name],
+        impression:   params[:travel][:hotel_impression],
+       adult_price:   params[:travel][:hotel_adult_price],
+       child_price:   params[:travel][:hotel_child_price],
+           address:   params[:travel][:hotel_address],
+           parking:   params[:travel][:hotel_parking],
+     official_site:   params[:travel][:hotel_official_site]
+)
+@meal = Meal.new(
+         travel_id:   @travel.id,
+         shop_name:   params[:travel][:meal_name],
+        impression:   params[:travel][:meal_impression],
+       adult_price:   params[:travel][:meal_adult_price],
+       child_price:   params[:travel][:meal_child_price],
+           address:   params[:travel][:meal_address],
+is_baby_food_place:   params[:travel][:is_baby_food_place],
+           parking:   params[:travel][:meal_parking],
+     official_site:   params[:travel][:meal_official_site]
+)
+@category = Category.new(
+         travel_id:   @travel.id,
+           is_play:   params[:travel][:is_play],
+          is_hotel:   params[:travel][:is_hotel],
+           is_meal:   params[:travel][:is_meal]
+)
+# @image = TravelImage.new
+# unless params.has_value?('travel_images')
+#   unless @image.valid?
+#     render :new and return
+#     @travel.destroy
+#   end
+# end
+# unless params["travel_images"]["image_url_attributes"] == nil
+#   flash[:alert] = "画像を一枚でもアップロードしてください"
+#   render :new
+#   @travel.destroy
+# end
+
+unless @category.is_play || @category.is_hotel || @category.is_meal
+  flash[:alert] = "遊びまたはホテルまたは食事にチェック入れてください"
+  render :new
+  @travel.destroy
+  return
+else
+  if @category.is_play
+    play_valid = @play.valid?
+  end
+  if @category.is_hotel
+    hotel_valid = @hotel.valid?
+  end
+  if @category.is_meal
+     meal_valid = @meal.valid?
+  end
+  if play_valid == false || hotel_valid == false || meal_valid == false
+    render :new
+    @travel.destroy
+    return
+  end
+end
+
+params["travel_images"]["image_url_attributes"].each do |image_url|
+  TravelImage.create(
+  travel_id:    @travel.id,
+  image_url:    image_url[1]["image_url"]
+  )
+end
+@play.save
+@hotel.save
+@meal.save
+@category.save
+flash[:notice] = "投稿しました。"
+redirect_to travels_path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(function(){
+
+    //プレビューのhtmlを定義
+    function buildHTML(count) {
+      var html = `<div class="preview-box" id="preview-box__${count}">
+                    <div class="upper-box">
+                      <img src="" alt="preview">
+                    </div>
+                    <div class="lower-box">
+                      <div class="delete-box" id="delete_btn_${count}">
+                        <span>削除</span>
+                      </div>
+                    </div>
+                  </div>`
+      return html;
+    }
+
+    // ラベルのwidth操作
+    function setLabel() {
+      //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
+      var prevContent = $('.label-content').prev();
+      labelWidth = (900 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      $('.label-content').css('width', labelWidth);
+    }
+
+    // プレビューの追加
+    $(document).on('change', '.hidden-field', function() {
+      setLabel();
+      //hidden-fieldのidの数値のみ取得
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      $(".hidden-field").each(function(i, o){
+      if ($(o).val() == ""){
+        var id1 = $(o).attr('id').replace(/[^0-9]/g, '');
+        //labelボックスのidとforを更新
+        $('.label-box').attr({id: `label-box--${id1}`,for: `travel_images_attributes_${id1}_image`});
+        console.log(id1)
+        // $(`#preview-box__${id} img`).attr('src', `${image}`);
+        return false;
+      }
+      });
+
+      //選択したfileのオブジェクトを取得
+      console.log($(this).attr('id'))
+      var file = this.files[0];
+      var reader = new FileReader();
+      //readAsDataURLで指定したFileオブジェクトを読み込む
+      reader.readAsDataURL(file);
+      //読み込み時に発火するイベント
+      reader.onload = function() {
+        var image = this.result;
+        //プレビューが元々なかった場合はhtmlを追加
+        if ($(`#preview-box__${id}`).length == 0) {
+          var count = $('.preview-box').length;
+          var html = buildHTML(id);
+          //ラベルの直前のプレビュー群にプレビューを追加
+          var prevContent = $('.label-content').prev();
+          $(prevContent).append(html);
+        }
+        //イメージを追加
+        $(`#preview-box__${id} img`).attr('src', `${image}`);
+        var count = $('.preview-box').length;
+        //プレビューが5個あったらラベルを隠す
+        if (count == 5) {
+          $('.label-content').hide();
+        }
+
+        //ラベルのwidth操作
+        setLabel();
+      }
+    });
+
+    // 画像の削除
+    $(document).on('click', '.delete-box', function() {
+      var count = $('.preview-box').length;
+      setLabel(count);
+      //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
+      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      //取得したidに該当するプレビューを削除
+      $(`#preview-box__${id}`).remove();
+      //フォームの中身を削除
+      $(`#travel_images_attributes_${id}_image`).val("");
+
+      //削除時のラベル操作
+      var count = $('.preview-box').length;
+      //5個めが消されたらラベルを表示
+      if (count == 4) {
+        $('.label-content').show();
+      }
+      setLabel(count);
+
+      if(id < 5){
+        //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
+        $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
+      }
+      if(count == 0) {
+        $('.label-box').attr({id: `label-box--0`,for: `travel_images_attributes_0_image`});
+      }
+    });
+  });
+
+
+
+  <div class="label-content">
+                <label for="travel_images_attributes_2_image" class="label-box" id="label-box--2">
+                  <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
+                </label>
+              </div>
+              <%= i.file_field :image_url, name: "item[images_attributes][0][image]", id: "travel_images_attributes_0_image", class:"hidden-field" %>
+              <%= i.check_box :_destroy, class: "hidden-checkbox" %>
+              <% @travel.travel_images.length.upto(4) do |a| %>
+                <%= i.file_field :image_url, name: "item[images_attributes][#{a}][image]", id: "travel_images_attributes_#{a}_image", class:"hidden-field" %>
+              <% end %>

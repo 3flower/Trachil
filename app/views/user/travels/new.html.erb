@@ -7,22 +7,6 @@
 
       <%= render "layouts/error_messages", resource: @travel %>
 
-      <% unless @play == nil %>
-        <%= render "layouts/error_messages", resource: @play %>
-      <% end %>
-
-      <% unless @hotel == nil %>
-        <%= render "layouts/error_messages", resource: @hotel %>
-      <% end %>
-
-      <% unless @meal == nil %>
-        <%= render "layouts/error_messages", resource: @meal %>
-      <% end %>
-
-      <% unless @image == nil %>
-        <%= render "layouts/error_messages", resource: @image %>
-      <% end %>
-
       <div class="image-new">
         <div class="">
           <%= f.label :"画像" %>
@@ -38,12 +22,12 @@
             </label>
           </div>
           <div class="hidden-content">
-            <%= f.fields_for :images do |i| %>
-              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][0][image_url]", class: "hidden-field", id:"travel_images_attributes_0_image" %>
-              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][1][image_url]", class: "hidden-field", id:"travel_images_attributes_1_image" %>
-              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][2][image_url]", class: "hidden-field", id:"travel_images_attributes_2_image" %>
-              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][3][image_url]", class: "hidden-field", id:"travel_images_attributes_3_image" %>
-              <%= i.file_field :image_url, type: 'file',name: "travel_images[image_url_attributes][4][image_url]", class: "hidden-field", id:"travel_images_attributes_4_image" %>
+            <%= f.fields_for :travel_images do |i| %>
+              <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][0][image_url]", class: "hidden-field", id:"travel_images_attributes_0_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][1][image_url]", class: "hidden-field", id:"travel_images_attributes_1_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][2][image_url]", class: "hidden-field", id:"travel_images_attributes_2_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][3][image_url]", class: "hidden-field", id:"travel_images_attributes_3_image" %>
+              <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][4][image_url]", class: "hidden-field", id:"travel_images_attributes_4_image" %>
             <% end %>
           </div>
         </div>
@@ -85,23 +69,28 @@
           </div>
         </div>
       </div>
+      <%= f.fields_for :category do |c| %>
         <p class="col-xs-10 check-box">遊び：
-          <%#= f.check_box :is_play ,{checked: @category.is_play}, "true", "false" %>
-          <%= f.check_box :is_play ,{}, "true", "false" %>
+          <%= c.check_box :is_play ,{}, "true", "false" %>
         </p>
         <div class="play-new">
-          <%= render "plays/play_form", f: f, play: @play %>
+          <%= render "plays/play_form", f: f %>
         </div>
-        <p class="col-xs-10 check-box">ホテル：<%= f.check_box :is_hotel ,{}, "true", "false" %></p>
+        <p class="col-xs-10 check-box">ホテル：
+          <%= c.check_box :is_hotel ,{}, "true", "false" %>
+        </p>
         <div class="hotel-new">
           <%= render "hotels/hotel_form", f: f %>
         </div>
-        <p class="col-xs-10 check-box">食事：<%= f.check_box :is_meal ,{}, "true", "false" %></p>
+        <p class="col-xs-10 check-box">食事：
+          <%= c.check_box :is_meal ,{}, "true", "false" %>
+        </p>
         <div class="meal-new">
           <%= render "meals/meal_form", f: f %>
         </div>
+      <% end %>
         <div class="submit-btn col-xs-12">
-          <%= f.submit "投稿", class: "btn btn-primary pull-right" %>
+          <%= f.submit "投稿", class: "btn btn-primary pull-right", id:"travel-submit" %>
         </div>
       <% end %>
     </div>

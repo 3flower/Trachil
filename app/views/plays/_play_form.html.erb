@@ -1,46 +1,46 @@
-<%#= form_with(model:play, url:"#", local:true, method: :patch) do |f| %>
-
+<%= f.fields_for :play do |p| %>
   <div class="col-xs-12 name-box">
-    <%= f.label :"訪れた場所" %>
-    <%= f.text_field :play_name, class: "col-xs-12 new-name" %>
+    <%= p.label :"訪れた場所" %>
+    <%= p.text_field :name, class: "col-xs-12 new-name" %>
   </div>
 
   <div class="col-xs-12 impression-box">
-    <%= f.label :"感想" %>
+    <%= p.label :"感想" %>
     <p>※1000文字以内で記載ください</p>
-    <%= f.text_area :play_impression, class: "col-xs-12 impression" %>
+    <%= p.text_area :impression, class: "col-xs-12 impression" %>
   </div>
 
   <div class="col-xs-12 price-box">
-    <%= f.label :"大人料金" %>
-    <%= f.text_field :play_adult_price, class: "price" %><span>円</span>
-    <%= f.label :"子供料金" %>
-    <%= f.text_field :play_child_price, class: "price" %><span>円</span>
+    <%= p.label :"大人料金" %>
+    <%= p.text_field :adult_price, class: "price" %><span>円</span>
+    <%= p.label :"子供料金" %>
+    <%= p.text_field :child_price, class: "price" %><span>円</span>
     <p>※0円の場合が無料と表示されます</p>
   </div>
 
   <div class="col-xs-12 address-box">
-    <%= f.label :"住所"%>
-    <%= f.text_field :play_address, class: "col-xs-12 address" %>
+    <%= p.label :"住所"%>
+    <%= p.text_field :address, class: "col-xs-12 address" %>
   </div>
 
   <% if current_user.is_diaper == true && current_user.is_child == true %>
     <div class="col-xs-12 diaper_place-box">
-      <%= f.label :"オムツ変える場所" %>
-      <%= f.radio_button :is_diaper_place, true, class: "radio_button" %>
-      <%= f.label :is_diaper_place_true, "ある", value: :true %>
-      <%= f.radio_button :is_diaper_place, false, checked: true, class: "radio_button" %>
-      <%= f.label :is_diaper_place_false, "ない", value: :false %>
+      <%= p.label :"オムツ変える場所" %>
+      <%= p.radio_button :is_diaper_place, true, class: "radio_button" %>
+      <%= p.label :is_diaper_place_true, "ある", value: :true %>
+      <%= p.radio_button :is_diaper_place, false, checked: true, class: "radio_button" %>
+      <%= p.label :is_diaper_place_false, "ない", value: :false %>
     </div>
   <% end %>
 
   <div class="col-xs-12 parking-box">
-    <%= f.label :"駐車場" %>
-    <%= f.select :play_parking, Play.parkings.keys, prompt: "-- 選択してください --" %>
+    <%= p.label :"駐車場" %>
+    <%= p.select :parking, Play.parkings.keys, prompt: "-- 選択してください --" %>
   </div>
 
   <div class="col-xs-12 official_site-box">
-    <%= f.label :"公式サイトのURL" %>
+    <%= p.label :"公式サイトのURL" %>
     <p>※あれば記載してくさい</p>
-    <%= f.text_field :play_official_site, class: "col-xs-12 official_site" %>
+    <%= p.text_field :official_site, class: "col-xs-12 official_site" %>
   </div>
+<% end %>

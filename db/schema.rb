@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_115036) do
     t.integer "adult_price", default: 0
     t.integer "child_price", default: 0
     t.text "impression"
-    t.integer "parking", default: 0
+    t.integer "parking"
     t.string "official_site"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_115036) do
     t.integer "child_price", default: 0
     t.text "impression"
     t.boolean "is_baby_food_place", default: true
-    t.integer "parking", default: 0
+    t.integer "parking"
     t.string "official_site"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_115036) do
     t.integer "child_price", default: 0
     t.text "impression"
     t.boolean "is_diaper_place", default: true
-    t.integer "parking", default: 0
+    t.integer "parking"
     t.string "official_site"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

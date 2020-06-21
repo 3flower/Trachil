@@ -8,7 +8,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.integer :adult_price,   default: 0
       t.integer :child_price,    default: 0
       t.text    :impression
-      t.integer :parking,       default: 0
+      t.integer :parking
       t.string  :official_site
 
       t.timestamps

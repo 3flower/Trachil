@@ -1,44 +1,46 @@
-<div class="col-xs-12 name-box">
-  <%= f.label :"店名" %>
-  <%= f.text_field :meal_name, class: "col-xs-12 new-name" %>
-</div>
+<%= f.fields_for :meal do |m| %>
+  <div class="col-xs-12 name-box">
+    <%= m.label :"店名" %>
+    <%= m.text_field :shop_name, class: "col-xs-12 new-name" %>
+  </div>
 
-<div class="col-xs-12 impression-box">
-  <%= f.label :"感想" %>
-  <p>※1000文字以内で記載ください</p>
-  <%= f.text_area :meal_impression, class: "col-xs-12 impression" %>
-</div>
+  <div class="col-xs-12 impression-box">
+    <%= m.label :"感想" %>
+    <p>※1000文字以内で記載ください</p>
+    <%= m.text_area :impression, class: "col-xs-12 impression" %>
+  </div>
 
-<div class="col-xs-12 price-box">
-  <%= f.label :"大人料金" %>
-  <%= f.text_field :meal_adult_price, class: "price" %><span>円</span>
-  <%= f.label :"子供料金" %>
-  <%= f.text_field :meal_child_price, class: "price" %><span>円</span>
-  <p>※　0円の場合が無料と表示されます</p>
-</div>
+  <div class="col-xs-12 price-box">
+    <%= m.label :"大人料金" %>
+    <%= m.text_field :adult_price, class: "price" %><span>円</span>
+    <%= m.label :"子供料金" %>
+    <%= m.text_field :child_price, class: "price" %><span>円</span>
+    <p>※　0円の場合が無料と表示されます</p>
+  </div>
 
-<div class="col-xs-12 address-box">
-  <%= f.label :"住所" %>
-  <%= f.text_field :meal_address, class: "col-xs-12 address" %>
-</div>
+  <div class="col-xs-12 address-box">
+    <%= m.label :"住所" %>
+    <%= m.text_field :address, class: "col-xs-12 address" %>
+  </div>
 
-<% if current_user.is_baby_food == true && current_user.is_child == true %>
-  <div class="col-xs-12 diaper_place-box">
-    <%= f.label :"離乳食持ち込みOK？" %>
-    <%= f.radio_button :is_baby_food_place, true, class: "radio_button" %>
-    <%= f.label :is_baby_food_place, "OK", value: :true %>
-    <%= f.radio_button :is_baby_food_place, false, checked: true, class: "radio_button"  %>
-    <%= f.label :is_baby_food_place, "NG", value: :false %>
+  <% if current_user.is_baby_food == true && current_user.is_child == true %>
+    <div class="col-xs-12 diaper_place-box">
+      <%= m.label :"離乳食持ち込みOK？" %>
+      <%= m.radio_button :is_baby_food_place, true, class: "radio_button" %>
+      <%= m.label :is_baby_food_place, "OK", value: :true %>
+      <%= m.radio_button :is_baby_food_place, false, checked: true, class: "radio_button"  %>
+      <%= m.label :is_baby_food_place, "NG", value: :false %>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12 parking-box">
+    <%= m.label :"駐車場" %>
+    <%= m.select :parking, Meal.parkings.keys, prompt: "-- 選択してください --" %>
+  </div>
+
+  <div class="col-xs-12 official_site-box">
+    <%= m.label :"公式サイトのURL" %>
+    <p>※　あれば記載してくさい</p>
+    <%= m.text_field :official_site, class: "col-xs-12 official_site" %>
   </div>
 <% end %>
-
-<div class="col-xs-12 parking-box">
-  <%= f.label :"駐車場" %>
-  <%= f.select :meal_parking, Meal.parkings.keys, prompt: "-- 選択してください --" %>
-</div>
-
-<div class="col-xs-12 official_site-box">
-  <%= f.label :"公式サイトのURL" %>
-  <p>※　あれば記載してくさい</p>
-  <%= f.text_field :meal_official_site, class: "col-xs-12 official_site" %>
-</div>
