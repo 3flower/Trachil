@@ -39,8 +39,20 @@
 
       <div class= "travel-time col-xs-2">
         <p><%= travel.created_at.to_s(:datetime_jp) %></p>
-        <p class="travel-evaluation">評価：<%= travel.evaluation %></p>
+        <p class="travel-evaluation">評価：<%= travel.evaluation %>点</p>
+        <div class="index-star" id="star-rate-<%= travel.id %>"></div>
       </div>
+      <script>
+          $('#star-rate-<%= travel.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= travel.evaluation %>,
+          });
+      </script>
 
       <div class="travel-destroy-edit col-xs-1">
         <% if travel.user == current_user %>

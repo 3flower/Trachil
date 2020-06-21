@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_06_17_115036) do
     t.date "travel_day"
     t.integer "traffic_way"
     t.string "recommend_age"
-    t.integer "evaluation"
+    t.float "evaluation"
     t.boolean "is_display", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -70,7 +70,7 @@ class User::UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(user_update_params)
       flash[:success] = "登録情報を更新しました。"
       redirect_to user_path(@user)
     else
@@ -86,6 +86,15 @@ class User::UsersController < ApplicationController
       :child_people, :child_age, :is_diaper, :is_baby_food, :user_image_id, :introduction)
     elsif is_child = false
       params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :introduction)
+    end
+  end
+
+  def user_update_params
+    if is_child = true
+      params.require(:user).permit(:name, :email, :residence, :is_child,
+      :child_people, :child_age, :is_diaper, :is_baby_food, :user_image_id, :remove_user_image_id, :introduction)
+    elsif is_child = false
+      params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :remove_user_image_id, :introduction)
     end
   end
 

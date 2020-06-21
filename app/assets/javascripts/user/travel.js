@@ -52,15 +52,14 @@ $(document).on('turbolinks:load', function(){
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      console.log($(this))
       $(".hidden-field").each(function(i, o){
-        console.log($(o).val())
-      if ($(o).val() == ""){
+      if ($(o).hasClass("added") == false && $(o).val() == ""){
         var id = $(o).attr('id').replace(/[^0-9]/g, '');
         $('.label-box').attr({id: `label-box--${id}`,for: `travel_images_attributes_${id}_image`});
         return false;
       }
       });
+
       //選択したfileのオブジェクトを取得
       var file = this.files[0];
       var reader = new FileReader();
@@ -93,6 +92,12 @@ $(document).on('turbolinks:load', function(){
 
         //ラベルのwidth操作
         setLabel();
+        // サブミットボタンを押せるようにする
+        if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+          $('#travel-submit').removeAttr('disabled');
+        } else {
+          $('#travel-submit').attr('disabled', 'disabled');
+        }
       }
     });
 
@@ -101,8 +106,15 @@ $(document).on('turbolinks:load', function(){
       var count = $('.preview-box').length;
       setLabel(count);
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
-      console.log(id)
       $(`#preview-box__${id}`).remove();
+      // 元々画像があるのにクラスを削除する
+      $(`#travel_images_attributes_${id}_image`).removeClass("added");
+      // サブミットボタンを押せなくする
+      if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+        $('#travel-submit').removeAttr('disabled');
+      } else {
+        $('#travel-submit').attr('disabled', 'disabled');
+      }
 
       //新規登録時と編集時の場合分け==========================================================
 

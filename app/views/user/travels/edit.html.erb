@@ -1,8 +1,8 @@
-<% provide(:title, "新規投稿") %>
+<% provide(:title, "投稿編集") %>
 <div class="row">
   <div class="col-xs-12">
     <div class="travel-new">
-      <h2 class="travel-new-header"></h2>
+      <h2 class="travel-new-header">投稿編集</h2>
       <%= form_with(model:@travel, url:travel_path, local:true, method: :patch) do |f| %>
 
         <%= render "layouts/error_messages", resource: @travel %>
@@ -35,7 +35,7 @@
             </div>
             <div class="hidden-content">
               <%= f.fields_for :travel_images do |image| %>
-                <%= image.file_field :image_url, type: 'file', name: "travel[travel_images_attributes][#{image.index}][image_url]", value: "a", id: "travel_images_attributes_#{image.index}_image", class:"hidden-field" %>
+                <%= image.file_field :image_url, type: 'file', name: "travel[travel_images_attributes][#{image.index}][image_url]", value: "a", id: "travel_images_attributes_#{image.index}_image", class:"hidden-field added" %>
                 <%= image.check_box :_destroy, class: "hidden-checkbox" %>
               <% end %>
               <% @travel.travel_images.length.upto(4) do |i| %>
@@ -68,10 +68,21 @@
           </div>
 
           <div class="col-xs-3">
-            <div class="evaluation-box">
-              <%= f.label :"評価" %>
-              <%= f.text_field :evaluation, class: "evaluation" %>
+            <div class="evaluation-box star">
+              <%= f.label :evaluation,'評価　' %>
+              <%= f.hidden_field :evaluation, id: :review_star %>
             </div>
+            <script>
+              $('.star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'travel[evaluation]',
+                score: <%= @travel.evaluation %>,
+                half: true,
+              });
+            </script>
             <div class="is-display-box">
               <%= f.label :"表示形式" %>
               <%= f.radio_button :is_display, true, class: "radio_button"  %>

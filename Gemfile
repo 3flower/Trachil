@@ -84,3 +84,6 @@ gem "mini_magick"
 gem "ed25519"
 gem "bcrypt_pbkdf"
 gem "rails-i18n"
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+# gem "ratyrate"

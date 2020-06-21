@@ -3,10 +3,7 @@
   <%= render "user/users/user_show", user: @travel.user %>
   <div class="travel-show-image col-xs-3">
     <% @travel_images.each do |image| %>
-      <% if image.image_url.url != nil %>
-      <%#= binding.pry %>
-        <%= image_tag image.image_url.url,class: "travel-image" %>
-      <% end %>
+      <%= image_tag image.image_url.url,class: "travel-image" %>
     <% end %>
   </div>
   <div class="travel-show col-xs-9">
@@ -42,7 +39,19 @@
           おすすめ年齢：<%= @travel.recommend_age %>才
         </li>
         <li class="li-right">
-          評価：<%= @travel.evaluation %>
+          評価：<%= @travel.evaluation %>点
+          <div id="star-rate"></div>
+          <script>
+              $('#star-rate').raty({
+                size: 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= @travel.evaluation %>,
+              });
+          </script>
         </li>
       </ul>
     </div>
