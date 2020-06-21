@@ -51,8 +51,8 @@ $(function(){
     fileReader.readAsDataURL(file);
     // 画像が投稿されると削除ボタンが出てくる
     $('.icon_remove').fadeIn();
-    if ($(`#user_remove_user_image_id`)){
-      $(`#user_remove_user_image_id`).prop('checked',false);
+    if ($('#user_remove_user_image_id')){
+      $('#user_remove_user_image_id').prop('checked',false);
     }
  });
  $('.icon_remove').click(function(){
@@ -63,7 +63,7 @@ $(function(){
    $('.icon_remove').css('display', 'none');
    //inputタグに入ったファイルを削除
    $('#user_image').val("");
-   $(`#user_remove_user_image_id`).prop('checked',true);
+   $('#user_remove_user_image_id').prop('checked',true);
  });
  // 画像がある場合削除ボタンを表示させる
  if ($('#preview').attr('src') != '/images/default.png') {
