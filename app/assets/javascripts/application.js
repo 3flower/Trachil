@@ -98,7 +98,7 @@ $(function(){
       $('#travel-submit').attr('disabled', 'disabled');
     }
   });
-  if ($('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
+  if ($('.preview-content').find('.preview-box').length && $('#travel_category_attributes_is_play').prop('checked') || $('#travel_category_attributes_is_hotel').prop('checked') || $('#travel_category_attributes_is_meal').prop('checked')) {
     $('#travel-submit').removeAttr('disabled');
   }
 
