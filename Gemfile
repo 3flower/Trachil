@@ -43,6 +43,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
