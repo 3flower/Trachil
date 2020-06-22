@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :search
 
+  # def search
+  #   q = params[:q]
+  #   @Travels = Travel.search(title_cont: q).result
+  #   @users = User.search(name_cont: q).result
+  #   @plays = Play.search(name_cont: q).result
+  #   @hotels = Hotel.search(hotel_name_cont: q).result
+  #   @meals = Meal.search(shop_name_cont: q).result
+  # end
 
   # エラー404が出た時の例外処理
   # 例外ハンドル

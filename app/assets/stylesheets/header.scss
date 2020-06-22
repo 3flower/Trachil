@@ -8,12 +8,15 @@ header {
   background-color: #CCFFFF;
 }
 .header-title {
+  h1{
   font-family: 'Savoye LET','Segoe Print';
   font-size: 50px;
   padding-top: 10px;
-  &:hover {
-    text-decoration: none;
+    a:hover {
+      text-decoration: none!important;
+    }
   }
+
 }
 
 .header_btn {

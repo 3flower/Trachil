@@ -41,7 +41,6 @@ class User::TravelsController < ApplicationController
   def update
     if @travel.update(travels_update_params)
       travels_update_params[:travel_images_attributes].each do |i|
-        # binding.pry
         if i[1]["_destroy"] == "1"
           @image = TravelImage.find(i[1]["id"])
           @image.destroy
@@ -58,12 +57,25 @@ class User::TravelsController < ApplicationController
     @travels_play = []
     @travels_hotel = []
     @travels_meal = []
+    q = params[:q]
+    travel_result = Travel.ransack(title_cont:q).result
+    play_result = Play.ransack(name_cont:q).result
+    hotel_result = Hotel.ransack(hotel_name_cont:q).result
+    meal_result = Meal.ransack(shop_name_cont:q).result
     Travel.where(is_display: true).each do |travel|
-      @travels.push(travel)
-      @travels_play.push(travel) if travel.category.is_play
-      @travels_hotel.push(travel) if travel.category.is_hotel
-      @travels_meal.push(travel) if travel.category.is_meal
+      if travel_result.include?(travel) || play_result.include?(travel.play) || hotel_result.include?(travel.hotel) || meal_result.include?(travel.play)
+        @travels.push(travel)
+        @travels_play.push(travel) if travel.category.is_play
+        @travels_hotel.push(travel) if travel.category.is_hotel
+        @travels_meal.push(travel) if travel.category.is_meal
+      end
     end
+    # if @users = User.ransack(name_cont: q).result == nil
+    #   @users.each do |user|
+    #     @travels = user.travels.where(is_display: true)
+    #   end
+    # end
+
   end
 
   def destroy
