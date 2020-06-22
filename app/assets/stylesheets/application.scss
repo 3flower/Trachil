@@ -160,3 +160,29 @@ footer{
 ul.footer-menu li {
 display: inline;
 }
+.search {
+  // display: inline-block;
+  margin-top: 30px;
+  margin-right: 600px;
+  line-height: 30px;
+  width: 60%;
+  background-color:#fff;
+  border:1px solid #aaa;
+  border-radius:6px;
+  .search-text {
+    width: 90%;
+    padding: 0 10px 0 5px;
+    background:none;
+    border:none;
+  }
+  input:focus{
+    outline: none!important;
+  }
+  .search-btn {
+    display: inline-block;
+    padding: 0 10px;
+    background:none;
+    border:none;
+    color: rgba(0,0,0,0.3);
+  }
+}

@@ -1,5 +1,6 @@
-<div class="seach">
+<div class="search">
   <%= form_tag travels_path, method: :get do %>
-      <%= text_field_tag :q, nil %>
+    <%= text_field_tag :q, nil, class: "search-text" %>
+    <%= button_tag sanitize('<i class="fa fa-search"></i>'), type: "submit", class: "search-btn" %>
   <% end %>
 </div>
