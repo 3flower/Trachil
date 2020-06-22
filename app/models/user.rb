@@ -34,6 +34,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, length: {maximum: 250}
+  validates :child_people, :child_age, numericality: true
   validates :is_child,  inclusion: {in: [true, false]}
   validates :child_people, :child_age, presence: true, if: :is_child?
   validates :is_diaper, :is_baby_food,  inclusion: {in: [true, false]}, if: :is_child?

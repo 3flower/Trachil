@@ -7,6 +7,7 @@ class Hotel < ApplicationRecord
     self.travel.category.is_hotel == true
   end
   validates :impression, length: {maximum: 1000}
+  validates :adult_price, :child_price, numericality: true
   validates :parking, presence: true, if: :traffic_way?
   # validates :official_site, format: /\A{URI::regexp(%w(http https))}\z/
   def traffic_way?

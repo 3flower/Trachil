@@ -30,7 +30,7 @@
     <div class="travel-show-option col-xs-12">
       <ul>
         <li>
-          訪れた日:　<%= @travel.travel_day %>
+          訪れた日:　<%= @travel.travel_day.to_s(:datetime_jp) %>
         </li>
         <li>
           交通手段：<%= @travel.traffic_way %>

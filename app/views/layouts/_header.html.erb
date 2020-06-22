@@ -2,9 +2,10 @@
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
       <% if user_signed_in? %>
-        <%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %>
+        <h1><%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %></h1>
+        <%= render "layouts/search" %>
       <% else %>
-        <%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %>
+        <h1><%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %></h1>
       <% end %>
     </nav>
     <nav>
