@@ -59,7 +59,7 @@ $(function(){
    // 画像を削除する
    $('#preview').removeAttr('src');
    // 削除ボタンを押すとデフォルトの画像に変わる
-   $('#preview').attr({src: "/images/default.png"});
+   $('#preview').attr({src: "/assets/default-15baf933fd0f66c929ae2a8d3bd36d1530221c56b4a7bedb17001a8f789c9d05.png"});
    // $('#preview').attr({src: "default.png"});
    $('.icon_remove').css('display', 'none');
    //inputタグに入ったファイルを削除
