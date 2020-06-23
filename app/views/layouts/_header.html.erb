@@ -3,7 +3,7 @@
     <nav class="nav navbar-nav navbar-left header-title">
       <% if user_signed_in? %>
         <h1><%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %></h1>
-        <%= render "layouts/search" %>
+
       <% else %>
         <h1><%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %></h1>
       <% end %>
@@ -11,6 +11,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li>
+            <%= render "layouts/search" %>
+          </li>
           <li>
             <%= link_to "投稿", new_travel_path, data: {"turbolinks" => false}, class: "header_btn" %>
           </li>

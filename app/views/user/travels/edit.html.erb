@@ -18,7 +18,7 @@
               <% @travel.travel_images.each do |image| %>
                 <div class="preview-box">
                   <div class="upper-box">
-                    <%= image_tag image.image_url.url, width: "170", height: "150", alt: "preview" %>
+                    <%= image_tag image.image_url.to_s, width: "170", height: "150", alt: "preview" %>
                   </div>
                   <div class="lower-box">
                     <div class="delete-box">

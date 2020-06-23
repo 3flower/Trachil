@@ -129,8 +129,6 @@ $(document).on('turbolinks:load', function(){
       if ($(`#travel_travel_images_attributes_${id}__destroy`).length == 0) {
         //フォームの中身を削除
         $(`#travel_images_attributes_${id}_image`).val("");
-        // 元々画像があるのにクラスを削除する
-        $(`#travel_images_attributes_${id}_image`).removeClass("added");
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
@@ -144,6 +142,10 @@ $(document).on('turbolinks:load', function(){
 
         //投稿編集時
         $(`#travel_travel_images_attributes_${id}__destroy`).prop('checked',true);
+        //フォームの中身を削除
+        $(`#travel_images_attributes_${id}_image`).val("");
+        // 元々画像があるのにクラスを削除する
+        $(`#travel_images_attributes_${id}_image`).removeClass("added");
         //5個めが消されたらラベルを表示
         if (count == 5) {
           $('.label-content').show();

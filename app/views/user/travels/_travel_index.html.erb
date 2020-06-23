@@ -16,7 +16,7 @@
       </div>
 
       <div class="travel-images col-xs-3">
-        <%= image_tag travel.travel_images.first.image_url.url,class: "travel-image" %>
+        <%= image_tag travel.travel_images.first.image_url.to_s,class: "travel-image" %>
       </div>
 
       <div class="travel-title col-xs-6">
@@ -87,7 +87,7 @@
           </li>
           <%= link_to user_path(travel.user), data: {"turbolinks" => false} do %>
             <li>
-              <%= image_tag travel.user.user_image_id.url,class: "travel_user_icon" %>
+              <%= image_tag travel.user.user_image_id.to_s,class: "travel_user_icon" %>
             </li>
             <li>
               <%= travel.user.name %>

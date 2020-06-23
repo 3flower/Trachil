@@ -1,5 +1,5 @@
 <% user_travel_images.each do |image| %>
   <div class="image-box">
-    <%= image_tag image.image_url.url,class: "user-travel-image" %>
+    <%= image_tag image.image_url.to_s,class: "user-travel-image" %>
   </div>
 <% end %>

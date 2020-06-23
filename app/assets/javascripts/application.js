@@ -60,13 +60,14 @@ $(function(){
    $('#preview').removeAttr('src');
    // 削除ボタンを押すとデフォルトの画像に変わる
    $('#preview').attr({src: "/images/default.png"});
+   $('#preview').attr({src: "default.png"});
    $('.icon_remove').css('display', 'none');
    //inputタグに入ったファイルを削除
    $('#user_image').val("");
    $('#user_remove_user_image_id').prop('checked',true);
  });
  // 画像がある場合削除ボタンを表示させる
- if ($('#preview').attr('src') != '/images/default.png') {
+ if ($('#preview').attr('src') != '/images/default.png' && $('#preview').attr('src') != 'default.png') {
    $('.icon_remove').fadeIn();
  }
 
