@@ -60,14 +60,14 @@ $(function(){
    $('#preview').removeAttr('src');
    // 削除ボタンを押すとデフォルトの画像に変わる
    $('#preview').attr({src: "/images/default.png"});
-   $('#preview').attr({src: "default.png"});
+   // $('#preview').attr({src: "default.png"});
    $('.icon_remove').css('display', 'none');
    //inputタグに入ったファイルを削除
    $('#user_image').val("");
    $('#user_remove_user_image_id').prop('checked',true);
  });
  // 画像がある場合削除ボタンを表示させる
- if ($('#preview').attr('src') != '/images/default.png' && $('#preview').attr('src') != 'default.png') {
+ if ($('#preview').attr('src') != '/images/default.png' && $('#preview').attr('src') != '/assets/default-15baf933fd0f66c929ae2a8d3bd36d1530221c56b4a7bedb17001a8f789c9d05.png') {
    $('.icon_remove').fadeIn();
  }
 
