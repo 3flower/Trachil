@@ -4,7 +4,7 @@
     <div class="comment-user">
       <ul>
         <li>
-          <%= image_tag comment.user.user_image_id.url,class: "comment_user_icon" %>
+          <%= image_tag comment.user.user_image_id.to_s,class: "comment_user_icon" %>
         </li>
         <li>
           <%= link_to user_path(comment.user) do %>

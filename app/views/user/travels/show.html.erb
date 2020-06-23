@@ -3,7 +3,7 @@
   <%= render "user/users/user_show", user: @travel.user %>
   <div class="travel-show-image col-xs-3">
     <% @travel_images.each do |image| %>
-      <%= image_tag image.image_url.url,class: "travel-image" %>
+      <%= image_tag image.image_url.to_s,class: "travel-image" %>
     <% end %>
   </div>
   <div class="travel-show col-xs-9">
