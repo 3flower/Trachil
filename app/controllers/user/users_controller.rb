@@ -80,14 +80,14 @@ class User::UsersController < ApplicationController
 
   private
 
-  def user_params
-    if is_child = true
-      params.require(:user).permit(:name, :email, :residence, :is_child,
-      :child_people, :child_age, :is_diaper, :is_baby_food, :user_image_id, :introduction)
-    elsif is_child = false
-      params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :introduction)
-    end
-  end
+  # def user_params
+  #   if is_child = true
+  #     params.require(:user).permit(:name, :email, :residence, :is_child,
+  #     :child_people, :child_age, :is_diaper, :is_baby_food, :user_image_id, :introduction)
+  #   elsif is_child = false
+  #     params.require(:user).permit(:name, :email, :residence, :is_child, :user_image_id, :introduction)
+  #   end
+  # end
 
   def user_update_params
     if is_child = true
