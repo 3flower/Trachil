@@ -11,8 +11,10 @@
   width: 100%;
   height: 20%;
   background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px 0 rgba(60, 194, 235, 0.5);
   padding: 20px 0;
-  border-bottom: 1px solid #000;
+  // border-bottom: 1px solid #000;
   .user_show_icon {
     border-radius: 200px;
     width: 150px;
@@ -54,35 +56,50 @@
 }
 .user_index_btn {
   padding: 0 !important;
-  width: 100%;
-  max-width: 1300px;
-  height: 20%;
-  background-color: #fff;
+  margin-top: 30px!important;
+  display: block;
+  flex-direction: row;
+  text-align: center;
+  margin-left: 25px;
+  ul {
+    margin-bottom: 0;
+  }
   li {
-    width: 20%;
+    width: 10%;
     float: left;
     list-style-type: none;
     a {
-      color: #000;
-      text-decoration: none;
+      line-height: 2;
       display: block;
-      padding: 20px 40px;
-      text-align: center;
-      background-color: #CCCCCC;
-      border: 1px solid #000;
-      border-bottom: none;
+      text-decoration: none;
+      color: #fff;
+      background-color: #65c6ba;
+      cursor: pointer;
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
     }
   }
   .active {
-    background-color: #fff;
-    color: #000;
+    background-color: #b1e2dc;
+    // color: #000;
   }
   p{
     display: inline;
   }
 }
 #tab-contents {
+  padding-left: 0 !important;
+  // background-color: #fff;
+}
+#picture, #follow, #follower {
   background-color: #fff;
+  margin-left: 13px;
+  box-shadow: 0 10px 25px 0 rgba(60, 194, 235, 0.5);
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+#picture {
+  padding-left: 40px;
 }
 .is_valid-true {
   padding-top: 40px;

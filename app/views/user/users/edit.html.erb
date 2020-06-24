@@ -6,7 +6,7 @@
     <%= render "layouts/error_messages", resource: @user %>
     <%= link_to " パスワードを変更する", edit_user_registration_path, class: "glyphicon glyphicon-pencil btn btn-warning   pull-right" %>
     <%= form_with(model:@user, url:user_path, local:true, method: :patch) do |f| %>
-      <div class="sigin-right col-xs-7">
+      <div class="sigin-right col-xs-7 flex-column">
         <%= render "users/registrations/user_form", f: f %>
         <div class="form-group col-xs-12">
           <%= f.label :"プロフィール", class: "control-label col-xs-4" %>
