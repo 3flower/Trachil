@@ -26,7 +26,7 @@
       <div class="text">
         <p>旅行先を共有して、子供と旅行へ行こう！</p><br>
         <% unless user_signed_in? %>
-          <%= link_to ">>新規登録する", new_user_registration_path, class: "about-sign-in" %>
+          <%= link_to ">>新規登録する", new_user_registration_path, data: {"turbolinks" => false}, class: "about-sign-in" %>
         <% end %>
       </div>
     </div>
