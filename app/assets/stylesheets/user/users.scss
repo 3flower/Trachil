@@ -107,3 +107,19 @@
 #user_id {
   display: none;
 }
+.quit {
+  border-radius: 15px;
+  box-shadow: 0 10px 25px 0 rgba(60, 194, 235, 0.5);
+  display: inline-block;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 300px;
+  background-color: #fff;
+  padding: 50px;
+  strong {
+    font-size: 20px;
+  }
+  .quit-msg {
+    margin-top: 10px;
+  }
+}
