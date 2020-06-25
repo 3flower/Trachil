@@ -5,102 +5,35 @@
       <div class="travel-new">
         <h2 class="travel-new-header">新規投稿</h2>
         <%= form_with(model:@travel, url:travels_path, local:true, method: :post) do |f| %>
-
-        <%= render "layouts/error_messages", resource: @travel %>
-
-        <div class="image-new">
-          <div class="">
-            <%= f.label :"画像" %>
-            <p>※最大5枚までアップロードできます</p>
-          </div>
-
-          <div class="travel__drop__box__container">
-            <div class="preview-content">
+          <%= render "layouts/error_messages", resource: @travel %>
+          <div class="image-new">
+            <div class="">
+              <%= f.label :"画像" %><span class="required">必須</span>
+              <p>※最大5枚までアップロードできます</p>
             </div>
-            <div class="label-content">
-              <label for="travel_images_attributes_0_image" class="label-box" id="label-box--0">
-                <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
-              </label>
-            </div>
-            <div class="hidden-content">
-              <%= f.fields_for :travel_images do |i| %>
-                <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][0][image_url]", class: "hidden-field", id:"travel_images_attributes_0_image" %>
-                <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][1][image_url]", class: "hidden-field", id:"travel_images_attributes_1_image" %>
-                <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][2][image_url]", class: "hidden-field", id:"travel_images_attributes_2_image" %>
-                <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][3][image_url]", class: "hidden-field", id:"travel_images_attributes_3_image" %>
-                <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][4][image_url]", class: "hidden-field", id:"travel_images_attributes_4_image" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
 
-        <div class="form-new">
-          <div class="col-xs-12 title-box">
-            <%= f.label :"タイトル" %>
-            <%= f.text_field :title, class: "col-xs-12 title" %>
-          </div>
+            <div class="travel__drop__box__container">
+              <div class="preview-content">
+              </div>
+              <div class="label-content">
+                <label for="travel_images_attributes_0_image" class="label-box" id="label-box--0">
+                  <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
+                </label>
+              </div>
 
-          <div class="col-xs-3">
-            <div class="traffic-way-box">
-              <%= f.label :"交通手段" %>
-              <%= f.select :traffic_way, Travel.traffic_ways.keys, prompt: "-- 選択してください --", class: "col-xs-12" %>
-            </div>
-            <div class="recommend-age-box">
-              <%= f.label :"おすすめ年齢" %>
-              <%= f.text_field :recommend_age, class: "recommend-age" %><span>才</span>
+              <div class="hidden-content">
+                <%= f.fields_for :travel_images do |i| %>
+                  <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][0][image_url]", class: "hidden-field", id:"travel_images_attributes_0_image" %>
+                  <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][1][image_url]", class: "hidden-field", id:"travel_images_attributes_1_image" %>
+                  <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][2][image_url]", class: "hidden-field", id:"travel_images_attributes_2_image" %>
+                  <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][3][image_url]", class: "hidden-field", id:"travel_images_attributes_3_image" %>
+                  <%= i.file_field :image_url, type: 'file',name: "travel[travel_images_attributes][4][image_url]", class: "hidden-field", id:"travel_images_attributes_4_image" %>
+                <% end %>
+              </div>
             </div>
           </div>
-
-          <div class="travel-day-box col-xs-4">
-            <%= f.label :"訪問日" %>
-            <%= f.date_field :travel_day, class: "travel_day" %>
-          </div>
-
-          <div class="col-xs-3">
-            <div class="evaluation-box star">
-              <%= f.label :evaluation,'評価　' %>
-              <%= f.hidden_field :evaluation, id: :review_star %>
-            </div>
-            <script>
-                $('.star').raty({
-                  size     : 36,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  scoreName: 'travel[evaluation]',
-                  score: '<%= @travel.evaluation %>',
-                  half: true,
-                });
-              </script>
-            <div class="is-display-box">
-              <%= f.label :"表示形式" %>
-              <%= f.radio_button :is_display, true, class: "radio_button"  %>
-              <%= f.label :is_display, "表示", value: :true %>
-              <%= f.radio_button :is_display, false, class: "radio_button"  %>
-              <%= f.label :is_displa, "非表示", value: :false %>
-            </div>
-          </div>
-        </div>
-        <%= f.fields_for :category do |c| %>
-          <p class="col-xs-10 check-box">遊び：
-            <%= c.check_box :is_play ,{}, "true", "false" %>
-          </p>
-          <div class="play-new">
-            <%= render "plays/play_form", f: f %>
-          </div>
-          <p class="col-xs-10 check-box">ホテル：
-            <%= c.check_box :is_hotel ,{}, "true", "false" %>
-          </p>
-          <div class="hotel-new">
-            <%= render "hotels/hotel_form", f: f %>
-          </div>
-          <p class="col-xs-10 check-box">食事：
-            <%= c.check_box :is_meal ,{}, "true", "false" %>
-          </p>
-          <div class="meal-new">
-            <%= render "meals/meal_form", f: f %>
-          </div>
-        <% end %>
+          
+          <%= render "new-edit", f: f, travel: @travel %>
           <div class="submit-btn col-xs-12">
             <%= f.submit "投稿", class: "btn btn-primary pull-right", id:"travel-submit" %>
           </div>

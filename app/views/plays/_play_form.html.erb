@@ -1,25 +1,25 @@
 <%= f.fields_for :play do |p| %>
   <div class="col-xs-12 name-box">
-    <%= p.label :"訪れた場所" %>
+    <%= p.label :"訪れた場所" %><span class="required">必須</span>
     <%= p.text_field :name, class: "col-xs-12 new-name" %>
   </div>
 
   <div class="col-xs-12 impression-box">
-    <%= p.label :"感想" %>
+    <%= p.label :"感想" %><span class="required">必須</span>
     <p>※1000文字以内で記載ください</p>
     <%= p.text_area :impression, class: "col-xs-12 impression" %>
   </div>
 
   <div class="col-xs-12 price-box">
-    <%= p.label :"大人料金" %>
+    <%= p.label :"大人料金" %><span class="required">必須</span>
     <%= p.text_field :adult_price, class: "price" %><span>円</span>
-    <%= p.label :"子供料金" %>
+    <%= p.label :"子供料金",class: "child-label" %><span class="required">必須</span>
     <%= p.text_field :child_price, class: "price" %><span>円</span>
     <p>※0円の場合が無料と表示されます</p>
   </div>
 
   <div class="col-xs-12 address-box">
-    <%= p.label :"住所"%>
+    <%= p.label :"住所"%><span class="required">必須</span>
     <%= p.text_field :address, class: "col-xs-12 address" %>
   </div>
 
@@ -34,7 +34,7 @@
   <% end %>
 
   <div class="col-xs-12 parking-box">
-    <%= p.label :"駐車場" %>
+    <%= p.label :"駐車場" %><span class="required">必須</span>
     <%= p.select :parking, Play.parkings.keys, prompt: "-- 選択してください --" %>
   </div>
 

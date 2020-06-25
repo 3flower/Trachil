@@ -1,22 +1,22 @@
 
 
   <div class="form-group col-xs-12">
-    <%= f.label :"名前", class: "control-label col-xs-4" %>
+    <%= f.label :"名前", class: "control-label" %><span class="required">必須</span>
     <%= f.text_field :name, autofocus: true, class: "form-control-static name" %>
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"メールアドレス", class: "control-label col-xs-4" %><span class="required">必須</span>
-    <%= f.text_field :email, class: "form-control-static col-xs-7" %>
+    <%= f.label :"メールアドレス", class: "control-label" %><span class="required">必須</span>
+    <%= f.text_field :email, class: "form-control-static email" %>
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"場所", class: "control-label col-xs-4" %><span class="required">必須</span>
-    <%= f.text_field :residence, class: "form-control-static"%>
+    <%= f.label :"場所", class: "control-label" %>
+    <%= f.text_field :residence, class: "form-control-static residence"%>
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"子供いる？", class: "control-label col-xs-4" %><span class="required">必須</span>
+    <%= f.label :"子供いる？", class: "control-label" %>
     <%= f.radio_button :is_child, true, class: "radio_button is_child_true" %>
     <%= f.label :is_child, "いる", value: :true, class: "is_child" %>
     <%= f.radio_button :is_child, false, class: "radio_button is_child_false"  %>
@@ -25,7 +25,7 @@
 
   <div class="is_child_show">
     <div class="form-group col-xs-6">
-      <%= f.label :"子供の人数", class: "control-label col-xs-8" %>
+      <%= f.label :"子供の人数", class: "control-label" %><span class="required">必須</span>
       <%= f.text_field :child_people, class: "form-control-static child_people"%><span>人</span>
     </div>
 
@@ -38,7 +38,7 @@
     </div>
 
     <div class="form-group col-xs-6">
-      <%= f.label :"子供の最年少年齢", class: "control-label col-xs-8" %>
+      <%= f.label :"子供の最年少年齢", class: "control-label" %><span class="required">必須</span>
       <%= f.text_field :child_age, class: "form-control-static child_age"%><span>才</span>
     </div>
 
