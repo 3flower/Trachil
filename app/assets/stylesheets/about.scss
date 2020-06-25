@@ -1,0 +1,84 @@
+.about {
+  background-attachment: fixed;
+  background-image: image-url("trachil3.jpg");
+  font-family: 'Hannotate SC','ＭＳ 明朝', 'MS Mincho','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3';
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  .about-box {
+    width: 55%;
+    height: auto;
+    margin-left: 80px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    .text-box {
+      margin: 20px 0;
+      padding-top: 3px;
+      text-align: center;
+      height: 300px;
+      background-color: rgba(255,255,255,0.6);
+      .box1 {
+        margin-top: 25px;
+        display:inline-block;
+      }
+      h2 {
+        padding-bottom: 10px;
+      }
+      li {
+        margin-left: 30px;
+        text-align: left;
+        list-style:circle;
+        margin-top: 15px;
+        padding-right: 10px;
+      }
+    }
+    .text-box3 {
+      margin: 20px 0;
+      padding: 30px;
+      text-align: center;
+      height: 550px;
+      background-color: rgba(255,255,255,0.6);
+      .trachil-image1 {
+        position: relative;
+        background-image: image-url("trachil5.jpg");
+        background-size: cover;
+        width: 50%;
+        height: 200px;
+        margin-left: 70px;
+      }
+      .trachil-image2 {
+        position: absolute;
+        bottom: -290px;
+        left: 350px;
+        background-image: image-url("trachil4.jpg");
+        background-size: cover;
+        width: 25%;
+        height: 220px;
+      }
+      p {
+        margin-top: 150px;
+        font-weight: bold;
+        font-size: 30px;
+        // margin-bottom: 10px;
+      }
+      .about-sign-in {
+        display: inline-block;
+        font-size: 20px;
+        padding: 10px 30px;
+        color: #fff;
+        background: linear-gradient(#6795fd 0%, #67ceff 60%);
+        border-bottom: solid 4px #627295;
+        border-radius: 30px;
+        &:hover {
+          background: linear-gradient(#6795fd 0%, #67ceff 100%);
+          text-decoration: none!important;
+          color: #FF0066;
+        }
+        &:active {
+          transform: translateY(4px);
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

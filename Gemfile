@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -89,3 +90,4 @@ gem "bcrypt_pbkdf"
 gem "rails-i18n"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'database_rewinder'

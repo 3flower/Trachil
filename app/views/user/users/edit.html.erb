@@ -1,40 +1,42 @@
 <% provide(:title, "会員編集") %>
 <%= render "users/sessions/signup", resource: resource %>
-<div class="row">
-  <div class="signin-box">
-    <h2 class="head-line text-center"><i class="fas fa-user-edit"></i>会員編集</h2>
-    <%= render "layouts/error_messages", resource: @user %>
-    <%= link_to " パスワードを変更する", edit_user_registration_path, class: "glyphicon glyphicon-pencil btn btn-warning   pull-right" %>
-    <%= form_with(model:@user, url:user_path, local:true, method: :patch) do |f| %>
-      <div class="sigin-right col-xs-7">
-        <%= render "users/registrations/user_form", f: f %>
-        <div class="form-group col-xs-12">
-          <%= f.label :"プロフィール", class: "control-label col-xs-4" %>
-          <p>(※　250字まで)</p>
-          <%= f.text_area :introduction, class: "form-control-static col-xs-7 profile" %>
-        </div>
-      </div>
-      <div class="sigin-left col-xs-3">
-        <p>アイコン</p>
-        <label for="user_image">
-          <div class="form_icon">
-            <%= image_tag current_user.user_image_id.url,class: "icon", id: "preview" %>
-            <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
-            <%= f.check_box :remove_user_image_id, class: "hidden-checkbox" %>
+<div class="container">
+  <div class="row">
+    <div class="signin-box">
+      <h2 class="head-line text-center"><i class="fas fa-user-edit"></i>会員編集</h2>
+      <%= render "layouts/error_messages", resource: @user %>
+      <%= link_to " パスワードを変更する", edit_user_registration_path, class: "glyphicon glyphicon-pencil btn btn-warning   pull-right" %>
+      <%= form_with(model:@user, url:user_path, local:true, method: :patch) do |f| %>
+        <div class="sigin-right col-xs-7 flex-column">
+          <%= render "users/registrations/user_form", f: f %>
+          <div class="form-group col-xs-12">
+            <%= f.label :"プロフィール", class: "control-label col-xs-4" %>
+            <p>(※　250字まで)</p>
+            <%= f.text_area :introduction, class: "form-control-static col-xs-7 profile" %>
           </div>
-        </label>
-        <div class ="icon_remove">
-          削除する
         </div>
-      </div>
-      <div class="col-xs-12">
-        <div class="actions text-center">
-          <%= f.submit "更新",class: "btn btn-success submit-signin" %>
+        <div class="sigin-left col-xs-3">
+          <p>アイコン</p>
+          <label for="user_image">
+            <div class="form_icon">
+              <%= image_tag current_user.user_image_id.url,class: "icon", id: "preview" %>
+              <%= f.file_field :user_image_id, type: 'file', id: "user_image"  %>
+              <%= f.check_box :remove_user_image_id, class: "hidden-checkbox" %>
+            </div>
+          </label>
+          <div class ="icon_remove">
+            削除する
+          </div>
         </div>
-        <div class="link-back">
-          <%= link_to "戻る", user_path(@user), data: {"turbolinks" => false}, class: "btn-link" %>
+        <div class="col-xs-12">
+          <div class="actions text-center">
+            <%= f.submit "更新",class: "btn btn-success submit-signin" %>
+          </div>
+          <div class="link-back">
+            <%= link_to "戻る", user_path(@user), data: {"turbolinks" => false}, class: "btn-link" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

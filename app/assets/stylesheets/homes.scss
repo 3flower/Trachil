@@ -1,3 +1,36 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home {
+  background-attachment: fixed;
+  background-image: image-url("trachil2.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 630px;
+  text-align: center;
+  .home-text{
+    position: fixed;
+    top: 200px;
+    left: 150px;
+    h1 {
+      margin: 0;
+      font-family: 'Comic Sans MS','Chalkduster';
+      font-size: 60px;
+    }
+    p {
+      font-family: 'Hannotate SC','ＭＳ 明朝', 'MS Mincho','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3';
+      font-weight: bold;
+    }
+    .top-login {
+      font-family: 'Hannotate SC','ＭＳ 明朝', 'MS Mincho','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3';
+      display: inline-block;
+      font-weight: bold;
+      transition: .3s;
+      &:hover {
+        color: blue;
+        transform: scale(1.4);
+        cursor: pointer;
+      }
+    }
+  }
+}
