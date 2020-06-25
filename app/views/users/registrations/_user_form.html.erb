@@ -6,17 +6,17 @@
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"メールアドレス", class: "control-label col-xs-4" %>
+    <%= f.label :"メールアドレス", class: "control-label col-xs-4" %><span class="required">必須</span>
     <%= f.text_field :email, class: "form-control-static col-xs-7" %>
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"場所", class: "control-label col-xs-4" %>
+    <%= f.label :"場所", class: "control-label col-xs-4" %><span class="required">必須</span>
     <%= f.text_field :residence, class: "form-control-static"%>
   </div>
 
   <div class="form-group col-xs-12">
-    <%= f.label :"子供いる？", class: "control-label col-xs-4" %>
+    <%= f.label :"子供いる？", class: "control-label col-xs-4" %><span class="required">必須</span>
     <%= f.radio_button :is_child, true, class: "radio_button is_child_true" %>
     <%= f.label :is_child, "いる", value: :true, class: "is_child" %>
     <%= f.radio_button :is_child, false, class: "radio_button is_child_false"  %>
