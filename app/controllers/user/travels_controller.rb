@@ -16,6 +16,7 @@ class User::TravelsController < ApplicationController
   def create
     @travel = current_user.travels.new(travels_params)
     if @travel.save
+      flash[:notice] = "投稿しました"
       redirect_to travels_path
     else
       render :new
@@ -46,6 +47,7 @@ class User::TravelsController < ApplicationController
           @image.destroy
         end
       end
+      flash[:success] = "投稿しました"
       redirect_to travels_path
     else
       render :edit
