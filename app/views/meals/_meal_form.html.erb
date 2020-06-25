@@ -1,25 +1,25 @@
 <%= f.fields_for :meal do |m| %>
   <div class="col-xs-12 name-box">
-    <%= m.label :"店名" %>
+    <%= m.label :"店名" %><span class="required">必須</span>
     <%= m.text_field :shop_name, class: "col-xs-12 new-name" %>
   </div>
 
   <div class="col-xs-12 impression-box">
-    <%= m.label :"感想" %>
+    <%= m.label :"感想" %><span class="required">必須</span>
     <p>※1000文字以内で記載ください</p>
     <%= m.text_area :impression, class: "col-xs-12 impression" %>
   </div>
 
   <div class="col-xs-12 price-box">
-    <%= m.label :"大人料金" %>
+    <%= m.label :"大人料金" %><span class="required">必須</span>
     <%= m.text_field :adult_price, class: "price" %><span>円</span>
-    <%= m.label :"子供料金" %>
+    <%= m.label :"子供料金" %><span class="required">必須</span>
     <%= m.text_field :child_price, class: "price" %><span>円</span>
     <p>※　0円の場合が無料と表示されます</p>
   </div>
 
   <div class="col-xs-12 address-box">
-    <%= m.label :"住所" %>
+    <%= m.label :"住所" %><span class="required">必須</span>
     <%= m.text_field :address, class: "col-xs-12 address" %>
   </div>
 
@@ -34,7 +34,7 @@
   <% end %>
 
   <div class="col-xs-12 parking-box">
-    <%= m.label :"駐車場" %>
+    <%= m.label :"駐車場" %><span class="required">必須</span>
     <%= m.select :parking, Meal.parkings.keys, prompt: "-- 選択してください --" %>
   </div>
 

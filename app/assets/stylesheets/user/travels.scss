@@ -90,9 +90,10 @@
       margin: 10px 0 ;
       .price {
         padding: 5px 5px;
+        margin-left: 5px;
       }
-      label {
-        margin: 0 8px;
+      .child-label {
+        margin-left: 10px;
       }
       p {
         font-size: 5px;
@@ -117,7 +118,7 @@
     .parking-box {
       margin: 10px 0;
       display: none;
-      label {
+      span {
         margin-right: 10px;
       }
     }

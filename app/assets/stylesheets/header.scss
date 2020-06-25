@@ -9,9 +9,12 @@ header {
 }
 .header-title {
   h1{
-  font-family: 'Savoye LET','Segoe Print';
-  font-size: 50px;
-  padding-top: 10px;
+    // padding-left: 100px;
+    float: right;
+    font-family: 'Savoye LET','Segoe Print';
+    font-size: 50px;
+    padding-top: 10px;
+    padding-left: 50px;
     a:hover {
       text-decoration: none!important;
     }
@@ -62,4 +65,13 @@ header {
   .dropdown_btn {
 
   }
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  background-image: image-url("logo.png");
+  background-size: cover;
+  width: 64px;
+  height: 67px;
 }

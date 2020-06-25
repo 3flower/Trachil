@@ -38,6 +38,28 @@
     .is_child_show {
       display: none;
     }
+    .name {
+      margin-left: 140px;
+    }
+    .email {
+      margin-left: 72px;
+      width: 50%;
+    }
+    .residence {
+      margin-left: 170px;
+    }
+    .child_people {
+      margin-left: 100px;
+    }
+    .child_age {
+      margin-left: 58px;
+    }
+    .password {
+      margin-left: 30px;
+    }
+    .password_confirmation {
+      margin-left: 52px;
+    }
   }
   .sigin-left {
     margin-top: 50px;
@@ -103,4 +125,11 @@
 }
 .hidden-checkbox {
   display: none;
+}
+.required {
+  background-color: #FF3366;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #fff;
+  margin-left: 2px;
 }

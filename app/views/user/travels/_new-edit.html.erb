@@ -1,0 +1,68 @@
+<div class="form-new">
+  <div class="col-xs-12 title-box">
+    <%= f.label :"タイトル" %><span class="required">必須</span>
+    <%= f.text_field :title, class: "col-xs-12 title" %>
+  </div>
+
+  <div class="col-xs-3">
+    <div class="traffic-way-box">
+      <%= f.label :"交通手段" %><span class="required">必須</span>
+      <%= f.select :traffic_way, Travel.traffic_ways.keys, prompt: "-- 選択してください --", class: "col-xs-12" %>
+    </div>
+    <div class="recommend-age-box">
+      <%= f.label :"おすすめ年齢" %><span class="required">必須</span>
+      <%= f.text_field :recommend_age, class: "recommend-age" %><span>才</span>
+    </div>
+  </div>
+
+  <div class="travel-day-box col-xs-4">
+    <%= f.label :"訪問日" %><span class="required">必須</span><br>
+    <%= f.date_field :travel_day, class: "travel_day" %>
+  </div>
+
+  <div class="col-xs-3">
+    <div class="evaluation-box star">
+      <%= f.label :evaluation,'評価　' %><span class="required">必須</span><br>
+      <%= f.hidden_field :evaluation, id: :review_star %>
+    </div>
+    <script>
+      $('.star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'travel[evaluation]',
+        score: '<%= travel.evaluation %>',
+        half: true,
+      });
+    </script>
+    <div class="is-display-box">
+      <%= f.label :"表示形式" %>
+      <%= f.radio_button :is_display, true, class: "radio_button"  %>
+      <%= f.label :is_display, "表示", value: :true %>
+      <%= f.radio_button :is_display, false, class: "radio_button"  %>
+      <%= f.label :is_displa, "非表示", value: :false %>
+    </div>
+  </div>
+</div>
+
+<%= f.fields_for :category do |c| %>
+  <p class="col-xs-10 check-box">遊び：
+    <%= c.check_box :is_play ,{}, "true", "false" %>
+  </p>
+  <div class="play-new">
+    <%= render "plays/play_form", f: f %>
+  </div>
+  <p class="col-xs-10 check-box">ホテル：
+    <%= c.check_box :is_hotel ,{}, "true", "false" %>
+  </p>
+  <div class="hotel-new">
+    <%= render "hotels/hotel_form", f: f %>
+  </div>
+  <p class="col-xs-10 check-box">食事：
+    <%= c.check_box :is_meal ,{}, "true", "false" %>
+  </p>
+  <div class="meal-new">
+    <%= render "meals/meal_form", f: f %>
+  </div>
+<% end %>

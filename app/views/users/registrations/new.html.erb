@@ -9,13 +9,13 @@
         <div class="sigin-right col-xs-7">
           <%= render "user_form", resource: resource, f: f %>
           <div class="field form-group col-xs-12">
-            <%= f.label :"パスワード(6文字以上)", class: "control-label col-xs-4" %>
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control-static" %>
+            <%= f.label :"パスワード(6文字以上)", class: "control-label" %><span class="required">必須</span>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control-static password" %>
           </div>
 
           <div class="field form-group col-xs-12">
-            <%= f.label :"パスワード(確認用)", class: "control-label col-xs-4" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-static" %>
+            <%= f.label :"パスワード(確認用)", class: "control-label" %><span class="required">必須</span>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-static password_confirmation" %>
           </div>
         </div>
 
