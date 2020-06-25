@@ -1,3 +1,34 @@
 <% provide(:title, "about") %>
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<div class="about">
+  <div class="about-box">
+    <div class="text-box">
+      <div class="box1">
+        <h1>Welcome to Trachil</h1>
+        <p>〜子供と旅行へ行こう〜</p>
+        <p>Trachilは子供との旅行先を投稿するサイトです。</p>
+        <p>遊びに行った場所などを共有します。</p>
+        <p>Trachilを登録して旅行してみませんか？</p>
+      </div>
+    </div>
+    <div class="text-box">
+      <h2>Trachilに登録すると…</h2>
+      <ul>
+        <li>投稿にはそれぞれ「遊び」「ホテル」「食事」のカテゴリーで分けれる。</li>
+        <li>投稿一覧では旅行先のおすすめ年齢や、評価、訪れた場所などがわかる！</li>
+        <li>投稿詳細では訪れた住所（マップ）や、大人料金、子供料金、オムツの変える場所、離乳食大丈夫かなどがわかる！</li>
+        <li>気になる投稿がいいね・コメントができて、ユーザーをフォローすることもできる。</li>
+        <li>行きたい場所などを検索して気になる投稿を探すことができる。</li>
+      </ul>
+    </div>
+    <div class="text-box3">
+      <div class="trachil-image1"></div>
+      <div class="trachil-image2"></div>
+      <div class="text">
+        <p>旅行先を共有して、子供と旅行へ行こう！</p><br>
+        <% unless user_signed_in? %>
+          <%= link_to ">>新規登録する", new_user_registration_path, class: "about-sign-in" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
