@@ -1,6 +1,6 @@
 class User::UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :quit]
   before_action :baria_user, only: [:update, :edit, :destroy]
   before_action :my_authenticate_user!
   # before_action :to_log, only: [:top]

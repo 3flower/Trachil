@@ -58,7 +58,7 @@
   </div>
   <div id="meal-map"></div>
   <div class="show-official_site">
-    <% if travel.meal.official_site %>
+    <% if travel.play.official_site =~ /^(http:\/\/|https:\/\/)/ %>
       <%= link_to "公式サイト", travel.meal.official_site %>
     <% end %>
   </div>

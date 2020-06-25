@@ -48,7 +48,7 @@
   </div>
   <div id="hotel-map"></div>
   <div class="show-official_site">
-    <% if travel.hotel.official_site %>
+    <% if travel.play.official_site =~ /^(http:\/\/|https:\/\/)/ %>
       <%= link_to "公式サイト", travel.hotel.official_site %>
     <% end %>
   </div>
