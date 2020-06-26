@@ -2,8 +2,8 @@ $('.follow-btn-js').html("<%= j(render 'follow_btn', user: @user) %>");
 $('.follow-<%= @user.id %>').html("<%= j(render 'follow_btn', user: @user) %>");
 
 var user_id = $('#user_id').text();
-console.log(Number(user_id))
-console.log(Number("<%= current_user.id %>"))
+// console.log(Number(user_id))
+// console.log(Number("<%= current_user.id %>"))
 if (Number(user_id) == Number("<%= current_user.id %>")) {
   $('.folow-count').html("フォロー:<%= @following.user.followings.count %>")
 } else {
