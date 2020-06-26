@@ -7,7 +7,7 @@
           <%= image_tag comment.user.user_image_id.to_s,class: "comment_user_icon" %>
         </li>
         <li>
-          <%= link_to user_path(comment.user), data: {"turbolinks" => false}, class: 'comment-user' do %>
+          <%= link_to user_path(comment.user), class: 'comment-user' do %>
             <%= comment.user.name %>
           <% end %>
         </li>
