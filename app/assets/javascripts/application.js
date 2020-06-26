@@ -72,7 +72,7 @@ $(function(){
  }
 
  // ユーザー詳細のタブメニュー
- $(document).on('turbolinks:load', function() {
+ // $(document).on('turbolinks:load', function() {
    $('#tab-contents .tab[id != "travel"]').hide();
     $('#tab-menu a').click(function() {
       $("#tab-contents .tab").hide();
@@ -81,7 +81,7 @@ $(function(){
       $($(this).attr("href")).show();
       return false;
   });
-});
+// });
 
   // フォロー中のボタンの変更
   $('.follow-btn-chenge').mouseover(function(){
