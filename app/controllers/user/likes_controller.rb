@@ -1,6 +1,7 @@
 class User::LikesController < ApplicationController
 
   before_action :travel_params, only: [:create, :destroy]
+  before_action :my_authenticate_user!
 
   def create
     @like = current_user.likes.new(travel_id: @travel.id)

@@ -1,6 +1,7 @@
 class User::CommentsController < ApplicationController
 
   before_action :travel_params, only: [:create, :destroy]
+  before_action :my_authenticate_user!
 
 	def create
 		@comment = current_user.comments.new(travel_comment_params)
