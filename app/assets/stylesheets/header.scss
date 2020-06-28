@@ -75,3 +75,21 @@ header {
   width: 64px;
   height: 67px;
 }
+@media (max-width:425px){
+  .logo {
+    width: 44px;
+    height: 47px;
+  }
+  .header-title {
+    h1{
+      // padding-left: 100px;
+      float: right;
+      font-family: 'Savoye LET','Segoe Print';
+      font-size: 50px;
+      padding-top: 10px;
+      padding-left: 50px;
+      a:hover {
+      }
+    }
+  }
+}
