@@ -34,3 +34,15 @@
     }
   }
 }
+// @media screen and (max-width:425px){
+//   header {
+//     width: 100%;
+//   }
+// }
+@media (max-width:425px){
+  .home {
+    .home-text{
+      position: none;
+    }
+  }
+}
