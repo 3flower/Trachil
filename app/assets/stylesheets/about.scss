@@ -34,6 +34,7 @@
     }
     .text-box3 {
       // margin: 20px 0;
+      position: relative;
       padding: 30px;
       text-align: center;
       height: 550px;
@@ -48,11 +49,11 @@
       }
       .trachil-image2 {
         position: absolute;
-        top: 850px;
-        left: 420px;
+        top: 100px;
+        left: 320px;
         background-image: image-url("trachil4.jpg");
         background-size: cover;
-        width: 25%;
+        width: 45%;
         height: 260px;
       }
       p {

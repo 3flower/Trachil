@@ -2,7 +2,6 @@ header {
   width: 100%;
   z-index:1000;
   padding: 10px 0 5px 0;
-  // border-bottom: 1px solid #C0C0C0;
   position: sticky;
   top: 0;
   background: linear-gradient(#67ceff 10%, #CCFFFF 40%, #CCFFCC 100%);
@@ -81,15 +80,12 @@ header {
     height: 47px;
   }
   .header-title {
+    margin: 0 0 0 20px!important;
+    width: 50%!important;
     h1{
-      // padding-left: 100px;
-      float: right;
-      font-family: 'Savoye LET','Segoe Print';
-      font-size: 50px;
-      padding-top: 10px;
-      padding-left: 50px;
-      a:hover {
-      }
+      padding: 0;
+      margin: 20 0 0 0!important;
+      font-size: 40px;
     }
   }
 }
