@@ -28,7 +28,7 @@ header {
   border-radius:20px;
   margin-right: 15px;
   color: #fff;
-  margin-top: 15px;
+  margin-top: 25px;
   padding: 10px 15px !important;
   cursor: pointer;
   &:hover {
@@ -40,7 +40,9 @@ header {
     border-bottom: none;
   }
 }
-
+.dropdown {
+  margin-top: 10px;
+}
 .login-btn {
   margin-top: 25px;
   padding: 13px!important;
@@ -74,31 +76,70 @@ header {
   width: 64px;
   height: 67px;
 }
-@media (max-width:425px){
+@media (max-width:766px){
+  header {
+    height: 130px;
+    .nav {
+      display: inline-block;
+    }
+    nav {
+      float: left;
+    }
+  }
   .logo {
     width: 44px;
     height: 47px;
   }
   .header-title {
-    // margin: 0 0 0 0px!important;
-    width: 50%!important;
+    width: 55%!important;
     h1{
       padding: 0;
-      // margin: 30 0 0 0!important;
       font-size: 40px;
     }
   }
   .header_btn {
-    display: inline-block!important;
+    // display: inline-block!important;
     font-size: 12px;
-    padding: 10px 5px !important;
+    padding: 8px 10px !important;
   }
-  .navbar-right {
-    position: absolute;
-    top: 0;
-    right: 0;
+  .login-btn {
+    margin-left: 80px;
+    margin-top: 25px;
+    padding: 10px 5px !important;
   }
   .navbar-nav {
     margin: 0 !important
+  }
+  .search {
+    display: block;
+    width: 90%!important;
+    margin-left: 20px!important;
+    margin-right: 0!important;
+    margin-top: 0px!important;
+    line-height: 0px!important;
+    padding: 5px 0;
+    .search-btn {
+      padding: 0!important;
+    }
+  }
+  .header_image {
+    width: 50px;
+    height: 50px;
+  }
+  nav {
+    ul {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    li {
+      display: inline-block!important;
+    }
+  }
+}
+@media (max-width:768px){
+  .search {
+    // width: 53%!important;
+    margin-left: 30px!important;
   }
 }

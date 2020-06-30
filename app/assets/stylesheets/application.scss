@@ -163,11 +163,11 @@ ul.footer-menu li {
   display: inline;
 }
 .search {
-  // display: inline-block;
+  float: left;
   margin-top: 30px;
-  margin-right: 600px;
+  margin-left: 60px;
   line-height: 30px;
-  width: 60%;
+  width: 53%;
   background-color:#fff;
   border:1px solid #aaa;
   border-radius:6px;
