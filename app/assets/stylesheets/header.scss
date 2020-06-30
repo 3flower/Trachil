@@ -55,6 +55,7 @@ header {
 }
 
 .header-icon {
+  display: inline-block!important;
   padding: 0 !important;
   &:hover {
     background-color: #CCFFFF !important;
@@ -78,7 +79,8 @@ header {
 }
 @media (max-width:766px){
   header {
-    height: 130px;
+    // height: 130px;
+    display: inline-block;
     .nav {
       display: inline-block;
     }
@@ -113,9 +115,7 @@ header {
   .search {
     display: block;
     width: 90%!important;
-    margin-left: 20px!important;
-    margin-right: 0!important;
-    margin-top: 0px!important;
+    margin: 0 0 10px 20px !important;
     line-height: 0px!important;
     padding: 5px 0;
     .search-btn {
@@ -141,5 +141,14 @@ header {
   .search {
     // width: 53%!important;
     margin-left: 30px!important;
+  }
+  .dropdown-menu {
+    position: absolute!important;
+    top: 200%!important;
+    left: -80px!important;
+    background-color: #fff!important;
+
+  }
+  .header_btn {
   }
 }
