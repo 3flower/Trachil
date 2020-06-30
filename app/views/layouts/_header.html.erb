@@ -1,19 +1,19 @@
 <header>
   <div class="container">
     <nav class="nav navbar-nav navbar-left header-title">
-      <div class="logo"></div>
+      <!-- <div class="logo"></div> -->
       <% if user_signed_in? %>
         <h1><%= link_to "Trachil", travels_path, data: {"turbolinks" => false}, class: "title" %></h1>
       <% else %>
         <h1><%= link_to "Trachil", root_path, data: {"turbolinks" => false}, class: "title" %></h1>
       <% end %>
     </nav>
+    <% if user_signed_in? %>
+      <%= render "layouts/search" %>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li>
-            <%= render "layouts/search" %>
-          </li>
           <li>
             <%= link_to "投稿", new_travel_path, data: {"turbolinks" => false}, class: "header_btn" %>
           </li>
@@ -35,7 +35,7 @@
           </li>
         <% else %>
           <li>
-            <div class="header_btn glyphicon glyphicon-log-in login-btn login-show">ログイン</div>
+            <div class="header_btn login-btn login-show">ログイン</div>
           </li>
         <% end %>
       </ul>
