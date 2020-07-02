@@ -4,6 +4,13 @@
     <%= render "user/users/user_show", user: @travel.user %>
     <div class="travel-show-image col-xs-3">
       <% @travel_images.each do |image| %>
+       <!-- AI -->
+        <h4>
+          <% image.tags.each do |tag| %>
+            <span class="label label-primary"><%= tag.name %></span>
+          <% end %>
+        </h4>
+
         <%= image_tag image.image_url.to_s,class: "travel-image" %>
       <% end %>
     </div>

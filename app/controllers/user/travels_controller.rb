@@ -16,10 +16,15 @@ class User::TravelsController < ApplicationController
   def create
     @travel = current_user.travels.new(travels_params)
     if @travel.save
-      # tags = Vision.get_image_data(@travel.image)
-      # tags.each do |tag|
-      #   @post_image.tags.create(name: tag)
-      # end
+      # AI
+
+      @travel.travel_images.each do |image|
+        tags = Vision.get_image_data(image.image_url.url)
+        tags.each do |tag|
+          image.tags.create(name: tag)
+        end
+      end
+
       flash[:notice] = "投稿しました"
       redirect_to travels_path
     else
