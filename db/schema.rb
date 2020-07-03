@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_111643) do
     t.integer "user_id"
     t.integer "travel_id"
     t.text "travel_comment"
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

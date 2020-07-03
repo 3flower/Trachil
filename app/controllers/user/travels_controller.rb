@@ -50,6 +50,13 @@ class User::TravelsController < ApplicationController
 
   def update
     if @travel.update(travels_update_params)
+      @travel.travel_images.each do |image|
+        tags = Vision.get_image_data(image.image_url.url)
+        binding.pry
+        tags.each do |tag|
+          image.tags.update(name: tag)
+        end
+      end
       travels_update_params[:travel_images_attributes].each do |i|
         if i[1]["_destroy"] == "1"
           @image = TravelImage.find(i[1]["id"])
