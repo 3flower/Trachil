@@ -64,7 +64,7 @@ class User::TravelsController < ApplicationController
         end
       end
 
-      flash[:success] = "投稿しました"
+      flash[:success] = "更新しました"
       redirect_to travels_path
     else
       render :edit
