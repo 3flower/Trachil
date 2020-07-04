@@ -19,7 +19,7 @@
     <div class="travel-comment-box clearfix">
       <p><%= comment.travel_comment %></p>
       <span class="comment-score">
-        <span class="comment-score"><%= comment.score %></span>
+        <span class="comment-score"><%#= comment.score %></span>
       </span>
       <% if comment.user == current_user %>
         <%= link_to "削除", travel_comment_path(travel.id, comment.id), method: :delete, remote: true, class: "comment-destroy-btn btn-sm btn-danger pull-right" %>
