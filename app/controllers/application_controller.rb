@@ -4,13 +4,13 @@ class ApplicationController < ActionController::Base
 
   # エラー404が出た時の例外処理
   # 例外ハンドル
-  rescue_from Exception,                        with: :routing_error
-  rescue_from ActiveRecord::RecordNotFound,     with: :routing_error
-  rescue_from ActionController::RoutingError,   with: :routing_error
-
-  def routing_error
-    render template: "homes/top"
-  end
+  # rescue_from Exception,                        with: :routing_error
+  # rescue_from ActiveRecord::RecordNotFound,     with: :routing_error
+  # rescue_from ActionController::RoutingError,   with: :routing_error
+  #
+  # def routing_error
+  #   render template: "homes/top"
+  # end
 
 protected
   # ログイン時のパス
