@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   # エラー４０４
-  # get '*not_found' => 'application#routing_error'
-  # post '*not_found' => 'application#routing_error'
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
 
 end
