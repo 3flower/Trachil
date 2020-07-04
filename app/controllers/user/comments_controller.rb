@@ -6,6 +6,7 @@ class User::CommentsController < ApplicationController
 	def create
 		@comment = current_user.comments.new(travel_comment_params)
 		@comment.travel_id = @travel.id
+    # @comment.score = Language.get_data(travel_comment_params[:travel_comment])　#AI
 		@comment.save
 	end
 

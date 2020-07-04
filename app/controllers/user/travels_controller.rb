@@ -16,6 +16,15 @@ class User::TravelsController < ApplicationController
   def create
     @travel = current_user.travels.new(travels_params)
     if @travel.save
+      # AI
+
+      @travel.travel_images.each do |image|
+        tags = Vision.get_image_data(image.image_url.url)
+        tags.each do |tag|
+          image.tags.create(name: tag)
+        end
+      end
+
       flash[:notice] = "投稿しました"
       redirect_to travels_path
     else
@@ -41,12 +50,20 @@ class User::TravelsController < ApplicationController
 
   def update
     if @travel.update(travels_update_params)
+      @travel.travel_images.each do |image|
+        tags = Vision.get_image_data(image.image_url.url)
+        tags.each do |tag|
+          image.tags.find_or_create_by(name: tag)
+        end
+      end
+
       travels_update_params[:travel_images_attributes].each do |i|
         if i[1]["_destroy"] == "1"
           @image = TravelImage.find(i[1]["id"])
           @image.destroy
         end
       end
+
       flash[:success] = "投稿しました"
       redirect_to travels_path
     else
