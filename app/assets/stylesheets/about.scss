@@ -83,3 +83,21 @@
     }
   }
 }
+@media (max-width:768px){
+  .trachil-image1 {
+    display: none;
+  }
+  .trachil-image2 {
+    display: none;
+  }
+  .text-box {
+    li {
+      font-size: 12px;
+    }
+  }
+  .text-box3 {
+    height: 300px;
+  }
+}
+@media (max-width:425px){
+}

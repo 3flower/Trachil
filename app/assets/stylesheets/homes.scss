@@ -41,6 +41,11 @@
 // }
 @media (max-width:425px){
   .home {
+    // 画像をセンターにしたい
+    background-size: cover;
+    background-attachment: scroll;
+    width: 100%;
+    height: 520px;
     .home-text{
       position: none;
     }
