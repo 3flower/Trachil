@@ -83,3 +83,28 @@
     }
   }
 }
+@media (max-width:768px){
+  .trachil-image1 {
+    display: none;
+  }
+  .trachil-image2 {
+    display: none;
+  }
+  .text-box {
+    li {
+      font-size: 12px;
+    }
+  }
+  .text-box3 {
+    height: 350px!important;
+    padding-bottom: 50px!important;
+    padding-top: 5px!important;
+  }
+  .about-box {
+      li {
+        margin-top: 5px!important;
+      }
+    }
+}
+@media (max-width:425px){
+}
